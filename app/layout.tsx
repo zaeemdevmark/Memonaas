@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Instrument_Sans } from "next/font/google";
+import { Instrument_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
 import ConditionalShell from "@/components/ConditionalShell";
 import JsonLd from "@/components/JsonLd";
@@ -15,9 +15,16 @@ const instrumentSans = Instrument_Sans({
   display:  "swap",
 });
 
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets:  ["latin"],
+  axes:     ["opsz", "SOFT"],
+  display:  "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase:    new URL(SITE_URL),
-  title:           `${SITE_NAME} — Refined Luxury`,
+  title:           `${SITE_NAME} — Considered Everyday Wear`,
   description:     SITE_DESCRIPTION,
   applicationName: SITE_NAME,
   openGraph: {
@@ -31,10 +38,6 @@ export const metadata: Metadata = {
     site:    "@memonaas",
   },
   robots: { index: true, follow: true },
-  icons: {
-    icon: { url: "/favicon.png", type: "image/png" },
-    apple: { url: "/favicon.png", sizes: "180x180" },
-  },
 };
 
 export default async function RootLayout({
@@ -46,8 +49,8 @@ export default async function RootLayout({
   const role    = session?.user?.role ?? null;
 
   return (
-    <html lang="en" className={`${instrumentSans.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-[var(--font-instrument-sans)] bg-white">
+    <html lang="en" className={`${instrumentSans.variable} ${fraunces.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col font-[var(--font-instrument-sans)] bg-[var(--bg)] text-[var(--ink)]">
         <JsonLd schema={organizationSchema()} />
         <ConditionalShell role={role}>{children}</ConditionalShell>
         <ClickEffect />

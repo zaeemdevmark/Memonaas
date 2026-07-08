@@ -5,7 +5,7 @@ export const SITE_URL =
 
 export const SITE_NAME        = "Memonaas";
 export const SITE_DESCRIPTION =
-  "Premium ladies clothing — timeless silhouettes and the finest fabrics, crafted for the refined woman.";
+  "Considered clothing for everyday life — modern silhouettes, honest fabrics, thoughtfully made.";
 export const TWITTER_HANDLE   = "@memonaas";
 
 // ── Core metadata builder ──────────────────────────────────────────
