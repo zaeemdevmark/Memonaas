@@ -50,7 +50,7 @@ export default function CartDrawer() {
 
       {/* Drawer panel */}
       <div
-        className={`fixed top-0 right-0 h-full w-full sm:w-[420px] bg-white z-50 flex flex-col shadow-2xl transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-full sm:w-[420px] bg-[var(--surface)] z-50 flex flex-col shadow-2xl transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -73,7 +73,7 @@ export default function CartDrawer() {
         {items.length === 0 ? (
           /* Empty state */
           <div className="flex-1 flex flex-col items-center justify-center px-6 text-center gap-5">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-12 h-12 text-[#CCCCCC]">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-12 h-12 text-[var(--border)]">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007Z" />
             </svg>
             <div>
@@ -82,9 +82,9 @@ export default function CartDrawer() {
             </div>
             <button
               onClick={closeCart}
-              className="text-[11px] tracking-[0.2em] uppercase border border-[var(--black)] text-[var(--black)] px-8 py-3 hover:bg-black hover:text-white transition-colors duration-300"
+              className="btn-fill text-[11px] tracking-[0.2em] uppercase border border-[var(--ink)] text-[var(--ink)] px-8 py-3"
             >
-              Continue Shopping
+              <span>Continue Shopping</span>
             </button>
           </div>
         ) : (
@@ -94,7 +94,7 @@ export default function CartDrawer() {
               {items.map((item) => (
                 <div key={item.id} className="flex gap-4">
                   {/* Thumbnail */}
-                  <div className="w-20 h-24 rounded-[8px] bg-[#EDE8E1] shrink-0 overflow-hidden">
+                  <div className="w-20 h-24 rounded-[8px] bg-[var(--accent-soft)]/40 shrink-0 overflow-hidden">
                     {item.image ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
@@ -189,14 +189,14 @@ export default function CartDrawer() {
                 <Link
                   href="/cart"
                   onClick={closeCart}
-                  className="w-full py-3.5 text-center text-[11px] tracking-[0.2em] uppercase border border-[var(--black)] text-[var(--black)] hover:bg-[#F5F5F5] transition-colors duration-200"
+                  className="w-full py-3.5 text-center text-[11px] tracking-[0.2em] uppercase border border-[var(--black)] text-[var(--black)] hover:bg-[var(--bg)] transition-colors duration-200"
                 >
                   View Cart
                 </Link>
                 <Link
                   href="/checkout"
                   onClick={closeCart}
-                  className="w-full py-3.5 text-center text-[11px] tracking-[0.2em] uppercase bg-[var(--black)] text-white hover:bg-[#333] transition-colors duration-200"
+                  className="w-full py-3.5 text-center text-[11px] tracking-[0.2em] uppercase bg-[var(--ink)] text-[var(--surface)] hover:bg-[var(--accent-ink)] transition-colors duration-200"
                 >
                   Checkout
                 </Link>

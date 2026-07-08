@@ -78,7 +78,7 @@ export default function PasswordForm() {
           <button
             onClick={handleSubmit}
             disabled={saving}
-            className="flex items-center gap-2 px-6 py-3 bg-[var(--black)] text-white text-[11px] tracking-[0.2em] uppercase hover:bg-[#2a2a2a] transition-colors disabled:opacity-60"
+            className="flex items-center gap-2 px-6 py-3 bg-[var(--ink)] text-[var(--surface)] text-[11px] tracking-[0.2em] uppercase hover:bg-[var(--accent-ink)] transition-colors disabled:opacity-60"
           >
             {saving ? <><Spinner /><span>Updating…</span></> : "Update Password"}
           </button>

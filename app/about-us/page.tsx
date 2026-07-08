@@ -334,7 +334,7 @@ const PROMISES = [
 
 function PromiseSection() {
   return (
-    <section className="py-24 sm:py-32 bg-[var(--black)] text-white">
+    <section className="py-24 sm:py-32 bg-[var(--ink)] text-[var(--surface)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
           <p className="text-[10px] tracking-[0.35em] uppercase text-white/40 mb-4">
@@ -396,7 +396,7 @@ function CtaSection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             href="/shop"
-            className="py-4 px-10 bg-[var(--black)] text-white text-[11px] tracking-[0.25em] uppercase hover:bg-[#2a2a2a] transition-colors duration-200"
+            className="py-4 px-10 bg-[var(--ink)] text-[var(--surface)] text-[11px] tracking-[0.25em] uppercase hover:bg-[var(--accent-ink)] transition-colors duration-200"
           >
             Shop Collection
           </Link>

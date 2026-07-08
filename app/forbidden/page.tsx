@@ -56,21 +56,21 @@ export default async function ForbiddenPage() {
           {session?.user ? (
             <Link
               href={backHref}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[var(--black)] text-white text-[11px] tracking-[0.2em] uppercase hover:bg-[#2a2a2a] transition-colors duration-200"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[var(--ink)] text-[var(--surface)] text-[11px] tracking-[0.2em] uppercase hover:bg-[var(--accent-ink)] transition-colors duration-200"
             >
               {backLabel}
             </Link>
           ) : (
             <Link
               href="/login"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[var(--black)] text-white text-[11px] tracking-[0.2em] uppercase hover:bg-[#2a2a2a] transition-colors duration-200"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[var(--ink)] text-[var(--surface)] text-[11px] tracking-[0.2em] uppercase hover:bg-[var(--accent-ink)] transition-colors duration-200"
             >
               Sign In
             </Link>
           )}
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-[var(--border)] text-[#666666] text-[11px] tracking-[0.2em] uppercase hover:border-[var(--black)] hover:text-[var(--accent)] transition-colors duration-200"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-[var(--border)] text-[#666666] text-[11px] tracking-[0.2em] uppercase hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors duration-200"
           >
             Go Home
           </Link>

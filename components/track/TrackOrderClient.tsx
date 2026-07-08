@@ -269,7 +269,7 @@ function NotFound({ onReset }: { onReset: () => void }) {
       <div className="space-y-2 w-full max-w-xs">
         <button
           onClick={onReset}
-          className="w-full py-3.5 bg-[var(--black)] text-white text-[11px] tracking-[0.2em] uppercase hover:bg-[#2a2a2a] transition-colors"
+          className="w-full py-3.5 bg-[var(--ink)] text-[var(--surface)] text-[11px] tracking-[0.2em] uppercase hover:bg-[var(--accent-ink)] transition-colors"
         >
           Try Again
         </button>
@@ -411,7 +411,7 @@ export default function TrackOrderClient() {
         <button
           type="submit"
           disabled={state === "loading"}
-          className="w-full py-4 bg-[var(--black)] text-white text-[11px] tracking-[0.25em] uppercase hover:bg-[#2a2a2a] transition-colors duration-200 disabled:opacity-60 flex items-center justify-center gap-2.5"
+          className="w-full py-4 bg-[var(--ink)] text-[var(--surface)] text-[11px] tracking-[0.25em] uppercase hover:bg-[var(--accent-ink)] transition-colors duration-200 disabled:opacity-60 flex items-center justify-center gap-2.5"
         >
           {state === "loading" ? <><Spinner /><span>Searching…</span></> : "Track Order"}
         </button>

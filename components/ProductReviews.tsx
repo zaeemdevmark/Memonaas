@@ -106,7 +106,7 @@ function RatingSummary({ summary }: { summary: ReviewSummary }) {
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
                   fill="#0f172a" stroke="#0f172a" strokeWidth="1.5" />
               </svg>
-              <div className="flex-1 bg-[#F0F0F0] h-1.5 rounded-full overflow-hidden">
+              <div className="flex-1 bg-[var(--accent-soft)] h-1.5 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-[var(--black)] rounded-full transition-all duration-500"
                   style={{ width: `${pct}%` }}
@@ -139,7 +139,7 @@ function ReviewCard({
       <div className="flex items-start justify-between gap-4 mb-2">
         <div className="flex items-center gap-3">
           {/* Avatar initials */}
-          <div className="w-9 h-9 rounded-full bg-[#E8E8E8] flex items-center justify-center shrink-0">
+          <div className="w-9 h-9 rounded-full bg-[var(--border)] flex items-center justify-center shrink-0">
             <span className="text-[11px] font-medium text-[var(--black)]">
               {review.user.name.split(" ").map((w) => w[0]).join("").toUpperCase().slice(0, 2)}
             </span>
@@ -251,7 +251,7 @@ function ReviewForm({ initial, onSubmit, onCancel, submitLabel = "Submit Review"
       <div className="flex items-center gap-3">
         <button
           type="submit" disabled={saving}
-          className="px-6 py-2.5 text-[12px] tracking-[0.2em] uppercase font-medium bg-[var(--black)] text-white hover:bg-[#333] transition-colors duration-200 disabled:opacity-50"
+          className="px-6 py-2.5 text-[12px] tracking-[0.2em] uppercase font-medium bg-[var(--ink)] text-[var(--surface)] hover:bg-[#333] transition-colors duration-200 disabled:opacity-50"
         >
           {saving ? "Saving…" : submitLabel}
         </button>
@@ -339,7 +339,7 @@ export default function ProductReviews({ productSlug }: { productSlug: string })
     return (
       <div className="border-t border-[var(--border)] pt-14 pb-10">
         <div className="animate-pulse space-y-4">
-          <div className="h-5 w-40 bg-[#E8E8E8] rounded" />
+          <div className="h-5 w-40 bg-[var(--border)] rounded" />
           <div className="h-24 bg-[#F5F5F5] rounded" />
           <div className="space-y-3">
             {[1, 2, 3].map((i) => <div key={i} className="h-20 bg-[#F5F5F5] rounded" />)}
@@ -410,7 +410,7 @@ export default function ProductReviews({ productSlug }: { productSlug: string })
 
       {/* User's own review (pending approval) */}
       {userReview && (
-        <div className="py-4 bg-[#FAFAFA] border border-[var(--border)] px-4 my-6 rounded-sm">
+        <div className="py-4 bg-[var(--bg)] border border-[var(--border)] px-4 my-6 rounded-sm">
           <p className="text-[11px] tracking-[0.15em] uppercase text-[var(--muted)] mb-3">Your Review</p>
           {editingId === userReview.id && editTarget ? (
             <ReviewForm

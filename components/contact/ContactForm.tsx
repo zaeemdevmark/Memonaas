@@ -213,7 +213,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full sm:w-auto py-4 px-10 bg-[var(--black)] text-white text-[11px] tracking-[0.25em] uppercase hover:bg-[#2a2a2a] active:bg-[#444] transition-colors duration-200 disabled:opacity-60 flex items-center gap-2.5"
+          className="w-full sm:w-auto py-4 px-10 bg-[var(--ink)] text-[var(--surface)] text-[11px] tracking-[0.25em] uppercase hover:bg-[var(--accent-ink)] active:bg-[var(--accent-ink)] transition-colors duration-200 disabled:opacity-60 flex items-center gap-2.5"
         >
           {loading ? (
             <><Spinner /><span>Sending…</span></>

@@ -47,7 +47,7 @@ interface FieldProps {
 function Field({ label, error, type = "text", value, onChange, placeholder, autoComplete, required }: FieldProps) {
   return (
     <div className="space-y-1.5">
-      <label className="text-[10px] tracking-[0.2em] uppercase text-[#3D3D3D] font-medium block">
+      <label className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] font-medium block">
         {label}{required && <span className="text-red-400 ml-0.5">*</span>}
       </label>
       <input
@@ -56,8 +56,8 @@ function Field({ label, error, type = "text", value, onChange, placeholder, auto
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         autoComplete={autoComplete}
-        className={`w-full border px-4 py-3 text-[13px] text-[var(--black)] placeholder-[#8A8A8A] bg-white outline-none transition-colors duration-200 rounded-none ${
-          error ? "border-red-300 focus:border-red-400" : "border-[#B0B0B0] focus:border-[var(--black)]"
+        className={`w-full border px-4 py-3 text-[13px] text-[var(--black)] placeholder-[var(--muted)] bg-white outline-none transition-colors duration-200 rounded-none ${
+          error ? "border-red-300 focus:border-red-400" : "border-[var(--border)] focus:border-[var(--black)]"
         }`}
       />
       {error && (
@@ -84,7 +84,7 @@ interface SelectFieldProps {
 function SelectField({ label, error, value, onChange, options, required }: SelectFieldProps) {
   return (
     <div className="space-y-1.5">
-      <label className="text-[10px] tracking-[0.2em] uppercase text-[#3D3D3D] font-medium block">
+      <label className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] font-medium block">
         {label}{required && <span className="text-red-400 ml-0.5">*</span>}
       </label>
       <div className="relative">
@@ -92,14 +92,14 @@ function SelectField({ label, error, value, onChange, options, required }: Selec
           value={value}
           onChange={(e) => onChange(e.target.value)}
           className={`w-full border px-4 py-3 text-[13px] text-[var(--black)] bg-white outline-none appearance-none transition-colors duration-200 rounded-none cursor-pointer ${
-            error ? "border-red-300 focus:border-red-400" : "border-[#B0B0B0] focus:border-[var(--black)]"
+            error ? "border-red-300 focus:border-red-400" : "border-[var(--border)] focus:border-[var(--black)]"
           }`}
         >
           {options.map((o) => (
             <option key={o.value} value={o.value}>{o.label}</option>
           ))}
         </select>
-        <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#3D3D3D]">
+        <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[var(--muted)]">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
             <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           </svg>
@@ -120,11 +120,11 @@ function SelectField({ label, error, value, onChange, options, required }: Selec
 function SectionHeading({ number, title }: { number: string; title: string }) {
   return (
     <div className="flex items-center gap-3 mb-7">
-      <span className="text-[10px] tracking-[0.2em] text-[#3D3D3D] font-medium">{number}</span>
+      <span className="text-[10px] tracking-[0.2em] text-[var(--muted)] font-medium">{number}</span>
       <h2 className="text-[11px] tracking-[0.25em] uppercase text-[var(--black)] font-medium whitespace-nowrap">
         {title}
       </h2>
-      <div className="flex-1 h-px bg-[#E8E8E8]" />
+      <div className="flex-1 h-px bg-[var(--border)]" />
     </div>
   );
 }
@@ -151,22 +151,22 @@ function PaymentOption({ selected, onSelect, label, sublabel, icon, disabled }: 
         disabled
           ? "border-[var(--border)] opacity-50 cursor-not-allowed"
           : selected
-          ? "border-[var(--black)] bg-[#FAFAFA]"
-          : "border-[var(--border)] hover:border-[#AAAAAA]"
+          ? "border-[var(--black)] bg-[var(--bg)]"
+          : "border-[var(--border)] hover:border-[var(--muted)]"
       }`}
     >
       <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
-        selected ? "border-[var(--black)]" : "border-[#D0D0D0]"
+        selected ? "border-[var(--black)]" : "border-[var(--border)]"
       }`}>
         {selected && <div className="w-2 h-2 rounded-full bg-[var(--black)]" />}
       </div>
-      <div className="text-[#3D3D3D] shrink-0">{icon}</div>
+      <div className="text-[var(--muted)] shrink-0">{icon}</div>
       <div className="min-w-0">
         <p className="text-[12px] font-medium text-[var(--black)]">{label}</p>
-        {sublabel && <p className="text-[10px] text-[#3D3D3D] mt-0.5">{sublabel}</p>}
+        {sublabel && <p className="text-[10px] text-[var(--muted)] mt-0.5">{sublabel}</p>}
       </div>
       {disabled && (
-        <span className="ml-auto text-[9px] tracking-[0.15em] uppercase bg-[#F0F0F0] text-[#3D3D3D] px-2 py-0.5 shrink-0">
+        <span className="ml-auto text-[9px] tracking-[0.15em] uppercase bg-[var(--accent-soft)] text-[var(--muted)] px-2 py-0.5 shrink-0">
           Coming soon
         </span>
       )}
@@ -329,7 +329,7 @@ export default function CheckoutPage() {
   if (cartLoading) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 flex items-center justify-center">
-        <div className="flex items-center gap-3 text-[#3D3D3D]">
+        <div className="flex items-center gap-3 text-[var(--muted)]">
           <Spinner />
           <span className="text-[13px]">Loading your cart…</span>
         </div>
@@ -344,8 +344,8 @@ export default function CheckoutPage() {
         <h1 className="text-3xl font-light text-[var(--black)]">
           Your cart is empty
         </h1>
-        <p className="text-[12px] text-[#3D3D3D]">Add items before proceeding to checkout.</p>
-        <Link href="/shop" className="text-[11px] tracking-[0.25em] uppercase border border-[var(--black)] text-[var(--black)] px-10 py-3.5 hover:bg-black hover:text-white transition-colors duration-300">
+        <p className="text-[12px] text-[var(--muted)]">Add items before proceeding to checkout.</p>
+        <Link href="/shop" className="text-[11px] tracking-[0.25em] uppercase btn-fill border border-[var(--ink)] text-[var(--ink)] px-10 py-3.5">
           Shop Now
         </Link>
       </div>
@@ -356,22 +356,22 @@ export default function CheckoutPage() {
   if (placedOrder) {
     return (
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-20 text-center">
-        <div className="w-16 h-16 rounded-full bg-black flex items-center justify-center mx-auto mb-8">
+        <div className="w-16 h-16 rounded-full bg-[var(--accent)] flex items-center justify-center mx-auto mb-8">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="white" className="w-7 h-7">
             <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
           </svg>
         </div>
 
-        <p className="text-[10px] tracking-[0.35em] uppercase text-[#3D3D3D] mb-3">Order Confirmed</p>
+        <p className="text-[10px] tracking-[0.35em] uppercase text-[var(--muted)] mb-3">Order Confirmed</p>
         <h1 className="text-4xl sm:text-5xl font-light text-[var(--black)] mb-4">
           Thank you, {form.firstName || "dear customer"}
         </h1>
-        <p className="text-[13px] text-[#3D3D3D] mb-10">
+        <p className="text-[13px] text-[var(--muted)] mb-10">
           Your order has been placed successfully. Our team will contact you shortly to confirm delivery.
         </p>
 
         <div className="border border-[var(--border)] inline-block px-10 py-5 mb-10">
-          <p className="text-[10px] tracking-[0.2em] uppercase text-[#3D3D3D] mb-1">Order Number</p>
+          <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] mb-1">Order Number</p>
           <p className="text-[18px] font-medium text-[var(--black)]">
             {placedOrder.orderNumber}
           </p>
@@ -382,8 +382,8 @@ export default function CheckoutPage() {
             <div key={item.id} className="flex justify-between items-center text-[12px]">
               <span className="text-[var(--black)]">
                 {item.productName}
-                <span className="text-[#3D3D3D] ml-1">× {item.quantity}</span>
-                <span className="text-[#3D3D3D] ml-1">/ {item.size}</span>
+                <span className="text-[var(--muted)] ml-1">× {item.quantity}</span>
+                <span className="text-[var(--muted)] ml-1">/ {item.size}</span>
               </span>
               <span className="text-[var(--black)]">{formatPrice(item.lineTotal)}</span>
             </div>
@@ -395,10 +395,10 @@ export default function CheckoutPage() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link href="/shop" className="px-10 py-3.5 border border-[var(--black)] text-[var(--black)] text-[11px] tracking-[0.25em] uppercase hover:bg-[#F5F5F5] transition-colors duration-200">
+          <Link href="/shop" className="px-10 py-3.5 border border-[var(--black)] text-[var(--black)] text-[11px] tracking-[0.25em] uppercase hover:bg-[var(--bg)] transition-colors duration-200">
             Continue Shopping
           </Link>
-          <Link href="/" className="px-10 py-3.5 bg-[var(--black)] text-white text-[11px] tracking-[0.25em] uppercase hover:bg-[#2a2a2a] transition-colors duration-200">
+          <Link href="/" className="px-10 py-3.5 bg-[var(--ink)] text-[var(--surface)] text-[11px] tracking-[0.25em] uppercase hover:bg-[var(--accent-ink)] transition-colors duration-200">
             Back to Home
           </Link>
         </div>
@@ -411,7 +411,7 @@ export default function CheckoutPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 pb-24">
 
       <div className="mb-10 border-b border-[var(--border)] pb-6">
-        <p className="text-[10px] tracking-[0.3em] uppercase text-[#3D3D3D] mb-1">Memonaas</p>
+        <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--muted)] mb-1">Memonaas</p>
         <h1 className="text-4xl sm:text-5xl font-light text-[var(--black)]">
           Checkout
         </h1>
@@ -499,11 +499,11 @@ export default function CheckoutPage() {
               </div>
 
               {form.payment === "cod" && (
-                <div className="mt-4 bg-[#FAFAFA] border border-[var(--border)] px-5 py-4 flex items-start gap-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-[#3D3D3D] shrink-0 mt-0.5">
+                <div className="mt-4 bg-[var(--bg)] border border-[var(--border)] px-5 py-4 flex items-start gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-[var(--muted)] shrink-0 mt-0.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
                   </svg>
-                  <p className="text-[11px] text-[#3D3D3D] leading-relaxed">
+                  <p className="text-[11px] text-[var(--muted)] leading-relaxed">
                     Please have the exact amount ready at the time of delivery. Our courier will collect payment upon arrival.
                   </p>
                 </div>
@@ -514,7 +514,7 @@ export default function CheckoutPage() {
             <section>
               <SectionHeading number="03" title="Order Notes" />
               <div className="space-y-1.5">
-                <label className="text-[10px] tracking-[0.2em] uppercase text-[#3D3D3D] font-medium block">
+                <label className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] font-medium block">
                   Special Instructions <span className="normal-case tracking-normal">(optional)</span>
                 </label>
                 <textarea
@@ -522,13 +522,13 @@ export default function CheckoutPage() {
                   onChange={(e) => set("notes", e.target.value)}
                   placeholder="Gift wrapping requests, delivery instructions, or anything else we should know…"
                   rows={4}
-                  className="w-full border border-[#B0B0B0] focus:border-[var(--black)] px-4 py-3 text-[13px] text-[var(--black)] placeholder-[#8A8A8A] bg-white outline-none transition-colors duration-200 resize-none rounded-none"
+                  className="w-full border border-[var(--border)] focus:border-[var(--black)] px-4 py-3 text-[13px] text-[var(--black)] placeholder-[var(--muted)] bg-white outline-none transition-colors duration-200 resize-none rounded-none"
                 />
               </div>
             </section>
 
             <div className="lg:hidden">
-              <Link href="/cart" className="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-[#3D3D3D] hover:text-[var(--accent)] transition-colors duration-200">
+              <Link href="/cart" className="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] hover:text-[var(--accent)] transition-colors duration-200">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                 </svg>
@@ -547,7 +547,7 @@ export default function CheckoutPage() {
               <div className="space-y-5 mb-7">
                 {cart?.items.map((item) => (
                   <div key={item.id} className="flex gap-4 items-start">
-                    <div className="w-16 h-20 rounded-[6px] bg-[#EDE8E1] shrink-0 overflow-hidden">
+                    <div className="w-16 h-20 rounded-[6px] bg-[var(--accent-soft)]/40 shrink-0 overflow-hidden">
                       {item.product.image ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={item.product.image.url} alt={item.product.image.altText ?? item.product.name} className="w-full h-full object-cover" />
@@ -559,14 +559,14 @@ export default function CheckoutPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-[12px] font-medium text-[var(--black)] leading-snug truncate">{item.product.name}</p>
-                      <p className="text-[10px] text-[#3D3D3D] mt-1">
+                      <p className="text-[10px] text-[var(--muted)] mt-1">
                         {item.variant.size} &nbsp;·&nbsp; {item.variant.color} &nbsp;·&nbsp; Qty: {item.quantity}
                       </p>
                       <div className="flex items-center gap-1.5 mt-1.5">
                         {item.variant.salePrice ? (
                           <>
                             <span className="text-[12px] text-[var(--black)]">{formatPrice(item.variant.salePrice)}</span>
-                            <span className="text-[10px] text-[#3D3D3D] line-through">{formatPrice(item.variant.price)}</span>
+                            <span className="text-[10px] text-[var(--muted)] line-through">{formatPrice(item.variant.price)}</span>
                           </>
                         ) : (
                           <span className="text-[12px] text-[var(--black)]">{formatPrice(item.variant.price)}</span>
@@ -582,7 +582,7 @@ export default function CheckoutPage() {
                         onClick={() => handleRemoveItem(item.id)}
                         disabled={removingId === item.id}
                         aria-label="Remove item"
-                        className="text-[#3D3D3D] hover:text-red-500 transition-colors disabled:opacity-40"
+                        className="text-[var(--muted)] hover:text-red-500 transition-colors disabled:opacity-40"
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3.5 h-3.5">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -595,11 +595,11 @@ export default function CheckoutPage() {
 
               <div className="border-t border-[var(--border)] pt-5 space-y-3">
                 <div className="flex justify-between text-[12px]">
-                  <span className="text-[#3D3D3D]">Subtotal</span>
+                  <span className="text-[var(--muted)]">Subtotal</span>
                   <span className="text-[var(--black)]">{formatPrice(cart?.subtotal ?? 0)}</span>
                 </div>
                 <div className="flex justify-between text-[12px]">
-                  <span className="text-[#3D3D3D]">Shipping</span>
+                  <span className="text-[var(--muted)]">Shipping</span>
                   {shipping === 0 ? (
                     <span className="text-green-600 text-[11px] tracking-wide">Free</span>
                   ) : (
@@ -625,7 +625,7 @@ export default function CheckoutPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-4 bg-[var(--black)] text-white text-[11px] tracking-[0.25em] uppercase hover:bg-[#2a2a2a] active:bg-[#444] transition-colors duration-200 disabled:opacity-60 flex items-center justify-center gap-2.5"
+                  className="w-full py-4 bg-[var(--ink)] text-[var(--surface)] text-[11px] tracking-[0.25em] uppercase hover:bg-[var(--accent-ink)] active:bg-[var(--accent-ink)] transition-colors duration-200 disabled:opacity-60 flex items-center justify-center gap-2.5"
                 >
                   {loading ? (
                     <><Spinner /><span>Placing Order…</span></>
@@ -635,7 +635,7 @@ export default function CheckoutPage() {
                 </button>
                 <Link
                   href="/cart"
-                  className="w-full py-3.5 border border-[var(--border)] text-[#3D3D3D] text-[11px] tracking-[0.2em] uppercase hover:border-[var(--black)] hover:text-[var(--accent)] transition-colors duration-200 flex items-center justify-center gap-2"
+                  className="w-full py-3.5 border border-[var(--border)] text-[var(--muted)] text-[11px] tracking-[0.2em] uppercase hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors duration-200 flex items-center justify-center gap-2"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3.5 h-3.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
@@ -644,7 +644,7 @@ export default function CheckoutPage() {
                 </Link>
               </div>
 
-              <p className="text-[10px] text-[#3D3D3D] text-center mt-5 leading-relaxed">
+              <p className="text-[10px] text-[var(--muted)] text-center mt-5 leading-relaxed">
                 Your personal data is protected. We do not store payment details.
               </p>
             </div>

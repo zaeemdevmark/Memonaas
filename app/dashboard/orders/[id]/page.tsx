@@ -29,7 +29,7 @@ function OrderTimeline({ order }: { order: CustomerOrderDTO }) {
         return (
           <div key={step} className="flex items-start gap-4 relative">
             {i < TIMELINE_STEPS.length - 1 && (
-              <div className={`absolute left-[9px] top-5 w-px h-9 transition-colors ${filled ? "bg-[var(--black)]" : "bg-[#E8E8E8]"}`} />
+              <div className={`absolute left-[9px] top-5 w-px h-9 transition-colors ${filled ? "bg-[var(--black)]" : "bg-[var(--border)]"}`} />
             )}
             <div className={`w-[18px] h-[18px] rounded-full shrink-0 mt-0.5 flex items-center justify-center border-2 transition-colors ${
               cancelled ? "border-[var(--border)] bg-white"
@@ -111,7 +111,7 @@ export default async function OrderDetailPage({ params }: Props) {
             <div className="space-y-4">
               {order.items.map((item) => (
                 <div key={item.id} className="flex items-start gap-4 border border-[var(--border)] p-4">
-                  <div className="w-16 h-20 rounded-[6px] bg-[#EDE8E1] shrink-0 overflow-hidden relative">
+                  <div className="w-16 h-20 rounded-[6px] bg-[var(--accent-soft)]/40 shrink-0 overflow-hidden relative">
                     {item.productImage ? (
                       <Image
                         src={item.productImage}

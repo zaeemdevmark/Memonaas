@@ -27,7 +27,7 @@ export default function CartPage() {
           viewBox="0 0 24 24"
           strokeWidth={1}
           stroke="currentColor"
-          className="w-14 h-14 text-[#CCCCCC]"
+          className="w-14 h-14 text-[var(--border)]"
         >
           <path
             strokeLinecap="round"
@@ -47,9 +47,9 @@ export default function CartPage() {
         </div>
         <Link
           href="/shop"
-          className="text-[11px] tracking-[0.25em] uppercase border border-[var(--black)] text-[var(--black)] px-10 py-3.5 hover:bg-black hover:text-white transition-colors duration-300"
+          className="btn-fill text-[11px] tracking-[0.25em] uppercase border border-[var(--ink)] text-[var(--ink)] px-10 py-3.5"
         >
-          Continue Shopping
+          <span>Continue Shopping</span>
         </Link>
       </div>
     );
@@ -83,7 +83,7 @@ export default function CartPage() {
             <span className="text-right">Total</span>
           </div>
 
-          <div className="divide-y divide-[#E8E8E8]">
+          <div className="divide-y divide-[var(--border)]">
             {items.map((item) => {
               const unitPrice = parsePrice(item.salePrice ?? item.price);
               const lineTotal = unitPrice * item.quantity;
@@ -96,7 +96,7 @@ export default function CartPage() {
                   {/* Product info */}
                   <div className="flex items-start gap-5">
                     {/* Image */}
-                    <div className="w-20 h-24 sm:w-24 sm:h-28 rounded-[8px] bg-[#EDE8E1] shrink-0 overflow-hidden flex items-end justify-center transition-transform duration-500 group-hover:scale-[1.02]">
+                    <div className="w-20 h-24 sm:w-24 sm:h-28 rounded-[8px] bg-[var(--accent-soft)]/40 shrink-0 overflow-hidden flex items-end justify-center transition-transform duration-500 group-hover:scale-[1.02]">
                       <span className="text-[7px] text-black/10 tracking-widest uppercase mb-2 select-none">Image</span>
                     </div>
 
@@ -154,7 +154,7 @@ export default function CartPage() {
                     <div className="flex items-center border border-[var(--border)]">
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        className="w-9 h-9 flex items-center justify-center text-[var(--muted)] hover:text-[var(--accent)] hover:bg-[#F9F9F9] transition-all duration-200 text-sm"
+                        className="w-9 h-9 flex items-center justify-center text-[var(--muted)] hover:text-[var(--accent)] hover:bg-[var(--bg)] transition-all duration-200 text-sm"
                         aria-label="Decrease quantity"
                       >
                         −
@@ -168,7 +168,7 @@ export default function CartPage() {
                           updateQuantity(item.id, item.quantity + 1);
                         }}
                         disabled={item.stock !== undefined && item.quantity >= item.stock}
-                        className="w-9 h-9 flex items-center justify-center text-[var(--muted)] hover:text-[var(--accent)] hover:bg-[#F9F9F9] transition-all duration-200 text-sm disabled:opacity-30 disabled:cursor-not-allowed"
+                        className="w-9 h-9 flex items-center justify-center text-[var(--muted)] hover:text-[var(--accent)] hover:bg-[var(--bg)] transition-all duration-200 text-sm disabled:opacity-30 disabled:cursor-not-allowed"
                         aria-label="Increase quantity"
                       >
                         +
@@ -265,13 +265,13 @@ export default function CartPage() {
             <div className="flex flex-col gap-3">
               <Link
                 href="/shop"
-                className="w-full py-3.5 text-center text-[11px] tracking-[0.2em] uppercase border border-[var(--black)] text-[var(--black)] hover:bg-[#F5F5F5] transition-colors duration-200"
+                className="w-full py-3.5 text-center text-[11px] tracking-[0.2em] uppercase border border-[var(--black)] text-[var(--black)] hover:bg-[var(--bg)] transition-colors duration-200"
               >
                 Continue Shopping
               </Link>
               <Link
                 href="/checkout"
-                className="w-full py-3.5 text-center text-[11px] tracking-[0.2em] uppercase bg-[var(--black)] text-white hover:bg-[#333] transition-colors duration-200"
+                className="w-full py-3.5 text-center text-[11px] tracking-[0.2em] uppercase bg-[var(--ink)] text-[var(--surface)] hover:bg-[var(--accent-ink)] transition-colors duration-200"
               >
                 Proceed to Checkout
               </Link>

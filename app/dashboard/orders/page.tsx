@@ -18,7 +18,7 @@ function Pagination({ page, totalPages }: { page: number; totalPages: number }) 
         className={`text-[10px] tracking-[0.2em] uppercase border px-4 py-2 transition-colors ${
           page <= 1
             ? "border-[var(--border)] text-[#D0D0D0] pointer-events-none"
-            : "border-[var(--border)] text-[var(--muted)] hover:border-[var(--black)] hover:text-[var(--accent)]"
+            : "border-[var(--border)] text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
         }`}
       >
         Previous
@@ -32,7 +32,7 @@ function Pagination({ page, totalPages }: { page: number; totalPages: number }) 
         className={`text-[10px] tracking-[0.2em] uppercase border px-4 py-2 transition-colors ${
           page >= totalPages
             ? "border-[var(--border)] text-[#D0D0D0] pointer-events-none"
-            : "border-[var(--border)] text-[var(--muted)] hover:border-[var(--black)] hover:text-[var(--accent)]"
+            : "border-[var(--border)] text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
         }`}
       >
         Next

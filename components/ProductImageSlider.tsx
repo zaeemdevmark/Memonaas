@@ -276,7 +276,7 @@ export default function ProductImageSlider({
         {/* Main image frame */}
         <div
           ref={mainImgRef}
-          className="relative h-[60vh] w-[82vw] overflow-hidden bg-[#EDE8E1] cursor-zoom-in"
+          className="relative h-[60vh] w-[82vw] overflow-hidden bg-[var(--accent-soft)]/40 cursor-zoom-in"
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
           onClick={() => setFullscreen(true)}

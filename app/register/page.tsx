@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 // ── Shared primitives ────────────────────────────────────────────
 
@@ -50,7 +49,7 @@ function Field({ label, error, type = "text", value, onChange, placeholder, auto
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         autoComplete={autoComplete}
-        className={`w-full border px-4 py-3.5 text-[13px] text-[var(--black)] placeholder-[#C8C8C8] bg-white outline-none transition-colors duration-200 rounded-none ${
+        className={`w-full border px-4 py-3.5 text-[13px] text-[var(--black)] placeholder-[var(--muted)] bg-white outline-none transition-colors duration-200 rounded-none ${
           error
             ? "border-red-300 focus:border-red-400"
             : "border-[var(--border)] focus:border-[var(--black)]"
@@ -97,7 +96,7 @@ function PasswordField({ label, error, value, onChange, placeholder, autoComplet
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
           autoComplete={autoComplete}
-          className={`w-full border px-4 py-3.5 pr-11 text-[13px] text-[var(--black)] placeholder-[#C8C8C8] bg-white outline-none transition-colors duration-200 rounded-none ${
+          className={`w-full border px-4 py-3.5 pr-11 text-[13px] text-[var(--black)] placeholder-[var(--muted)] bg-white outline-none transition-colors duration-200 rounded-none ${
             error
               ? "border-red-300 focus:border-red-400"
               : "border-[var(--border)] focus:border-[var(--black)]"
@@ -119,7 +118,7 @@ function PasswordField({ label, error, value, onChange, placeholder, autoComplet
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
-                className={`h-0.5 flex-1 rounded-full transition-all duration-300 ${i <= strength ? strengthColor : "bg-[#E8E8E8]"}`}
+                className={`h-0.5 flex-1 rounded-full transition-all duration-300 ${i <= strength ? strengthColor : "bg-[var(--border)]"}`}
               />
             ))}
           </div>
@@ -145,7 +144,7 @@ function PasswordField({ label, error, value, onChange, placeholder, autoComplet
 function AuthPanel() {
   return (
     <div className="hidden lg:flex lg:w-[45%] bg-[var(--black)] flex-col items-center justify-center p-14 relative overflow-hidden shrink-0">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_80%_80%,#222222,#0d0d0d)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_80%_80%,#3a2c22,#15100c)]" />
       <div
         className="absolute inset-0 opacity-[0.04]"
         style={{
@@ -154,24 +153,14 @@ function AuthPanel() {
         }}
       />
       <div className="relative z-10 text-center">
-        <Link href="/">
-          <Image
-            src="/logo.png"
-            alt="Memonaas"
-            width={160}
-            height={60}
-            className="h-12 w-auto object-contain brightness-0 invert mx-auto mb-12"
-          />
-        </Link>
+        <Link href="/" className="inline-block font-display text-3xl text-white mb-12">Memonaas</Link>
         <p className="text-white/40 text-[10px] tracking-[0.35em] uppercase mb-4">Join us</p>
-        <h2
-          className="text-white text-[42px] font-light leading-tight"
-        >
-          Begin your<br />journey
+        <h2 className="font-display text-white text-[42px] leading-tight">
+          Welcome to<br />the everyday
         </h2>
         <div className="w-10 h-px bg-white/20 mx-auto mt-8 mb-8" />
         <p className="text-white/35 text-[11px] tracking-wide leading-relaxed max-w-[220px] mx-auto">
-          Create an account to unlock exclusive collections, early access, and personalised offers.
+          Create an account to track orders, save your wishlist, and check out faster.
         </p>
       </div>
     </div>
@@ -269,21 +258,19 @@ export default function RegisterPage() {
 
           {/* Mobile logo */}
           <div className="lg:hidden mb-10 text-center">
-            <Link href="/">
-              <Image src="/logo.png" alt="Memonaas" width={130} height={50} className="h-9 w-auto object-contain mx-auto" />
-            </Link>
+            <Link href="/" className="font-display text-2xl text-[var(--ink)]">Memonaas</Link>
           </div>
 
           {success ? (
             /* Success state */
             <div className="text-center py-6">
-              <div className="w-14 h-14 rounded-full bg-black flex items-center justify-center mx-auto mb-6">
+              <div className="w-14 h-14 rounded-full bg-[var(--accent)] flex items-center justify-center mx-auto mb-6">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="white" className="w-6 h-6">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
               </div>
               <h2
-                className="text-3xl font-light text-[var(--black)] mb-3"
+                className="font-display text-3xl text-[var(--ink)] mb-3"
               >
                 Account created
               </h2>
@@ -293,13 +280,13 @@ export default function RegisterPage() {
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
                   href="/login"
-                  className="px-8 py-3.5 border border-[var(--black)] text-[var(--black)] text-[11px] tracking-[0.25em] uppercase hover:bg-[#F5F5F5] transition-colors duration-200 text-center"
+                  className="px-8 py-3.5 border border-[var(--black)] text-[var(--black)] text-[11px] tracking-[0.25em] uppercase hover:bg-[var(--bg)] transition-colors duration-200 text-center"
                 >
                   Sign In
                 </Link>
                 <Link
                   href="/"
-                  className="px-8 py-3.5 bg-[var(--black)] text-white text-[11px] tracking-[0.25em] uppercase hover:bg-[#2a2a2a] transition-colors duration-200 text-center"
+                  className="px-8 py-3.5 bg-[var(--ink)] text-[var(--surface)] text-[11px] tracking-[0.25em] uppercase hover:bg-[var(--accent-ink)] transition-colors duration-200 text-center"
                 >
                   Explore
                 </Link>
@@ -308,7 +295,7 @@ export default function RegisterPage() {
           ) : (
             <>
               <h1
-                className="text-4xl font-light text-[var(--black)] mb-2"
+                className="font-display text-4xl text-[var(--ink)] mb-2"
               >
                 Create Account
               </h1>
@@ -363,7 +350,7 @@ export default function RegisterPage() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-4 bg-[var(--black)] text-white text-[11px] tracking-[0.25em] uppercase hover:bg-[#2a2a2a] active:bg-[#444] transition-colors duration-200 disabled:opacity-60 flex items-center justify-center gap-2.5"
+                    className="w-full py-4 bg-[var(--ink)] text-[var(--surface)] text-[11px] tracking-[0.25em] uppercase hover:bg-[var(--accent-ink)] active:bg-[var(--accent-ink)] transition-colors duration-200 disabled:opacity-60 flex items-center justify-center gap-2.5"
                   >
                     {loading ? <><Spinner /><span>Creating account…</span></> : "Create Account"}
                   </button>

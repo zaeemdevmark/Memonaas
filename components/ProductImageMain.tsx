@@ -30,7 +30,7 @@ export default function ProductImageMain({
   const img = images[active] ?? images[0];
 
   return (
-    <div className="relative aspect-[563/844] rounded-[12px] overflow-hidden bg-[#EDE8E1]">
+    <div className="relative aspect-[563/844] rounded-[12px] overflow-hidden bg-[var(--accent-soft)]/40">
       <AnimatePresence custom={direction} initial={false}>
         <motion.div
           key={active}

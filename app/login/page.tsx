@@ -4,7 +4,6 @@ import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import Image from "next/image";
 
 // ── Shared primitives ─────────────────────────────────────────────
 
@@ -43,7 +42,7 @@ function Field({
         type={type} value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder} autoComplete={autoComplete}
-        className={`w-full border px-4 py-3.5 text-[13px] text-[var(--black)] placeholder-[#C8C8C8] bg-white outline-none transition-colors duration-200 rounded-none ${
+        className={`w-full border px-4 py-3.5 text-[13px] text-[var(--black)] placeholder-[var(--muted)] bg-white outline-none transition-colors duration-200 rounded-none ${
           error ? "border-red-300 focus:border-red-400" : "border-[var(--border)] focus:border-[var(--black)]"
         }`}
       />
@@ -74,7 +73,7 @@ function PasswordField({
           type={show ? "text" : "password"} value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder} autoComplete={autoComplete}
-          className={`w-full border px-4 py-3.5 pr-11 text-[13px] text-[var(--black)] placeholder-[#C8C8C8] bg-white outline-none transition-colors duration-200 rounded-none ${
+          className={`w-full border px-4 py-3.5 pr-11 text-[13px] text-[var(--black)] placeholder-[var(--muted)] bg-white outline-none transition-colors duration-200 rounded-none ${
             error ? "border-red-300 focus:border-red-400" : "border-[var(--border)] focus:border-[var(--black)]"
           }`}
         />
@@ -98,16 +97,16 @@ function PasswordField({
 function AuthPanel() {
   return (
     <div className="hidden lg:flex lg:w-[45%] bg-[var(--black)] flex-col items-center justify-center p-14 relative overflow-hidden shrink-0">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_20%_20%,#222222,#0d0d0d)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_20%_20%,#3a2c22,#15100c)]" />
       <div className="absolute inset-0 opacity-[0.04]"
         style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
       <div className="relative z-10 text-center">
-        <Link href="/"><Image src="/logo.png" alt="Memonaas" width={160} height={60} className="h-12 w-auto object-contain brightness-0 invert mx-auto mb-12" /></Link>
+        <Link href="/" className="inline-block font-display text-3xl text-white mb-12">Memonaas</Link>
         <p className="text-white/40 text-[10px] tracking-[0.35em] uppercase mb-4">Welcome back</p>
-        <h2 className="text-white text-[42px] font-light leading-tight">Elegance<br />awaits you</h2>
+        <h2 className="font-display text-white text-[42px] leading-tight">Considered,<br />as always</h2>
         <div className="w-10 h-px bg-white/20 mx-auto mt-8 mb-8" />
         <p className="text-white/35 text-[11px] tracking-wide leading-relaxed max-w-[220px] mx-auto">
-          Sign in to access your orders, wishlist, and exclusive member offers.
+          Sign in to access your orders, wishlist, and account details.
         </p>
       </div>
     </div>
@@ -193,13 +192,13 @@ function LoginForm() {
         <div className="w-full max-w-[400px]">
 
           <div className="lg:hidden mb-10 text-center">
-            <Link href="/"><Image src="/logo.png" alt="Memonaas" width={130} height={50} className="h-9 w-auto object-contain mx-auto" /></Link>
+            <Link href="/" className="font-display text-2xl text-[var(--ink)]">Memonaas</Link>
           </div>
 
           {/* Step: email */}
           {step === "email" && (
             <>
-              <h1 className="text-4xl font-light text-[var(--black)] mb-2">Sign In</h1>
+              <h1 className="font-display text-4xl text-[var(--ink)] mb-2">Sign In</h1>
               <p className="text-[12px] text-[var(--muted)] mb-10">
                 Don&apos;t have an account?{" "}
                 <Link href="/register" className="text-[var(--black)] underline underline-offset-2 hover:opacity-50 transition-opacity">Create one</Link>
@@ -215,7 +214,7 @@ function LoginForm() {
                 />
                 <div className="pt-2">
                   <button type="submit" disabled={loading}
-                    className="w-full py-4 bg-[var(--black)] text-white text-[11px] tracking-[0.25em] uppercase hover:bg-[#2a2a2a] transition-colors duration-200 disabled:opacity-60 flex items-center justify-center gap-2.5">
+                    className="w-full py-4 bg-[var(--ink)] text-[var(--surface)] text-[11px] tracking-[0.25em] uppercase hover:bg-[var(--accent-ink)] transition-colors duration-200 disabled:opacity-60 flex items-center justify-center gap-2.5">
                     {loading ? <><Spinner /><span>Checking…</span></> : "Continue"}
                   </button>
                 </div>
@@ -226,7 +225,7 @@ function LoginForm() {
           {/* Step: no account found */}
           {step === "no-account" && (
             <>
-              <h1 className="text-4xl font-light text-[var(--black)] mb-2">No Account Found</h1>
+              <h1 className="font-display text-4xl text-[var(--ink)] mb-2">No Account Found</h1>
               <p className="text-[12px] text-[var(--muted)] mb-10">
                 No account exists for <span className="text-[var(--black)] font-medium">{email}</span>.
                 You can shop as a guest or create an account to track your orders.
@@ -234,14 +233,14 @@ function LoginForm() {
               <div className="space-y-3">
                 <Link
                   href={`/register?email=${encodeURIComponent(email)}`}
-                  className="block w-full py-4 bg-[var(--black)] text-white text-[11px] tracking-[0.25em] uppercase text-center hover:bg-[#2a2a2a] transition-colors duration-200"
+                  className="block w-full py-4 bg-[var(--ink)] text-[var(--surface)] text-[11px] tracking-[0.25em] uppercase text-center hover:bg-[var(--accent-ink)] transition-colors duration-200"
                 >
                   Create Account
                 </Link>
                 <button
                   type="button"
                   onClick={() => { setStep("email"); setEmail(""); setErrors({}); }}
-                  className="w-full py-4 border border-[var(--border)] text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] hover:border-[var(--black)] hover:text-[var(--accent)] transition-colors"
+                  className="w-full py-4 border border-[var(--border)] text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
                 >
                   Try a Different Email
                 </button>
@@ -252,7 +251,7 @@ function LoginForm() {
           {/* Step: password */}
           {step === "password" && (
             <>
-              <h1 className="text-4xl font-light text-[var(--black)] mb-2">Welcome Back</h1>
+              <h1 className="font-display text-4xl text-[var(--ink)] mb-2">Welcome Back</h1>
               <p className="text-[12px] text-[var(--muted)] mb-10">
                 Signing in as <span className="text-[var(--black)] font-medium">{email}</span>.{" "}
                 <button type="button" onClick={() => { setStep("email"); setPassword(""); setErrors({}); }}
@@ -271,7 +270,7 @@ function LoginForm() {
                 />
                 <div className="pt-2">
                   <button type="submit" disabled={loading}
-                    className="w-full py-4 bg-[var(--black)] text-white text-[11px] tracking-[0.25em] uppercase hover:bg-[#2a2a2a] transition-colors duration-200 disabled:opacity-60 flex items-center justify-center gap-2.5">
+                    className="w-full py-4 bg-[var(--ink)] text-[var(--surface)] text-[11px] tracking-[0.25em] uppercase hover:bg-[var(--accent-ink)] transition-colors duration-200 disabled:opacity-60 flex items-center justify-center gap-2.5">
                     {loading ? <><Spinner /><span>Signing in…</span></> : "Sign In"}
                   </button>
                 </div>

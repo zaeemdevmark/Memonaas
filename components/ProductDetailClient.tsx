@@ -19,7 +19,7 @@ const ProductImageSlider = dynamic(
     loading: () => (
       <div className="flex gap-3 w-full">
         <div className="w-16 shrink-0" />
-        <div className="flex-1 aspect-[3/4] rounded-[10px] bg-[#EDE8E1] animate-pulse" />
+        <div className="flex-1 aspect-[3/4] rounded-[10px] bg-[var(--accent-soft)]/40 animate-pulse" />
       </div>
     ),
   },
@@ -31,7 +31,7 @@ const ProductImageMain = dynamic(
   {
     ssr:     true,
     loading: () => (
-      <div className="aspect-[563/844] rounded-[12px] bg-[#EDE8E1] animate-pulse" />
+      <div className="aspect-[563/844] rounded-[12px] bg-[var(--accent-soft)]/40 animate-pulse" />
     ),
   },
 );
@@ -439,7 +439,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
 
       {/* Short description */}
       <div
-        className="prose-product text-[13px] text-[#3D3D3D] leading-relaxed border-t border-[var(--border)] pt-6"
+        className="prose-product text-[13px] text-[var(--muted)] leading-relaxed border-t border-[var(--border)] pt-6"
         dangerouslySetInnerHTML={{ __html: product.description ?? "" }}
       />
 
@@ -454,14 +454,14 @@ export default function ProductDetailClient({ product }: { product: Product }) {
               {hasCustomTab && (
                 <AccordionRow title={product.tab1Title!} open={openAccordion === 0} onToggle={() => toggleAccordion(0)}>
                   <div
-                    className="prose-product text-[13px] text-[#3D3D3D] leading-relaxed"
+                    className="prose-product text-[13px] text-[var(--muted)] leading-relaxed"
                     dangerouslySetInnerHTML={{ __html: product.tab1Content! }}
                   />
                 </AccordionRow>
               )}
 
               <AccordionRow title="Care Instructions" open={openAccordion === careIdx} onToggle={() => toggleAccordion(careIdx)}>
-                <ul className="space-y-2 text-[13px] text-[#3D3D3D] leading-relaxed">
+                <ul className="space-y-2 text-[13px] text-[var(--muted)] leading-relaxed">
                   {[
                     "Dry clean recommended.",
                     "Iron at a moderate temperature.",
@@ -477,7 +477,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
               </AccordionRow>
 
               <AccordionRow title="Delivery" open={openAccordion === deliveryIdx} onToggle={() => toggleAccordion(deliveryIdx)}>
-                <div className="space-y-3 text-[13px] text-[#3D3D3D] leading-relaxed">
+                <div className="space-y-3 text-[13px] text-[var(--muted)] leading-relaxed">
                   <div>
                     <span className="font-medium text-[var(--black)]">Pakistan:</span><br />
                     Delivery within 5 business days.

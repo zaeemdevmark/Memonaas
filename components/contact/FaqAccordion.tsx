@@ -138,7 +138,7 @@ export default function FaqAccordion() {
               onClick={() => setActiveCategory(i)}
               className={`flex items-center gap-2.5 px-4 py-3 text-left whitespace-nowrap lg:whitespace-normal rounded-lg transition-colors duration-150 shrink-0 lg:shrink ${
                 activeCategory === i
-                  ? "bg-[var(--black)] text-white"
+                  ? "bg-[var(--ink)] text-[var(--surface)]"
                   : "bg-[var(--bg)] text-[var(--muted)] hover:text-[var(--accent)]"
               }`}
             >

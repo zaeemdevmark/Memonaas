@@ -77,7 +77,7 @@ export default function CollectionPagination({
             aria-current={p === currentPage ? "page" : undefined}
             className={`w-9 h-9 flex items-center justify-center text-[12px] tracking-[0.08em] transition-colors ${
               p === currentPage
-                ? "bg-[var(--black)] text-white"
+                ? "bg-[var(--ink)] text-[var(--surface)]"
                 : "text-[var(--muted)] hover:text-[var(--accent)] hover:bg-[var(--bg)]"
             }`}
           >

@@ -31,7 +31,7 @@ function LoadingState() {
       {/* Pulsing ring */}
       <div className="relative w-20 h-20">
         <div className="absolute inset-0 rounded-full border border-[var(--border)] animate-ping opacity-30" />
-        <div className="absolute inset-2 rounded-full border border-[#D0D0D0] animate-ping opacity-20" style={{ animationDelay: "300ms" }} />
+        <div className="absolute inset-2 rounded-full border border-[var(--border)] animate-ping opacity-20" style={{ animationDelay: "300ms" }} />
         <div className="w-20 h-20 rounded-full border border-[#E0E0E0] flex items-center justify-center">
           <svg className="animate-spin w-6 h-6 text-[var(--muted)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-20" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
@@ -190,7 +190,7 @@ export default function OrderSuccessPage() {
           {ORDER.items.map((item, i) => (
             <div key={i} className="flex items-center gap-4">
               {/* Image placeholder */}
-              <div className="w-14 h-16 rounded-[6px] bg-[#EDE8E1] shrink-0 flex items-end justify-center overflow-hidden">
+              <div className="w-14 h-16 rounded-[6px] bg-[var(--accent-soft)]/40 shrink-0 flex items-end justify-center overflow-hidden">
                 <span className="text-[6px] text-black/10 tracking-widest uppercase mb-1 select-none">img</span>
               </div>
               {/* Info */}
@@ -254,7 +254,7 @@ export default function OrderSuccessPage() {
         </Link>
         <Link
           href="/shop"
-          className="flex-1 py-4 bg-[var(--black)] text-white text-[11px] tracking-[0.25em] uppercase text-center hover:bg-[#2a2a2a] transition-colors duration-300 flex items-center justify-center gap-2"
+          className="flex-1 py-4 bg-[var(--ink)] text-[var(--surface)] text-[11px] tracking-[0.25em] uppercase text-center hover:bg-[var(--accent-ink)] transition-colors duration-300 flex items-center justify-center gap-2"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007Z" />
@@ -296,7 +296,7 @@ export default function OrderSuccessPage() {
         }`}
         style={{ transitionDelay: "880ms" }}
       >
-        <div className="w-10 h-px bg-[#E8E8E8] mx-auto mb-6" />
+        <div className="w-10 h-px bg-[var(--border)] mx-auto mb-6" />
         <p className="text-[11px] text-[var(--muted)] leading-relaxed">
           Thank you for choosing <span className="text-[var(--black)]">Memonaas</span>. We hope you love your new pieces.
         </p>

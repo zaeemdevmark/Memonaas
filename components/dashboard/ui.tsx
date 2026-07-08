@@ -89,7 +89,7 @@ export function ErrorBanner({ msg }: { msg: string }) {
 }
 
 export function SkeletonLine({ w = "w-full", h = "h-4" }: { w?: string; h?: string }) {
-  return <div className={`${w} ${h} bg-[#F0F0F0] animate-pulse rounded-sm`} />;
+  return <div className={`${w} ${h} bg-[var(--accent-soft)] animate-pulse rounded-sm`} />;
 }
 
 export function SkeletonCard() {

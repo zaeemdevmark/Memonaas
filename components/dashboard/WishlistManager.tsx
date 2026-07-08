@@ -48,7 +48,7 @@ export default function WishlistManager({ initialItems }: Props) {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
           {items.map((item) => (
             <div key={item.id} className="group flex flex-col">
-              <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#EDE8E1] rounded-[10px]">
+              <div className="relative aspect-[3/4] w-full overflow-hidden bg-[var(--accent-soft)]/40 rounded-[10px]">
                 <Link href={`/products/${item.product.slug}`} className="block w-full h-full">
                   {item.product.image ? (
                     // eslint-disable-next-line @next/next/no-img-element

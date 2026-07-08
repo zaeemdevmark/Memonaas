@@ -108,7 +108,7 @@ export default async function DashboardHomePage() {
                   <span className="text-[12px] text-[var(--black)] font-medium">{fp(order.total)}</span>
                   <Link
                     href={`/dashboard/orders/${order.id}`}
-                    className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)] hover:text-[var(--accent)] transition-colors border border-[var(--border)] hover:border-[var(--black)] px-3 py-1.5"
+                    className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)] hover:text-[var(--accent)] transition-colors border border-[var(--border)] hover:border-[var(--accent)] px-3 py-1.5"
                   >
                     View
                   </Link>

@@ -65,7 +65,7 @@ export default function ProfileForm({ initialProfile }: Props) {
         {!editing && (
           <button
             onClick={() => { setForm({ name: profile.name, phone: profile.phone ?? "" }); setEditing(true); }}
-            className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)] hover:text-[var(--accent)] transition-colors border border-[var(--border)] hover:border-[var(--black)] px-3 py-1.5"
+            className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)] hover:text-[var(--accent)] transition-colors border border-[var(--border)] hover:border-[var(--accent)] px-3 py-1.5"
           >
             Edit
           </button>
@@ -80,7 +80,7 @@ export default function ProfileForm({ initialProfile }: Props) {
           <InlineInput label="Full Name"    value={form.name}  onChange={(v) => setForm((f) => ({ ...f, name: v }))}  placeholder="Sara Khan" />
           <div className="space-y-1.5">
             <label className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] block">Email Address</label>
-            <p className="w-full border border-[#F0F0F0] bg-[#FAFAFA] px-4 py-3 text-[13px] text-[var(--muted)]">
+            <p className="w-full border border-[#F0F0F0] bg-[var(--bg)] px-4 py-3 text-[13px] text-[var(--muted)]">
               {profile.email}
             </p>
             <p className="text-[10px] text-[var(--muted)]">Email cannot be changed here.</p>
@@ -90,13 +90,13 @@ export default function ProfileForm({ initialProfile }: Props) {
             <button
               onClick={handleSave}
               disabled={saving}
-              className="flex items-center gap-2 px-6 py-3 bg-[var(--black)] text-white text-[11px] tracking-[0.2em] uppercase hover:bg-[#2a2a2a] transition-colors disabled:opacity-60"
+              className="flex items-center gap-2 px-6 py-3 bg-[var(--ink)] text-[var(--surface)] text-[11px] tracking-[0.2em] uppercase hover:bg-[var(--accent-ink)] transition-colors disabled:opacity-60"
             >
               {saving ? <><Spinner /><span>Saving…</span></> : "Save Changes"}
             </button>
             <button
               onClick={cancelEdit}
-              className="px-6 py-3 border border-[var(--border)] text-[var(--muted)] text-[11px] tracking-[0.2em] uppercase hover:border-[var(--black)] hover:text-[var(--accent)] transition-colors"
+              className="px-6 py-3 border border-[var(--border)] text-[var(--muted)] text-[11px] tracking-[0.2em] uppercase hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
             >
               Cancel
             </button>
