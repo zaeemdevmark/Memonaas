@@ -2,7 +2,7 @@ import Link from "next/link";
 import { auth } from "@/auth";
 import { isAdmin } from "@/lib/auth/helpers";
 
-export const metadata = { title: "Forbidden — Nayab Posh" };
+export const metadata = { title: "Forbidden — Memonaas" };
 
 export default async function ForbiddenPage() {
   const session  = await auth();

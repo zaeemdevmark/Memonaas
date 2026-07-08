@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 export const SITE_URL =
-  (process.env.NEXT_PUBLIC_SITE_URL ?? "https://nayabposh.com").replace(/\/$/, "");
+  (process.env.NEXT_PUBLIC_SITE_URL ?? "https://memonaas.com").replace(/\/$/, "");
 
-export const SITE_NAME        = "Nayab Posh";
+export const SITE_NAME        = "Memonaas";
 export const SITE_DESCRIPTION =
   "Premium ladies clothing — timeless silhouettes and the finest fabrics, crafted for the refined woman.";
-export const TWITTER_HANDLE   = "@nayabposh";
+export const TWITTER_HANDLE   = "@memonaas";
 
 // ── Core metadata builder ──────────────────────────────────────────
 

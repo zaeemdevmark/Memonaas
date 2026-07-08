@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────
-// Nayab Posh — Prisma Schema
+// Memonaas — Prisma Schema
 // Database: PostgreSQL
 // ─────────────────────────────────────────────────────────────────
 
@@ -518,10 +518,10 @@ model BrandAsset {
 
 model SiteSettings {
   id               String  @id @default("default")
-  storeName        String  @default("Nayab Posh")
-  storeEmail       String  @default("hello@nayabposh.com")
-  storePhone       String  @default("+92 300 123 4567")
-  storeAddress     String  @default("123 Liberty Market, Gulberg III, Lahore, Punjab 54660, Pakistan")
+  storeName        String  @default("Memonaas")
+  storeEmail       String  @default("hello@memonaas.com")
+  storePhone       String  @default("+92 300 000 0000")
+  storeAddress     String  @default("Lahore, Punjab, Pakistan")
   currency         String  @default("PKR")
   timezone         String  @default("Asia/Karachi")
   freeThreshold    Int     @default(5000)

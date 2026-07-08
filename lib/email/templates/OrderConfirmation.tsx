@@ -59,13 +59,13 @@ export default function OrderConfirmationEmail({ order }: Props) {
   return (
     <Html lang="en">
       <Head />
-      <Preview>Your Nayab Posh order {order.orderNumber} is confirmed.</Preview>
+      <Preview>Your Memonaas order {order.orderNumber} is confirmed.</Preview>
       <Body style={s.body}>
         <Container style={s.container}>
 
           {/* Header */}
           <Section style={s.header}>
-            <Text style={s.brand}>Nayab Posh</Text>
+            <Text style={s.brand}>Memonaas</Text>
             <Text style={s.tagline}>Luxury Fashion</Text>
           </Section>
 
@@ -164,7 +164,7 @@ export default function OrderConfirmationEmail({ order }: Props) {
 
           {/* Footer */}
           <Section style={s.footer}>
-            <Text style={s.footerText}>Nayab Posh — Luxury Fashion</Text>
+            <Text style={s.footerText}>Memonaas — Luxury Fashion</Text>
             <Text style={s.footerText}>Questions? Reply to this email or contact our support team.</Text>
           </Section>
 

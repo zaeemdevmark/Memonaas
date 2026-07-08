@@ -25,8 +25,8 @@ export async function POST(req: NextRequest): Promise<Response> {
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!EMAIL_RE.test(email.trim())) return err("Please provide a valid email address", 400);
 
-  const adminTo = process.env.ADMIN_EMAIL_TO ?? "admin@nayabposh.com";
-  const from    = process.env.EMAIL_FROM     ?? "Nayab Posh <noreply@nayabposh.com>";
+  const adminTo = process.env.ADMIN_EMAIL_TO ?? "admin@memonaas.com";
+  const from    = process.env.EMAIL_FROM     ?? "Memonaas <noreply@memonaas.com>";
 
   try {
     await resend.emails.send({
@@ -39,7 +39,7 @@ export async function POST(req: NextRequest): Promise<Response> {
         <html>
         <body style="font-family: 'Poppins', sans-serif; max-width: 560px; margin: 0 auto; padding: 32px 24px; color: #111111;">
           <div style="border-bottom: 2px solid #111111; padding-bottom: 16px; margin-bottom: 24px;">
-            <p style="margin:0; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#6B6B6B;">NAYAB POSH</p>
+            <p style="margin:0; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#6B6B6B;">MEMONAAS</p>
             <h1 style="margin:8px 0 0; font-size:22px; font-weight:400;">New Contact Form Submission</h1>
           </div>
           <table style="width:100%; border-collapse:collapse; margin-bottom:24px;">
@@ -66,7 +66,7 @@ export async function POST(req: NextRequest): Promise<Response> {
             <p style="margin:0; font-size:14px; line-height:1.7; color:#111111; white-space:pre-wrap;">${escapeHtml(message.trim())}</p>
           </div>
           <p style="font-size:11px; color:#6B6B6B; border-top:1px solid #E5E5E5; padding-top:16px;">
-            This message was submitted via the Nayab Posh contact form. Reply directly to this email to respond to ${escapeHtml(name.trim())}.
+            This message was submitted via the Memonaas contact form. Reply directly to this email to respond to ${escapeHtml(name.trim())}.
           </p>
         </body>
         </html>

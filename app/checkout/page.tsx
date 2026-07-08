@@ -411,7 +411,7 @@ export default function CheckoutPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 pb-24">
 
       <div className="mb-10 border-b border-[#E8E8E8] pb-6">
-        <p className="text-[10px] tracking-[0.3em] uppercase text-[#3D3D3D] mb-1">Nayab Posh</p>
+        <p className="text-[10px] tracking-[0.3em] uppercase text-[#3D3D3D] mb-1">Memonaas</p>
         <h1 className="text-4xl sm:text-5xl font-light text-[var(--black)]">
           Checkout
         </h1>

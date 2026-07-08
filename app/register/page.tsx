@@ -157,7 +157,7 @@ function AuthPanel() {
         <Link href="/">
           <Image
             src="/logo.png"
-            alt="Nayab Posh"
+            alt="Memonaas"
             width={160}
             height={60}
             className="h-12 w-auto object-contain brightness-0 invert mx-auto mb-12"
@@ -270,7 +270,7 @@ export default function RegisterPage() {
           {/* Mobile logo */}
           <div className="lg:hidden mb-10 text-center">
             <Link href="/">
-              <Image src="/logo.png" alt="Nayab Posh" width={130} height={50} className="h-9 w-auto object-contain mx-auto" />
+              <Image src="/logo.png" alt="Memonaas" width={130} height={50} className="h-9 w-auto object-contain mx-auto" />
             </Link>
           </div>
 
@@ -288,7 +288,7 @@ export default function RegisterPage() {
                 Account created
               </h2>
               <p className="text-[12px] text-[var(--muted)] mb-8">
-                Welcome to Nayab Posh, {name.split(" ")[0]}. Your account is ready.
+                Welcome to Memonaas, {name.split(" ")[0]}. Your account is ready.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link

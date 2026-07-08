@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = buildMetadata({
   title:       "Returns & Exchange Policy",
-  description: "Learn about Nayab Posh's exchange policy — 7-day hassle-free exchanges on unworn, unwashed items with tags attached.",
+  description: "Learn about Memonaas's exchange policy — 7-day hassle-free exchanges on unworn, unwashed items with tags attached.",
   path:        "/returns-exchange",
 });
 
@@ -28,7 +28,7 @@ export default function ReturnsExchangePage() {
           content: (
             <>
               <PolicyCallout>
-                Nayab Posh currently offers exchanges only. We do not process monetary refunds. All eligible items may be exchanged for a different size, colour, or style of equal or greater value.
+                Memonaas currently offers exchanges only. We do not process monetary refunds. All eligible items may be exchanged for a different size, colour, or style of equal or greater value.
               </PolicyCallout>
               <PolicyP>
                 We take pride in the quality of every piece we create. If you receive an item that doesn't fit or isn't the right style for you, we&apos;re happy to arrange an exchange — provided the item meets our exchange conditions.
@@ -111,7 +111,7 @@ export default function ReturnsExchangePage() {
               />
               <PolicyContactBox
                 phone="+92 300 0000000"
-                email="care@nayabposh.com"
+                email="care@memonaas.com"
                 hours="Mon – Sat, 10:00 AM – 6:00 PM PKT"
               />
             </>
@@ -126,7 +126,7 @@ export default function ReturnsExchangePage() {
                 The cost of returning the original item to us is the customer&apos;s responsibility. We cover the shipping cost of sending the replacement item back to you.
               </PolicyP>
               <PolicyP>
-                We strongly recommend using a tracked courier service (e.g. TCS, Leopards, BlueEx) when sending items back. Nayab Posh is not responsible for items lost or damaged in transit during a return shipment.
+                We strongly recommend using a tracked courier service (e.g. TCS, Leopards, BlueEx) when sending items back. Memonaas is not responsible for items lost or damaged in transit during a return shipment.
               </PolicyP>
               <PolicyCallout>
                 If your item arrived damaged, defective, or incorrect, we will cover both the return shipping and the replacement shipping at no cost to you.
@@ -165,7 +165,7 @@ export default function ReturnsExchangePage() {
               </PolicyP>
               <PolicyContactBox
                 phone="+92 300 0000000"
-                email="care@nayabposh.com"
+                email="care@memonaas.com"
                 hours="Mon – Sat, 10:00 AM – 6:00 PM PKT"
               />
             </>

@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = buildMetadata({
   title:       "Privacy Policy",
-  description: "Learn how Nayab Posh collects, uses, and protects your personal data. Your privacy is important to us.",
+  description: "Learn how Memonaas collects, uses, and protects your personal data. Your privacy is important to us.",
   path:        "/privacy-policy",
 });
 
@@ -27,7 +27,7 @@ export default function PrivacyPolicyPage() {
           content: (
             <>
               <PolicyP>
-                Nayab Posh is a women&apos;s fashion brand based in Lahore, Pakistan, operating online at nayabposh.com. References to &quot;we&quot;, &quot;us&quot;, or &quot;our&quot; in this policy refer to Nayab Posh and its operators.
+                Memonaas is a women&apos;s fashion brand based in Lahore, Pakistan, operating online at memonaas.com. References to &quot;we&quot;, &quot;us&quot;, or &quot;our&quot; in this policy refer to Memonaas and its operators.
               </PolicyP>
               <PolicyP>
                 If you have any questions about this Privacy Policy or how we handle your data, please contact us at the details provided at the end of this document.
@@ -207,7 +207,7 @@ export default function PrivacyPolicyPage() {
               </PolicyP>
               <PolicyContactBox
                 phone="+92 300 0000000"
-                email="privacy@nayabposh.com"
+                email="privacy@memonaas.com"
                 hours="Mon – Sat, 10:00 AM – 6:00 PM PKT"
               />
             </>

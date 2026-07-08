@@ -54,7 +54,7 @@ export default function LowStockAlertEmail({ items, orderId, orderNumber }: Prop
         <Container style={s.container}>
 
           <Section style={s.header}>
-            <Text style={s.brand}>Nayab Posh</Text>
+            <Text style={s.brand}>Memonaas</Text>
             <Text style={s.subtitle}>Admin Notification</Text>
           </Section>
 
@@ -107,7 +107,7 @@ export default function LowStockAlertEmail({ items, orderId, orderNumber }: Prop
           </Section>
 
           <Section style={s.footer}>
-            <Text style={s.footerTxt}>Nayab Posh Admin Notifications</Text>
+            <Text style={s.footerTxt}>Memonaas Admin Notifications</Text>
             <Text style={s.footerTxt}>Triggered by order {orderNumber} ({orderId.slice(0, 8)}...)</Text>
           </Section>
 

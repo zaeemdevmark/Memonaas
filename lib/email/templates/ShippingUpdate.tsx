@@ -45,12 +45,12 @@ export default function ShippingUpdateEmail({ order }: Props) {
   return (
     <Html lang="en">
       <Head />
-      <Preview>Great news — your Nayab Posh order {order.orderNumber} is on its way!</Preview>
+      <Preview>Great news — your Memonaas order {order.orderNumber} is on its way!</Preview>
       <Body style={s.body}>
         <Container style={s.container}>
 
           <Section style={s.header}>
-            <Text style={s.brand}>Nayab Posh</Text>
+            <Text style={s.brand}>Memonaas</Text>
             <Text style={s.tagline}>Luxury Fashion</Text>
           </Section>
 
@@ -113,7 +113,7 @@ export default function ShippingUpdateEmail({ order }: Props) {
           </Section>
 
           <Section style={s.footer}>
-            <Text style={s.footerTxt}>Nayab Posh — Luxury Fashion</Text>
+            <Text style={s.footerTxt}>Memonaas — Luxury Fashion</Text>
             <Text style={s.footerTxt}>Questions about your delivery? Reply to this email.</Text>
           </Section>
 

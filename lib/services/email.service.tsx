@@ -10,8 +10,8 @@ import OrderCancellationEmail from "@/lib/email/templates/OrderCancellation";
 import NewOrderAdminEmail from "@/lib/email/templates/NewOrderAdmin";
 import LowStockAlertEmail from "@/lib/email/templates/LowStockAlert";
 
-const FROM        = process.env.EMAIL_FROM     ?? "Nayab Posh <noreply@nayabposh.com>";
-const ADMIN_TO    = process.env.ADMIN_EMAIL_TO ?? "admin@nayabposh.com";
+const FROM        = process.env.EMAIL_FROM     ?? "Memonaas <noreply@memonaas.com>";
+const ADMIN_TO    = process.env.ADMIN_EMAIL_TO ?? "admin@memonaas.com";
 
 async function sendEmail(to: string, subject: string, html: string): Promise<void> {
   await resend.emails.send({ from: FROM, to, subject, html });

@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = buildMetadata({
   title:       "Shipping Policy",
-  description: "Learn about Nayab Posh shipping rates, delivery timelines, and our free shipping threshold for orders across Pakistan.",
+  description: "Learn about Memonaas shipping rates, delivery timelines, and our free shipping threshold for orders across Pakistan.",
   path:        "/shipping-policy",
 });
 
@@ -199,7 +199,7 @@ export default function ShippingPolicyPage() {
               </PolicyP>
               <PolicyContactBox
                 phone="+92 300 0000000"
-                email="care@nayabposh.com"
+                email="care@memonaas.com"
                 hours="Mon – Sat, 10:00 AM – 6:00 PM PKT"
               />
             </>

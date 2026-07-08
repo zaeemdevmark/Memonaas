@@ -9,12 +9,12 @@ export const revalidate = 60; // ISR: serve from CDN, regenerate in background e
 
 export const metadata: Metadata = buildMetadata({
   title:       `${SITE_NAME} — Refined Luxury`,
-  description: "Discover premium ladies clothing at Nayab Posh. Timeless silhouettes, the finest fabrics, and curated collections for the refined woman.",
+  description: "Discover premium ladies clothing at Memonaas. Timeless silhouettes, the finest fabrics, and curated collections for the refined woman.",
   path:        "/",
   keywords:    [
     "luxury ladies clothing Pakistan",
     "premium women fashion",
-    "Nayab Posh",
+    "Memonaas",
     "Pakistani designer wear",
     "luxury fashion Lahore",
     "women's clothing online Pakistan",

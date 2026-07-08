@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = buildMetadata({
   title:       "Terms & Conditions",
-  description: "Read the terms and conditions governing your use of the Nayab Posh website and purchases made through our platform.",
+  description: "Read the terms and conditions governing your use of the Memonaas website and purchases made through our platform.",
   path:        "/terms-conditions",
 });
 
@@ -27,7 +27,7 @@ export default function TermsConditionsPage() {
           content: (
             <>
               <PolicyP>
-                By visiting, browsing, or making a purchase on nayabposh.com, you confirm that you have read, understood, and agree to be bound by these Terms and Conditions, as well as our Privacy Policy and any other policies referenced herein.
+                By visiting, browsing, or making a purchase on memonaas.com, you confirm that you have read, understood, and agree to be bound by these Terms and Conditions, as well as our Privacy Policy and any other policies referenced herein.
               </PolicyP>
               <PolicyP>
                 If you do not agree to these terms, please refrain from using our website or placing any orders.
@@ -50,7 +50,7 @@ export default function TermsConditionsPage() {
                 items={[
                   "You are at least 18 years of age, or using the site under the supervision of a parent or guardian",
                   "You are a resident of Pakistan or are placing an order to a Pakistani delivery address",
-                  "You are not placing orders for commercial resale without prior written consent from Nayab Posh",
+                  "You are not placing orders for commercial resale without prior written consent from Memonaas",
                   "The information you provide is accurate, current, and complete",
                 ]}
               />
@@ -116,7 +116,7 @@ export default function TermsConditionsPage() {
                 For COD orders, payment is due in full at the time of delivery. Refusing a COD delivery without prior notification may result in your account being flagged for future orders.
               </PolicyP>
               <PolicyP>
-                Nayab Posh does not store your bank or card details. Any payment data is processed directly by our payment partners.
+                Memonaas does not store your bank or card details. Any payment data is processed directly by our payment partners.
               </PolicyP>
             </>
           ),
@@ -145,7 +145,7 @@ export default function TermsConditionsPage() {
           content: (
             <>
               <PolicyP>
-                All content on this website — including but not limited to text, images, graphics, logos, product photographs, and design elements — is the exclusive property of Nayab Posh or its licensors and is protected by Pakistani and international copyright law.
+                All content on this website — including but not limited to text, images, graphics, logos, product photographs, and design elements — is the exclusive property of Memonaas or its licensors and is protected by Pakistani and international copyright law.
               </PolicyP>
               <PolicyP>
                 You may not reproduce, distribute, display, publish, or create derivative works from any content on this site without our prior written permission.
@@ -166,7 +166,7 @@ export default function TermsConditionsPage() {
           content: (
             <>
               <PolicyP>
-                To the fullest extent permitted by applicable law, Nayab Posh shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our website or products.
+                To the fullest extent permitted by applicable law, Memonaas shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our website or products.
               </PolicyP>
               <PolicyP>
                 Our total liability to you for any claim arising from a purchase or use of our website shall not exceed the total amount paid by you for the order in question.
@@ -218,7 +218,7 @@ export default function TermsConditionsPage() {
               </PolicyP>
               <PolicyContactBox
                 phone="+92 300 0000000"
-                email="care@nayabposh.com"
+                email="care@memonaas.com"
                 hours="Mon – Sat, 10:00 AM – 6:00 PM PKT"
               />
             </>

@@ -7,9 +7,9 @@ import FaqAccordion from "@/components/contact/FaqAccordion";
 
 export const metadata: Metadata = buildMetadata({
   title:       `Contact Us — ${SITE_NAME}`,
-  description: "Get in touch with Nayab Posh. Reach us by phone, WhatsApp, or email — our team is ready to assist you with orders, returns, sizing, and any other enquiries.",
+  description: "Get in touch with Memonaas. Reach us by phone, WhatsApp, or email — our team is ready to assist you with orders, returns, sizing, and any other enquiries.",
   path:        "/contact-us",
-  keywords:    ["contact Nayab Posh", "Nayab Posh support", "fashion customer service Pakistan", "Nayab Posh email"],
+  keywords:    ["contact Memonaas", "Memonaas support", "fashion customer service Pakistan", "Memonaas email"],
 });
 
 // ── Structured Data ───────────────────────────────────────────────
@@ -20,7 +20,7 @@ function ContactPageSchema() {
     "@type":    "ContactPage",
     name:       `Contact Us — ${SITE_NAME}`,
     url:        `${SITE_URL}/contact-us`,
-    description: "Get in touch with the Nayab Posh team.",
+    description: "Get in touch with the Memonaas team.",
     publisher: {
       "@type":       "Organization",
       name:          SITE_NAME,
@@ -107,9 +107,9 @@ const CONTACT_INFO = [
   },
   {
     title: "Email",
-    value: "wecare@nayabposh.com",
+    value: "wecare@memonaas.com",
     sub:   "We reply within 24 hours",
-    href:  "mailto:wecare@nayabposh.com",
+    href:  "mailto:wecare@memonaas.com",
     icon:  (
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
         <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
@@ -206,7 +206,7 @@ function FormSection() {
               <div className="space-y-5">
                 <div>
                   <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] mb-1.5">Business Name</p>
-                  <p className="text-[14px] font-medium text-[var(--black)]">Nayab Posh</p>
+                  <p className="text-[14px] font-medium text-[var(--black)]">Memonaas</p>
                 </div>
                 <div>
                   <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] mb-1.5">Working Hours</p>

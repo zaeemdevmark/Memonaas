@@ -18,8 +18,8 @@ import { handlePrismaError, DatabaseError } from "@/lib/db/errors";
 
 // ── Cookie helpers ─────────────────────────────────────────────────────────
 
-const CART_COOKIE   = "nayab_cart";
-const ORDERS_COOKIE = "nayab_orders";
+const CART_COOKIE   = "memonaas_cart";
+const ORDERS_COOKIE = "memonaas_orders";
 const MAX_STORED    = 20;
 
 const ORDERS_COOKIE_OPTIONS = {

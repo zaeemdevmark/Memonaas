@@ -5,13 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 const DESKTOP_SLIDES = [
-  { src: "/heroImg1.png", alt: "Nayab Posh — Collection" },
-  { src: "/heroImg2.png", alt: "Nayab Posh — Collection" },
+  { src: "/heroImg1.png", alt: "Memonaas — Collection" },
+  { src: "/heroImg2.png", alt: "Memonaas — Collection" },
 ];
 
 const MOBILE_SLIDES = [
-  { src: "/mhImg1.png", alt: "Nayab Posh — Collection" },
-  { src: "/mhImg2.png", alt: "Nayab Posh — Collection" },
+  { src: "/mhImg1.png", alt: "Memonaas — Collection" },
+  { src: "/mhImg2.png", alt: "Memonaas — Collection" },
 ];
 
 const DISPLAY_MS    = 7000; // how long each image is shown before the next starts

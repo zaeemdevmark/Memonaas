@@ -1,4 +1,4 @@
-# Nayab Posh — E-Commerce Website
+# Memonaas — E-Commerce Website
 
 A full-featured Pakistani fashion e-commerce platform built with Next.js 16, Prisma, PostgreSQL, and Tailwind CSS v4.
 
@@ -53,8 +53,8 @@ public/               # Static assets
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/zaeemdevmark/NayabPosh-Website.git
-cd NayabPosh-Website
+git clone https://github.com/zaeemdevmark/Memonaas-Website.git
+cd Memonaas-Website
 
 # 2. Install dependencies
 npm install

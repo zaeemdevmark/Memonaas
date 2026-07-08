@@ -8,7 +8,7 @@ export const revalidate = 60;
 
 export const metadata: Metadata = buildMetadata({
   title:       `Shop All — ${SITE_NAME}`,
-  description: "Browse the complete Nayab Posh collection. Premium ladies clothing including festive wear, formal attire, and luxury ready-to-wear from Pakistan's finest designer brand.",
+  description: "Browse the complete Memonaas collection. Premium ladies clothing including festive wear, formal attire, and luxury ready-to-wear from Pakistan's finest designer brand.",
   path:        "/shop",
   keywords:    [
     "shop women's clothing Pakistan",
@@ -16,7 +16,7 @@ export const metadata: Metadata = buildMetadata({
     "Pakistani designer clothes",
     "festive wear Pakistan",
     "formal women's wear",
-    "Nayab Posh collection",
+    "Memonaas collection",
   ],
 });
 

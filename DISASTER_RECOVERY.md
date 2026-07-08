@@ -1,9 +1,9 @@
-# Disaster Recovery Plan — Nayab Posh
+# Disaster Recovery Plan — Memonaas
 
 ## Overview
 
 This document describes backup types, recovery procedures, and estimated
-recovery times for the Nayab Posh e-commerce platform.
+recovery times for the Memonaas e-commerce platform.
 
 Database: PostgreSQL 16  
 ORM: Prisma 7  
@@ -80,7 +80,7 @@ npm run backup:list
 npm run backup:validate <backup-id>
 
 # 3. Stop the application (prevents new writes during restore)
-#    e.g. pm2 stop nayab-posh  OR  shut down the Next.js process
+#    e.g. pm2 stop memonaas  OR  shut down the Next.js process
 
 # 4. Restore
 npm run backup:restore <backup-id>
@@ -89,7 +89,7 @@ npm run backup:restore <backup-id>
 npm run db:migrate:prod
 
 # 6. Restart the application
-#    pm2 start nayab-posh  OR  npm start
+#    pm2 start memonaas  OR  npm start
 ```
 
 Estimated time: **5–15 minutes**
@@ -165,13 +165,13 @@ npm run backup:full
 scp backups/full_<timestamp>_<id>.dump user@new-server:/backups/
 
 # On the new server — create an empty database first
-psql -c "CREATE DATABASE nayab_posh;" postgres
+psql -c "CREATE DATABASE memonaas;" postgres
 
 # Restore
 pg_restore \
   --host=NEW_HOST \
   --username=USER \
-  --dbname=nayab_posh \
+  --dbname=memonaas \
   --no-owner \
   --no-privileges \
   backups/full_<timestamp>_<id>.dump
@@ -200,7 +200,7 @@ npx prisma db execute --stdin <<< "
 "
 
 # 3. Start the dev server and manually test:
-#    - Login as admin (admin@nayabposh.com)
+#    - Login as admin (admin@memonaas.com)
 #    - Product listing page loads
 #    - Checkout flow completes
 #    - Admin dashboard shows order counts

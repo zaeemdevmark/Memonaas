@@ -4,7 +4,7 @@ import TrackOrderClient from "@/components/track/TrackOrderClient";
 
 export const metadata: Metadata = buildMetadata({
   title:       "Track Your Order",
-  description: "Track your Nayab Posh order status in real time. Enter your order number and email to get live updates on your delivery.",
+  description: "Track your Memonaas order status in real time. Enter your order number and email to get live updates on your delivery.",
   path:        "/track-order",
 });
 

@@ -60,7 +60,7 @@ export default function CollectionProductCard({
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="text-[#C8C0B4] text-[10px] tracking-[0.2em] uppercase select-none">
-              Nayab Posh
+              Memonaas
             </span>
           </div>
         )}

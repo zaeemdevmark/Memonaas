@@ -3,7 +3,7 @@ import * as Sentry from "@sentry/nextjs";
 type Meta  = Record<string, unknown>;
 type Level = "debug" | "info" | "warn" | "error";
 
-const SERVICE = "nayab-posh";
+const SERVICE = "memonaas";
 const isDev   = process.env.NODE_ENV !== "production";
 
 const COLORS: Record<Level, string> = {

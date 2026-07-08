@@ -42,12 +42,12 @@ export default function DeliveryConfirmationEmail({ order }: Props) {
   return (
     <Html lang="en">
       <Head />
-      <Preview>Your Nayab Posh order {order.orderNumber} has been delivered. We hope you love it!</Preview>
+      <Preview>Your Memonaas order {order.orderNumber} has been delivered. We hope you love it!</Preview>
       <Body style={s.body}>
         <Container style={s.container}>
 
           <Section style={s.header}>
-            <Text style={s.brand}>Nayab Posh</Text>
+            <Text style={s.brand}>Memonaas</Text>
             <Text style={s.tagline}>Luxury Fashion</Text>
           </Section>
 
@@ -61,7 +61,7 @@ export default function DeliveryConfirmationEmail({ order }: Props) {
             <Text style={s.lead}>
               Hi {order.shipping.name.split(" ")[0]}, we&apos;re delighted to confirm that your order{" "}
               <strong>{order.orderNumber}</strong> has been delivered successfully.
-              We hope you love your Nayab Posh pieces.
+              We hope you love your Memonaas pieces.
             </Text>
 
             <Text style={s.secHead}>Your Order</Text>
@@ -101,14 +101,14 @@ export default function DeliveryConfirmationEmail({ order }: Props) {
 
             <Section style={s.thankBox}>
               <Text style={s.thankText}>
-                Thank you for choosing Nayab Posh. If you have any concerns about your order or would like to
+                Thank you for choosing Memonaas. If you have any concerns about your order or would like to
                 share feedback, please reply to this email — we&apos;d love to hear from you.
               </Text>
             </Section>
           </Section>
 
           <Section style={s.footer}>
-            <Text style={s.footerTxt}>Nayab Posh — Luxury Fashion</Text>
+            <Text style={s.footerTxt}>Memonaas — Luxury Fashion</Text>
             <Text style={s.footerTxt}>Thank you for shopping with us.</Text>
           </Section>
 

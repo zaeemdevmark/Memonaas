@@ -20,9 +20,9 @@ export class UploadError extends Error {
 // ── Cloudinary folders ───────────────────────────────────────────────────────
 
 const FOLDERS = {
-  product:  "nayab-posh/products",
-  category: "nayab-posh/categories",
-  brand:    "nayab-posh/brand",
+  product:  "memonaas/products",
+  category: "memonaas/categories",
+  brand:    "memonaas/brand",
 } as const;
 
 // ── URL generation ────────────────────────────────────────────────────────────
@@ -420,7 +420,7 @@ export async function deleteBrandAsset(brandAssetType: BrandAssetTypeValue): Pro
 
 // ── Size guide image operations ───────────────────────────────────────────────
 
-const SIZE_GUIDE_FOLDER = "nayab-posh/size-guides";
+const SIZE_GUIDE_FOLDER = "memonaas/size-guides";
 
 export async function uploadSizeGuideImage(
   file:        File,

@@ -6,9 +6,9 @@ import { buildMetadata, SITE_URL, SITE_NAME } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title:       `About Us — ${SITE_NAME}`,
-  description: "Discover the story behind Nayab Posh — a Pakistani fashion brand built on a passion for elegance, quality craftsmanship, and celebrating the modern Pakistani woman.",
+  description: "Discover the story behind Memonaas — a Pakistani fashion brand built on a passion for elegance, quality craftsmanship, and celebrating the modern Pakistani woman.",
   path:        "/about-us",
-  keywords:    ["Nayab Posh", "Pakistani fashion brand", "about us", "luxury Pakistani clothing", "women fashion Pakistan"],
+  keywords:    ["Memonaas", "Pakistani fashion brand", "about us", "luxury Pakistani clothing", "women fashion Pakistan"],
 });
 
 // ── Structured Data ───────────────────────────────────────────────
@@ -19,7 +19,7 @@ function AboutPageSchema() {
     "@type":    "AboutPage",
     name:       `About Us — ${SITE_NAME}`,
     url:        `${SITE_URL}/about-us`,
-    description: "The story, values, and vision behind Nayab Posh.",
+    description: "The story, values, and vision behind Memonaas.",
     publisher: {
       "@type": "Organization",
       name:    SITE_NAME,
@@ -64,7 +64,7 @@ function HeroSection() {
         </h1>
         <Divider className="mx-auto mb-6" />
         <p className="text-[14px] sm:text-[15px] text-[var(--muted)] leading-relaxed max-w-xl mx-auto">
-          Nayab Posh is a celebration of Pakistani femininity — where the richness of our textile heritage
+          Memonaas is a celebration of Pakistani femininity — where the richness of our textile heritage
           is woven into every thread, every silhouette, and every collection we create.
         </p>
       </div>
@@ -90,7 +90,7 @@ function StorySection() {
             </h2>
             <div className="space-y-5 text-[13px] text-[var(--muted)] leading-relaxed">
               <p>
-                Nayab Posh was born from a deep-seated love for Pakistani fashion and a desire to share it with the world.
+                Memonaas was born from a deep-seated love for Pakistani fashion and a desire to share it with the world.
                 Our founders — passionate about the artistry embedded in traditional Pakistani textile heritage —
                 set out to create a brand that would honour this craft while speaking to the contemporary Pakistani woman.
               </p>
@@ -105,7 +105,7 @@ function StorySection() {
                 from the quality of the weave to the precision of the stitching.
               </p>
               <p>
-                Today, Nayab Posh continues to grow with one unwavering principle: never compromise on quality,
+                Today, Memonaas continues to grow with one unwavering principle: never compromise on quality,
                 never compromise on elegance, and always put the customer first.
               </p>
             </div>
@@ -205,7 +205,7 @@ const FEATURES = [
   },
   {
     title: "Trusted Brand",
-    description: "Thousands of women across Pakistan trust Nayab Posh for their fashion needs. Our growing community of loyal customers is our greatest testament.",
+    description: "Thousands of women across Pakistan trust Memonaas for their fashion needs. Our growing community of loyal customers is our greatest testament.",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
@@ -223,7 +223,7 @@ function WhyChooseSection() {
           <h2
             className="text-4xl sm:text-5xl font-light text-[var(--black)]"
           >
-            The Nayab Posh Difference
+            The Memonaas Difference
           </h2>
         </div>
 
@@ -369,7 +369,7 @@ function PromiseSection() {
             className="text-2xl sm:text-3xl font-light italic text-white/70 max-w-2xl mx-auto leading-relaxed"
           >
             &ldquo;Fashion is not just about what you wear — it is about how wearing it makes you feel.
-            At Nayab Posh, we design for that feeling.&rdquo;
+            At Memonaas, we design for that feeling.&rdquo;
           </p>
         </div>
       </div>
@@ -390,7 +390,7 @@ function CtaSection() {
           Begin Your Fashion Journey
         </h2>
         <p className="text-[13px] text-[var(--muted)] leading-relaxed max-w-md mx-auto mb-10">
-          Explore our latest collections and discover what makes Nayab Posh the preferred choice of
+          Explore our latest collections and discover what makes Memonaas the preferred choice of
           discerning Pakistani women.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">

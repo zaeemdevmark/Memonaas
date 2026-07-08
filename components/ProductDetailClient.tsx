@@ -494,10 +494,10 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                     <span className="font-medium text-[var(--black)]">For Assistance:</span><br />
                     Contact us at{" "}
                     <a
-                      href="mailto:wecare@nayabposh.com"
+                      href="mailto:wecare@memonaas.com"
                       className="underline hover:text-[var(--black)] transition-colors"
                     >
-                      wecare@nayabposh.com
+                      wecare@memonaas.com
                     </a>
                   </div>
                 </div>

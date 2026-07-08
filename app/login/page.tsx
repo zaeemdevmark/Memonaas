@@ -102,7 +102,7 @@ function AuthPanel() {
       <div className="absolute inset-0 opacity-[0.04]"
         style={{ backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
       <div className="relative z-10 text-center">
-        <Link href="/"><Image src="/logo.png" alt="Nayab Posh" width={160} height={60} className="h-12 w-auto object-contain brightness-0 invert mx-auto mb-12" /></Link>
+        <Link href="/"><Image src="/logo.png" alt="Memonaas" width={160} height={60} className="h-12 w-auto object-contain brightness-0 invert mx-auto mb-12" /></Link>
         <p className="text-white/40 text-[10px] tracking-[0.35em] uppercase mb-4">Welcome back</p>
         <h2 className="text-white text-[42px] font-light leading-tight">Elegance<br />awaits you</h2>
         <div className="w-10 h-px bg-white/20 mx-auto mt-8 mb-8" />
@@ -193,7 +193,7 @@ function LoginForm() {
         <div className="w-full max-w-[400px]">
 
           <div className="lg:hidden mb-10 text-center">
-            <Link href="/"><Image src="/logo.png" alt="Nayab Posh" width={130} height={50} className="h-9 w-auto object-contain mx-auto" /></Link>
+            <Link href="/"><Image src="/logo.png" alt="Memonaas" width={130} height={50} className="h-9 w-auto object-contain mx-auto" /></Link>
           </div>
 
           {/* Step: email */}

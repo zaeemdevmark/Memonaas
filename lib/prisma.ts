@@ -20,9 +20,9 @@ const isDev = process.env.NODE_ENV !== "production";
 function createPrismaClient(): PrismaClient {
   if (!process.env.DATABASE_URL) {
     throw new Error(
-      "[Nayab Posh] DATABASE_URL is not set.\n" +
+      "[Memonaas] DATABASE_URL is not set.\n" +
       "Add it to your .env file:\n" +
-      '  DATABASE_URL="postgresql://USER:PASSWORD@HOST:5432/nayab_posh?schema=public"'
+      '  DATABASE_URL="postgresql://USER:PASSWORD@HOST:5432/memonaas?schema=public"'
     );
   }
 

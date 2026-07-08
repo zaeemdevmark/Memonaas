@@ -416,7 +416,7 @@ function AdminSidebar({ active, onNav, onClose }: { active: AdminTab; onNav: (t:
             <span className="text-white text-[11px] font-bold tracking-wider">NP</span>
           </div>
           <div>
-            <p className="text-white text-[13px] font-semibold tracking-wide">NAYAB POSH</p>
+            <p className="text-white text-[13px] font-semibold tracking-wide">MEMONAAS</p>
             <p className="text-white/40 text-[10px] tracking-[0.15em] uppercase">Admin Panel</p>
           </div>
         </div>

@@ -12,7 +12,7 @@ import { handlePrismaError, DatabaseError } from "@/lib/db/errors";
 
 // ── Shared ─────────────────────────────────────────────────────────────────
 
-const CART_COOKIE = "nayab_cart";
+const CART_COOKIE = "memonaas_cart";
 
 async function resolveCartId(): Promise<string | null> {
   const store = await cookies();

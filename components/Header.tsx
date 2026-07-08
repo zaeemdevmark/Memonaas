@@ -183,7 +183,7 @@ export default function Header({ role }: Props) {
       <Link href="/" onClick={isDrawer ? closeMenu : undefined} className="flex items-center justify-center">
         <Image
           src="/logo.png"
-          alt="Nayab Posh"
+          alt="Memonaas"
           width={120}
           height={30}
           style={{ width: "85px", height: "auto", objectFit: "contain" }}
@@ -265,7 +265,7 @@ export default function Header({ role }: Props) {
 
         {/* Center — Logo */}
         <Link href="/" className="flex justify-center py-[10px]">
-          <Image src="/logo.png" alt="Nayab Posh" width={120} height={55}
+          <Image src="/logo.png" alt="Memonaas" width={120} height={55}
             style={{ width: "120px", height: "auto" }} className="object-contain" priority />
         </Link>
 

@@ -74,7 +74,7 @@ export default function AdminLoginPage() {
         {/* Logo */}
         <div className="text-center mb-10">
           <Link href="/">
-            <Image src="/logo.png" alt="Nayab Posh" width={140} height={52} className="h-10 w-auto object-contain brightness-0 invert mx-auto mb-6" />
+            <Image src="/logo.png" alt="Memonaas" width={140} height={52} className="h-10 w-auto object-contain brightness-0 invert mx-auto mb-6" />
           </Link>
           <p className="text-white/40 text-[10px] tracking-[0.3em] uppercase">Admin Panel</p>
         </div>

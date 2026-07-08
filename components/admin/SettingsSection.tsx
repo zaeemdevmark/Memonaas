@@ -26,8 +26,8 @@ interface BrandAssetData {
 // ── Initial mock data ──────────────────────────────────────────────
 
 const INIT_GENERAL: GeneralForm = {
-  storeName:    "Nayab Posh",
-  storeEmail:   "hello@nayabposh.com",
+  storeName:    "Memonaas",
+  storeEmail:   "hello@memonaas.com",
   storePhone:   "+92 300 123 4567",
   storeAddress: "123 Liberty Market, Gulberg III, Lahore, Punjab 54660, Pakistan",
   currency:     "PKR",
@@ -398,8 +398,8 @@ function GeneralSection() {
     <SectionCard title="General Settings" description="Basic information about your store." onSave={handleSave} saving={saving} saved={saved}>
       {error && <p className="text-[12px] text-red-500">{error}</p>}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <FormField label="Store Name" value={f.storeName} onChange={set("storeName")} placeholder="Nayab Posh" />
-        <FormField label="Store Email" type="email" value={f.storeEmail} onChange={set("storeEmail")} placeholder="hello@nayabposh.com" />
+        <FormField label="Store Name" value={f.storeName} onChange={set("storeName")} placeholder="Memonaas" />
+        <FormField label="Store Email" type="email" value={f.storeEmail} onChange={set("storeEmail")} placeholder="hello@memonaas.com" />
         <FormField label="Store Phone Number" type="tel" value={f.storePhone} onChange={set("storePhone")} placeholder="+92 300 000 0000" />
         <SelectField label="Currency" value={f.currency} onChange={set("currency")} options={CURRENCIES} />
         <div className="sm:col-span-2">

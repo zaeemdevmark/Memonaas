@@ -18,7 +18,7 @@ export default function GlobalError({
   return (
     <html lang="en">
       <head>
-        <title>Nayab Posh — Error</title>
+        <title>Memonaas — Error</title>
         <style>{`
           body { margin: 0; font-family: 'Poppins', sans-serif; background: #fff; color: #111; }
           .container { display: flex; flex-direction: column; align-items: center;

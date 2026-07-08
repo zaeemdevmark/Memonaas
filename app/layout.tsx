@@ -27,8 +27,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card:    "summary_large_image",
-    creator: "@nayabposh",
-    site:    "@nayabposh",
+    creator: "@memonaas",
+    site:    "@memonaas",
   },
   robots: { index: true, follow: true },
   icons: {

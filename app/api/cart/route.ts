@@ -13,7 +13,7 @@ import { handlePrismaError, DatabaseError } from "@/lib/db/errors";
 
 // ── Cookie config ──────────────────────────────────────────────────────────
 
-const CART_COOKIE = "nayab_cart";
+const CART_COOKIE = "memonaas_cart";
 
 const COOKIE_OPTIONS = {
   httpOnly: true,

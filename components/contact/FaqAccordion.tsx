@@ -50,7 +50,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       },
       {
         question: "How do I initiate a return or exchange?",
-        answer:   "To start a return or exchange, contact our customer support team via WhatsApp at +92 300 000 0000 or email us at support@nayabposh.com with your order number and reason for the return. Our team will provide a return authorisation and guide you through the next steps.",
+        answer:   "To start a return or exchange, contact our customer support team via WhatsApp at +92 300 000 0000 or email us at support@memonaas.com with your order number and reason for the return. Our team will provide a return authorisation and guide you through the next steps.",
       },
       {
         question: "How long does a refund take?",
@@ -90,7 +90,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
         answer:   "We currently accept Cash on Delivery (COD) for all orders across Pakistan. COD is a convenient and secure option that lets you pay only when your parcel arrives at your door. Online card payments are coming soon.",
       },
       {
-        question: "Is it safe to shop on Nayab Posh?",
+        question: "Is it safe to shop on Memonaas?",
         answer:   "Absolutely. Our website uses industry-standard SSL encryption to ensure that all your personal information is handled securely. We never store sensitive payment data on our servers. You can shop with complete confidence.",
       },
     ],
