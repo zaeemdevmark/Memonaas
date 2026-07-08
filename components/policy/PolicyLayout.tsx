@@ -30,11 +30,11 @@ export default function PolicyLayout({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <p className="text-[10px] tracking-[0.35em] uppercase text-[var(--muted)] mb-4">{badge}</p>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-light text-[var(--black)] mb-5 leading-tight"
+            className="font-display text-4xl sm:text-5xl lg:text-6xl text-[var(--ink)] mb-5 leading-tight"
           >
             {title}
           </h1>
-          <div className="w-10 h-px bg-[var(--black)] mx-auto mb-5" />
+          <div className="w-10 h-px bg-[var(--ink)] mx-auto mb-5" />
           <p className="text-[13px] sm:text-[14px] text-[var(--muted)] leading-relaxed max-w-lg mx-auto mb-3">
             {description}
           </p>
@@ -45,7 +45,7 @@ export default function PolicyLayout({
       </section>
 
       {/* Main content */}
-      <section className="py-16 sm:py-20 bg-white">
+      <section className="py-16 sm:py-20 bg-[var(--surface)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 lg:gap-16 items-start">
 
@@ -72,7 +72,7 @@ export default function PolicyLayout({
                 <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] mb-3">Need Help?</p>
                 <Link
                   href="/contact-us"
-                  className="text-[11px] text-[var(--black)] underline underline-offset-2 hover:opacity-60 transition-opacity"
+                  className="text-[11px] text-[var(--ink)] underline underline-offset-2 hover:opacity-60 transition-opacity"
                 >
                   Contact Support →
                 </Link>
@@ -116,7 +116,7 @@ export function PolicySection({
   return (
     <div id={id} className="scroll-mt-28">
       <h2
-        className="text-2xl sm:text-3xl font-light text-[var(--black)] mb-5"
+        className="font-display text-2xl sm:text-3xl text-[var(--ink)] mb-5"
       >
         {title}
       </h2>
@@ -152,12 +152,12 @@ export function PolicySteps({ steps }: { steps: { title: string; description: st
       {steps.map((step, i) => (
         <li key={i} className="flex items-start gap-4">
           <span
-            className="shrink-0 w-7 h-7 rounded-full border border-[var(--black)] flex items-center justify-center text-[11px] font-medium text-[var(--black)] mt-0.5"
+            className="shrink-0 w-7 h-7 rounded-full border border-[var(--accent)] flex items-center justify-center text-[11px] font-medium text-[var(--accent)] mt-0.5"
           >
             {i + 1}
           </span>
           <div>
-            <p className="text-[13px] font-medium text-[var(--black)] mb-0.5">{step.title}</p>
+            <p className="text-[13px] font-medium text-[var(--ink)] mb-0.5">{step.title}</p>
             <p className="text-[13px] text-[var(--muted)]">{step.description}</p>
           </div>
         </li>
@@ -168,8 +168,8 @@ export function PolicySteps({ steps }: { steps: { title: string; description: st
 
 export function PolicyCallout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="border-l-2 border-[var(--black)] pl-4 py-1 bg-[var(--bg)] pr-4">
-      <p className="text-[13px] text-[var(--black)] font-medium leading-relaxed">{children}</p>
+    <div className="border-l-2 border-[var(--accent)] pl-4 py-1 bg-[var(--bg)] pr-4">
+      <p className="text-[13px] text-[var(--ink)] font-medium leading-relaxed">{children}</p>
     </div>
   );
 }
@@ -187,13 +187,13 @@ export function PolicyContactBox({
     <div className="bg-[var(--bg)] border border-[var(--border)] p-5 space-y-3 mt-4">
       <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)]">Contact Support</p>
       <div className="space-y-1.5">
-        <p className="text-[13px] text-[var(--black)]">
+        <p className="text-[13px] text-[var(--ink)]">
           <span className="text-[var(--muted)] mr-2">WhatsApp</span>
           <a href={`https://wa.me/${phone.replace(/\D/g, "")}`} className="hover:opacity-70 transition-opacity underline underline-offset-2">
             {phone}
           </a>
         </p>
-        <p className="text-[13px] text-[var(--black)]">
+        <p className="text-[13px] text-[var(--ink)]">
           <span className="text-[var(--muted)] mr-2">Email</span>
           <a href={`mailto:${email}`} className="hover:opacity-70 transition-opacity underline underline-offset-2">
             {email}

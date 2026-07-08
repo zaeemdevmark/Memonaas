@@ -183,7 +183,7 @@ export default async function CategoryPage({
         {/* Category header */}
         <div className="pt-4 pb-0 sm:pt-8 sm:pb-6 sm:border-b sm:border-[var(--border)]">
           <h1
-            className="text-[23px] font-medium sm:text-5xl sm:font-light text-[var(--black)]"
+            className="font-display text-[23px] sm:text-5xl text-[var(--ink)]"
           >
             {category.name}
           </h1>

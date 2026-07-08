@@ -117,8 +117,8 @@ function OrderTimeline({ order }: { order: TrackOrderDTO }) {
               <div
                 className={`relative z-10 w-10 h-10 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
                   isCompleted
-                    ? "bg-[var(--black)] border-[var(--black)] text-white"
-                    : "bg-white border-[var(--border)] text-[var(--muted)]"
+                    ? "bg-[var(--accent)] border-[var(--accent)] text-[var(--surface)]"
+                    : "bg-[var(--surface)] border-[var(--border)] text-[var(--muted)]"
                 }`}
               >
                 {isCompleted ? STEP_ICONS[step] : (
@@ -157,7 +157,7 @@ function OrderCard({ order, onReset }: { order: TrackOrderDTO; onReset: () => vo
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
           <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] mb-1">Order Number</p>
-          <p className="text-2xl font-light text-[var(--black)]">
+          <p className="font-display text-2xl text-[var(--ink)]">
             #{order.orderNumber}
           </p>
           <p className="text-[12px] text-[var(--muted)] mt-1">Placed on {fdate(order.createdAt)}</p>
@@ -258,7 +258,7 @@ function NotFound({ onReset }: { onReset: () => void }) {
       </div>
       <div>
         <h3
-          className="text-2xl font-light text-[var(--black)] mb-2"
+          className="font-display text-2xl text-[var(--ink)] mb-2"
         >
           Order Not Found
         </h3>
@@ -275,9 +275,9 @@ function NotFound({ onReset }: { onReset: () => void }) {
         </button>
         <a
           href="/contact-us"
-          className="block w-full py-3.5 border border-[var(--black)] text-[var(--black)] text-[11px] tracking-[0.2em] uppercase text-center hover:bg-[var(--black)] hover:text-white transition-colors"
+          className="block w-full py-3.5 btn-fill border border-[var(--ink)] text-[var(--ink)] text-[11px] tracking-[0.2em] uppercase text-center transition-colors"
         >
-          Contact Support
+          <span>Contact Support</span>
         </a>
       </div>
     </div>
@@ -382,8 +382,8 @@ export default function TrackOrderClient() {
             type="text"
             value={orderNumber}
             onChange={(e) => { setOrderNumber(e.target.value); setErrors((p) => ({ ...p, orderNumber: undefined })); }}
-            placeholder="e.g. NP-20260620-ABC123"
-            className={`w-full border px-4 py-3.5 text-[13px] text-[var(--black)] placeholder-[#C8C8C8] bg-white outline-none transition-colors duration-200 rounded-none ${
+            placeholder="e.g. MN-20260620-ABC123"
+            className={`w-full border px-4 py-3.5 text-[13px] text-[var(--ink)] placeholder-[var(--muted)] bg-white outline-none transition-colors duration-200 rounded-none ${
               errors.orderNumber ? "border-red-300 focus:border-red-400" : "border-[var(--border)] focus:border-[var(--black)]"
             }`}
           />
@@ -401,7 +401,7 @@ export default function TrackOrderClient() {
             onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: undefined })); }}
             placeholder="your@email.com"
             autoComplete="email"
-            className={`w-full border px-4 py-3.5 text-[13px] text-[var(--black)] placeholder-[#C8C8C8] bg-white outline-none transition-colors duration-200 rounded-none ${
+            className={`w-full border px-4 py-3.5 text-[13px] text-[var(--ink)] placeholder-[var(--muted)] bg-white outline-none transition-colors duration-200 rounded-none ${
               errors.email ? "border-red-300 focus:border-red-400" : "border-[var(--border)] focus:border-[var(--black)]"
             }`}
           />

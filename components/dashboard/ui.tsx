@@ -27,7 +27,7 @@ export function StatusBadge({ status }: { status: string }) {
 
 export function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-2xl font-light text-[var(--black)] mb-7">
+    <h2 className="font-display text-2xl text-[var(--ink)] mb-7">
       {children}
     </h2>
   );

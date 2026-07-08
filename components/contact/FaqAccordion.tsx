@@ -142,7 +142,7 @@ export default function FaqAccordion() {
                   : "bg-[var(--bg)] text-[var(--muted)] hover:text-[var(--accent)]"
               }`}
             >
-              <span className={`shrink-0 ${activeCategory === i ? "text-white" : "text-[var(--muted)]"}`}>
+              <span className={`shrink-0 ${activeCategory === i ? "text-[var(--surface)]" : "text-[var(--muted)]"}`}>
                 {cat.icon}
               </span>
               <span className="text-[12px] font-medium tracking-wide">{cat.label}</span>

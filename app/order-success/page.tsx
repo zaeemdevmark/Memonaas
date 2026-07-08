@@ -6,7 +6,7 @@ import Link from "next/link";
 // ── Mock order data ───────────────────────────────────────────────
 
 const ORDER = {
-  id:                "NP-2026201847",
+  id:                "MN-2026201847",
   date:              "June 20, 2026",
   estimatedDelivery: "June 26 – July 2, 2026",
   items: [
@@ -32,7 +32,7 @@ function LoadingState() {
       <div className="relative w-20 h-20">
         <div className="absolute inset-0 rounded-full border border-[var(--border)] animate-ping opacity-30" />
         <div className="absolute inset-2 rounded-full border border-[var(--border)] animate-ping opacity-20" style={{ animationDelay: "300ms" }} />
-        <div className="w-20 h-20 rounded-full border border-[#E0E0E0] flex items-center justify-center">
+        <div className="w-20 h-20 rounded-full border border-[var(--border)] flex items-center justify-center">
           <svg className="animate-spin w-6 h-6 text-[var(--muted)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-20" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
             <path className="opacity-80" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
@@ -43,7 +43,7 @@ function LoadingState() {
         <p className="text-[11px] tracking-[0.3em] uppercase text-[var(--muted)] animate-pulse">
           Confirming your order
         </p>
-        <p className="text-[12px] text-[#C0C0C0]">Please wait a moment…</p>
+        <p className="text-[12px] text-[var(--muted)]">Please wait a moment…</p>
       </div>
     </div>
   );
@@ -141,7 +141,7 @@ export default function OrderSuccessPage() {
             Order Confirmed
           </p>
           <h1
-            className="text-4xl sm:text-5xl font-light text-[var(--black)] mb-4 leading-snug"
+            className="font-display text-4xl sm:text-5xl text-[var(--ink)] mb-4 leading-snug"
           >
             Thank you for<br className="hidden sm:block" /> your order
           </h1>
@@ -160,7 +160,7 @@ export default function OrderSuccessPage() {
         >
           <p className="text-[9px] tracking-[0.35em] uppercase text-[var(--muted)] mb-1.5">Order Number</p>
           <p
-            className="text-2xl font-light text-[var(--black)]"
+            className="font-display text-2xl text-[var(--ink)]"
           >
             #{ORDER.id}
           </p>
@@ -228,7 +228,7 @@ export default function OrderSuccessPage() {
           <div className="flex justify-between items-center border-t border-[var(--border)] pt-4 mt-1">
             <span className="text-[12px] font-medium text-[var(--black)]">Total</span>
             <span
-              className="text-[20px] font-light text-[var(--black)]"
+              className="font-display text-[20px] text-[var(--ink)]"
             >
               {formatPrice(ORDER.total)}
             </span>
@@ -245,12 +245,12 @@ export default function OrderSuccessPage() {
       >
         <Link
           href="#"
-          className="flex-1 py-4 border border-[var(--black)] text-[var(--black)] text-[11px] tracking-[0.25em] uppercase text-center hover:bg-[var(--black)] hover:text-white transition-colors duration-300 flex items-center justify-center gap-2"
+          className="flex-1 py-4 btn-fill border border-[var(--ink)] text-[var(--ink)] text-[11px] tracking-[0.25em] uppercase text-center transition-colors duration-300 flex items-center justify-center gap-2"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
           </svg>
-          Track Order
+          <span>Track Order</span>
         </Link>
         <Link
           href="/shop"

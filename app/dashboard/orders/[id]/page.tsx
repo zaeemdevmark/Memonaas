@@ -94,7 +94,7 @@ export default async function OrderDetailPage({ params }: Props) {
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-8 pb-7 border-b border-[var(--border)]">
         <div>
           <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--muted)] mb-1">Order</p>
-          <h2 className="text-2xl font-light text-[var(--black)]">
+          <h2 className="font-display text-2xl text-[var(--ink)]">
             #{order.orderNumber}
           </h2>
           <p className="text-[11px] text-[var(--muted)] mt-1">{formatDate(order.createdAt)}</p>
@@ -160,7 +160,7 @@ export default async function OrderDetailPage({ params }: Props) {
             ))}
             <div className="border-t border-[var(--border)] pt-3 flex justify-between">
               <span className="text-[13px] font-medium text-[var(--black)]">Total</span>
-              <span className="text-[15px] font-light text-[var(--black)]">
+              <span className="font-display text-[15px] text-[var(--ink)]">
                 {fp(order.total)}
               </span>
             </div>

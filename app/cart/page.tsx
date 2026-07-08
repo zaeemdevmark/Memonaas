@@ -37,7 +37,7 @@ export default function CartPage() {
         </svg>
         <div>
           <h1
-            className="text-3xl font-light text-[var(--black)] mb-2"
+            className="font-display text-3xl text-[var(--ink)] mb-2"
           >
             Your cart is empty
           </h1>
@@ -61,7 +61,7 @@ export default function CartPage() {
       {/* Page heading */}
       <div className="mb-10 border-b border-[var(--border)] pb-6">
         <h1
-          className="text-4xl sm:text-5xl font-light text-[var(--black)]"
+          className="font-display text-4xl sm:text-5xl text-[var(--ink)]"
         >
           Shopping Cart
         </h1>
@@ -215,7 +215,7 @@ export default function CartPage() {
         <div className="w-full lg:w-[360px] shrink-0">
           <div className="border border-[var(--border)] p-7 sticky top-24">
             <h2
-              className="text-2xl font-light text-[var(--black)] mb-7"
+              className="font-display text-2xl text-[var(--ink)] mb-7"
             >
               Order Summary
             </h2>

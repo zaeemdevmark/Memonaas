@@ -12,7 +12,7 @@ export default function NotFound() {
         Error 404
       </p>
       <h1
-        className="text-6xl sm:text-8xl font-light text-[var(--ink)] leading-none mb-4"
+        className="font-display text-6xl sm:text-8xl text-[var(--ink)] leading-none mb-4"
       >
         Not Found
       </h1>
@@ -22,7 +22,7 @@ export default function NotFound() {
       <div className="flex flex-col sm:flex-row items-center gap-6">
         <Link
           href="/"
-          className="text-[11px] tracking-widest uppercase bg-[#111] text-white px-8 py-3 hover:bg-[#333] transition-colors"
+          className="text-[11px] tracking-widest uppercase bg-[var(--ink)] text-[var(--surface)] px-8 py-3 hover:bg-[var(--accent-ink)] transition-colors"
         >
           Return home
         </Link>

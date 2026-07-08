@@ -21,14 +21,14 @@ export default function Error({
         Error 500
       </p>
       <h1
-        className="text-5xl sm:text-7xl font-light text-[var(--ink)] leading-none mb-4"
+        className="font-display text-5xl sm:text-7xl text-[var(--ink)] leading-none mb-4"
       >
         Something went wrong
       </h1>
       <p className="text-[14px] text-[var(--muted)] max-w-sm leading-relaxed mb-10">
         An unexpected error occurred. Our team has been notified.
         {error.digest && (
-          <span className="block mt-2 text-[11px] text-[#aaa]">
+          <span className="block mt-2 text-[11px] text-[var(--muted)]">
             Ref: {error.digest}
           </span>
         )}
@@ -36,7 +36,7 @@ export default function Error({
       <div className="flex flex-col sm:flex-row items-center gap-6">
         <button
           onClick={unstable_retry}
-          className="text-[11px] tracking-widest uppercase bg-[#111] text-white px-8 py-3 hover:bg-[#333] transition-colors"
+          className="text-[11px] tracking-widest uppercase bg-[var(--ink)] text-[var(--surface)] px-8 py-3 hover:bg-[var(--accent-ink)] transition-colors"
         >
           Try again
         </button>

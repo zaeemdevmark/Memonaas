@@ -4,12 +4,12 @@ export const metadata = { title: "Unauthorized — Memonaas" };
 
 export default function UnauthorizedPage() {
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center px-6">
+    <div className="min-h-screen bg-[var(--bg)] flex items-center justify-center px-6">
       <div className="text-center max-w-md">
 
         {/* Code */}
         <p
-          className="text-[80px] font-light text-[#E8E8E8] leading-none mb-2 select-none"
+          className="font-display text-[80px] text-[var(--border)] leading-none mb-2 select-none"
         >
           401
         </p>
@@ -23,7 +23,7 @@ export default function UnauthorizedPage() {
               viewBox="0 0 24 24"
               strokeWidth={1.2}
               stroke="currentColor"
-              className="w-6 h-6 text-[#AAAAAA]"
+              className="w-6 h-6 text-[var(--muted)]"
             >
               <path
                 strokeLinecap="round"
@@ -36,11 +36,11 @@ export default function UnauthorizedPage() {
 
         {/* Message */}
         <h1
-          className="text-2xl font-light text-[var(--black)] mb-3"
+          className="font-display text-2xl text-[var(--ink)] mb-3"
         >
           Authentication Required
         </h1>
-        <p className="text-[13px] text-[#888888] leading-relaxed mb-8">
+        <p className="text-[13px] text-[var(--muted)] leading-relaxed mb-8">
           You need to be signed in to access this page. Please log in to
           continue.
         </p>
@@ -55,7 +55,7 @@ export default function UnauthorizedPage() {
           </Link>
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-[var(--border)] text-[#666666] text-[11px] tracking-[0.2em] uppercase hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors duration-200"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-[var(--border)] text-[var(--muted)] text-[11px] tracking-[0.2em] uppercase hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors duration-200"
           >
             Go Home
           </Link>

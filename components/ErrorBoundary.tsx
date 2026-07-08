@@ -35,7 +35,7 @@ export default class ErrorBoundary extends Component<Props, State> {
           <div className="flex min-h-[400px] items-center justify-center p-8 text-center">
             <div>
               <h2
-                className="text-2xl font-light text-[var(--ink)] mb-3"
+                className="font-display text-2xl text-[var(--ink)] mb-3"
               >
                 Something went wrong
               </h2>

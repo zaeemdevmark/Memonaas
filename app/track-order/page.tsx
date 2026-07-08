@@ -18,7 +18,7 @@ export default function TrackOrderPage() {
             Order Status
           </p>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-light text-[var(--black)] mb-5 leading-tight"
+            className="font-display text-4xl sm:text-5xl lg:text-6xl text-[var(--ink)] mb-5 leading-tight"
           >
             Track Your Order
           </h1>
@@ -31,7 +31,7 @@ export default function TrackOrderPage() {
       </section>
 
       {/* Tracking form + result */}
-      <section className="py-16 sm:py-20 bg-white">
+      <section className="py-16 sm:py-20 bg-[var(--surface)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
 

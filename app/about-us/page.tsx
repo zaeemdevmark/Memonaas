@@ -6,9 +6,9 @@ import { buildMetadata, SITE_URL, SITE_NAME } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title:       `About Us — ${SITE_NAME}`,
-  description: "Discover the story behind Memonaas — a Pakistani fashion brand built on a passion for elegance, quality craftsmanship, and celebrating the modern Pakistani woman.",
+  description: "Discover the story behind Memonaas — a Pakistani clothing brand built on considered design, honest fabrics, and everyday wearability.",
   path:        "/about-us",
-  keywords:    ["Memonaas", "Pakistani fashion brand", "about us", "luxury Pakistani clothing", "women fashion Pakistan"],
+  keywords:    ["Memonaas", "Pakistani clothing brand", "about us", "everyday women's fashion", "women fashion Pakistan"],
 });
 
 // ── Structured Data ───────────────────────────────────────────────
@@ -19,7 +19,7 @@ function AboutPageSchema() {
     "@type":    "AboutPage",
     name:       `About Us — ${SITE_NAME}`,
     url:        `${SITE_URL}/about-us`,
-    description: "The story, values, and vision behind Memonaas.",
+    description: "The story, values, and philosophy behind Memonaas.",
     publisher: {
       "@type": "Organization",
       name:    SITE_NAME,
@@ -56,16 +56,16 @@ function HeroSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
         <SectionLabel>About Us</SectionLabel>
         <h1
-          className="text-5xl sm:text-6xl lg:text-7xl font-light text-[var(--black)] mb-6 leading-tight"
+          className="font-display text-5xl sm:text-6xl lg:text-7xl text-[var(--ink)] mb-6 leading-tight"
         >
-          Where Elegance
+          Considered by
           <br className="hidden sm:block" />
-          {" "}Meets Tradition
+          {" "}Design
         </h1>
         <Divider className="mx-auto mb-6" />
         <p className="text-[14px] sm:text-[15px] text-[var(--muted)] leading-relaxed max-w-xl mx-auto">
-          Memonaas is a celebration of Pakistani femininity — where the richness of our textile heritage
-          is woven into every thread, every silhouette, and every collection we create.
+          Memonaas makes clothing for the days that make up most of your life — not just the
+          special ones. Modern silhouettes, honest fabrics, and pieces built to be worn often.
         </p>
       </div>
     </section>
@@ -76,7 +76,7 @@ function HeroSection() {
 
 function StorySection() {
   return (
-    <section className="py-20 sm:py-28 bg-white">
+    <section className="py-20 sm:py-28 bg-[var(--surface)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-start">
 
@@ -84,41 +84,41 @@ function StorySection() {
           <div>
             <SectionLabel>Our Story</SectionLabel>
             <h2
-              className="text-4xl sm:text-5xl font-light text-[var(--black)] mb-8 leading-tight"
+              className="font-display text-4xl sm:text-5xl text-[var(--ink)] mb-8 leading-tight"
             >
-              A Legacy of Pakistani Elegance
+              Clothing for the everyday
             </h2>
             <div className="space-y-5 text-[13px] text-[var(--muted)] leading-relaxed">
               <p>
-                Memonaas was born from a deep-seated love for Pakistani fashion and a desire to share it with the world.
-                Our founders — passionate about the artistry embedded in traditional Pakistani textile heritage —
-                set out to create a brand that would honour this craft while speaking to the contemporary Pakistani woman.
+                Memonaas started with a simple frustration: most clothing is designed to look good
+                for a photo, not to hold up to actual life. We wanted pieces that could be worn
+                on a Tuesday and still feel considered — not just something reserved for special occasions.
               </p>
               <p>
-                From the very beginning, our vision was clear: to design clothing that bridges the timeless beauty of
-                traditional Pakistani aesthetics with the clean lines and confidence of modern fashion. Every collection
-                we release is a conversation between the old and the new — a dialogue between heritage and innovation.
+                From the beginning, our approach has been the same: fewer, better pieces. We spend
+                more time on fit, fabric, and construction than on chasing whatever's trending, because
+                the things you reach for most often deserve the most care.
               </p>
               <p>
-                We believe that Pakistani women deserve clothing that reflects the richness of their culture. That is why
-                we work with skilled artisans and trusted fabric suppliers to bring you garments crafted with intention —
-                from the quality of the weave to the precision of the stitching.
+                We work directly with trusted mills and small production runs, which means we can
+                stand behind the quality of every seam and every fabric choice — not just the ones
+                that photograph well.
               </p>
               <p>
-                Today, Memonaas continues to grow with one unwavering principle: never compromise on quality,
-                never compromise on elegance, and always put the customer first.
+                Memonaas is still small and growing, and we intend to keep it that way for a while:
+                slower, more deliberate, and built around the customer rather than the trend cycle.
               </p>
             </div>
 
             <div className="flex items-center gap-10 mt-10 pt-10 border-t border-[var(--border)]">
               {[
-                { value: "100+",   label: "Collections Launched" },
-                { value: "5,000+", label: "Happy Customers" },
-                { value: "3+",     label: "Years of Craft" },
+                { value: "New",  label: "Brand, Est. 2026" },
+                { value: "PK",   label: "Designed & Made" },
+                { value: "1:1",  label: "Care Per Order" },
               ].map((stat) => (
                 <div key={stat.label}>
                   <p
-                    className="text-3xl font-light text-[var(--black)]"
+                    className="font-display text-3xl text-[var(--ink)]"
                   >
                     {stat.value}
                   </p>
@@ -129,22 +129,21 @@ function StorySection() {
           </div>
 
           {/* Pull-quote panel */}
-          <div className="bg-[var(--black)] p-10 sm:p-12 text-white flex flex-col justify-between min-h-[380px]">
+          <div className="bg-[var(--ink)] p-10 sm:p-12 text-[var(--surface)] flex flex-col justify-between min-h-[380px]">
             <p
               className="text-[10px] tracking-[0.3em] uppercase text-white/40 mb-6"
             >
               Our Mission
             </p>
             <blockquote
-              className="text-3xl sm:text-4xl font-light leading-snug italic flex-1"
+              className="font-display text-3xl sm:text-4xl leading-snug italic flex-1"
             >
-              &ldquo;To empower every Pakistani woman with clothing that honours her heritage
-              and elevates her presence — crafted with love, worn with pride.&rdquo;
+              &ldquo;Make clothing worth reaching for every day — not just the days that call for it.&rdquo;
             </blockquote>
             <div className="mt-8 pt-8 border-t border-white/10">
               <p className="text-[12px] text-white/60 leading-relaxed">
-                Our mission is to make premium Pakistani fashion accessible to every woman — delivered with
-                the care and elegance she deserves.
+                Our mission is to make considered, well-made clothing accessible without the
+                markup that usually comes with it.
               </p>
             </div>
           </div>
@@ -159,8 +158,8 @@ function StorySection() {
 
 const FEATURES = [
   {
-    title: "Premium Quality",
-    description: "Every garment undergoes rigorous quality checks before it reaches you. We partner with trusted fabric suppliers to ensure our materials are of the highest standard.",
+    title: "Considered Quality",
+    description: "Every garment undergoes quality checks before it reaches you. We partner with trusted fabric suppliers so materials hold up to daily wear, not just first impressions.",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
@@ -168,8 +167,8 @@ const FEATURES = [
     ),
   },
   {
-    title: "Elegant Designs",
-    description: "Our in-house design team draws from Pakistan's rich cultural heritage, creating pieces that are timeless yet undeniably contemporary.",
+    title: "Modern Silhouettes",
+    description: "Our in-house design team keeps pieces simple and versatile, so they mix easily into a wardrobe you already wear rather than fighting it.",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
@@ -204,8 +203,8 @@ const FEATURES = [
     ),
   },
   {
-    title: "Trusted Brand",
-    description: "Thousands of women across Pakistan trust Memonaas for their fashion needs. Our growing community of loyal customers is our greatest testament.",
+    title: "Built on Trust",
+    description: "We're a new brand, and we know trust is earned order by order. That's why we're upfront about fabric, fit, and delivery timelines from the start.",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
@@ -221,7 +220,7 @@ function WhyChooseSection() {
         <div className="text-center mb-14">
           <SectionLabel>Why Choose Us</SectionLabel>
           <h2
-            className="text-4xl sm:text-5xl font-light text-[var(--black)]"
+            className="font-display text-4xl sm:text-5xl text-[var(--ink)]"
           >
             The Memonaas Difference
           </h2>
@@ -231,13 +230,13 @@ function WhyChooseSection() {
           {FEATURES.map((feature) => (
             <div
               key={feature.title}
-              className="bg-white p-8 sm:p-10 group hover:bg-[var(--black)] transition-colors duration-300"
+              className="bg-[var(--surface)] p-8 sm:p-10 group hover:bg-[var(--ink)] transition-colors duration-300"
             >
-              <div className="text-[var(--muted)] group-hover:text-white/50 transition-colors duration-300 mb-5">
+              <div className="text-[var(--accent)] group-hover:text-white/50 transition-colors duration-300 mb-5">
                 {feature.icon}
               </div>
               <h3
-                className="text-xl font-light text-[var(--black)] group-hover:text-white transition-colors duration-300 mb-3"
+                className="text-xl font-medium text-[var(--ink)] group-hover:text-[var(--surface)] transition-colors duration-300 mb-3"
               >
                 {feature.title}
               </h3>
@@ -267,8 +266,8 @@ const VALUES = [
   },
   {
     number: "03",
-    title:  "Innovation",
-    description: "We constantly evolve — blending Pakistan's rich textile artistry with contemporary design sensibilities to create fashion that is both rooted and forward-looking.",
+    title:  "Simplicity",
+    description: "We'd rather do a few things well than chase every trend. Clean designs, considered fabrics, and pieces that earn a place in your regular rotation.",
   },
   {
     number: "04",
@@ -279,12 +278,12 @@ const VALUES = [
 
 function ValuesSection() {
   return (
-    <section className="py-20 sm:py-28 bg-white border-t border-[var(--border)]">
+    <section className="py-20 sm:py-28 bg-[var(--surface)] border-t border-[var(--border)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-14">
           <SectionLabel>What We Stand For</SectionLabel>
           <h2
-            className="text-4xl sm:text-5xl font-light text-[var(--black)]"
+            className="font-display text-4xl sm:text-5xl text-[var(--ink)]"
           >
             Our Core Values
           </h2>
@@ -294,13 +293,13 @@ function ValuesSection() {
           {VALUES.map((value) => (
             <div key={value.number} className="group">
               <p
-                className="text-5xl font-light text-[var(--border)] group-hover:text-[var(--accent)] transition-colors duration-300 mb-4 leading-none"
+                className="font-display text-5xl text-[var(--border)] group-hover:text-[var(--accent)] transition-colors duration-300 mb-4 leading-none"
               >
                 {value.number}
               </p>
               <Divider className="mb-4 group-hover:w-16 transition-all duration-300" />
               <h3
-                className="text-xl font-light text-[var(--black)] mb-3"
+                className="text-xl font-medium text-[var(--ink)] mb-3"
               >
                 {value.title}
               </h3>
@@ -319,16 +318,16 @@ function ValuesSection() {
 
 const PROMISES = [
   {
-    title: "Curated Collections",
-    description: "Each collection is thoughtfully curated to reflect the season, the trends, and the cultural moments that define Pakistani fashion.",
+    title: "Considered Collections",
+    description: "Smaller, more deliberate collections — released when they're ready, not on a forced seasonal calendar.",
   },
   {
-    title: "Premium Fabrics",
-    description: "We source only the finest materials — premium lawns, silks, chiffons, and cotton blends — from trusted mills across Pakistan and beyond.",
+    title: "Honest Fabrics",
+    description: "We source dependable lawns, cottons, and blends from trusted mills, and we're straightforward about what you're getting.",
   },
   {
-    title: "Timeless Silhouettes",
-    description: "Our designs honour both modern sensibilities and traditional aesthetics, creating pieces that transcend seasons and remain wardrobe staples.",
+    title: "Made to Last",
+    description: "Our designs are built to be worn on repeat, not just once — pieces that earn a permanent spot in your wardrobe.",
   },
 ];
 
@@ -341,19 +340,19 @@ function PromiseSection() {
             Our Commitment
           </p>
           <h2
-            className="text-4xl sm:text-5xl font-light leading-tight"
+            className="font-display text-4xl sm:text-5xl leading-tight"
           >
-            Our Fashion Promise
+            Our Promise
           </h2>
           <div className="w-10 h-px bg-white/30 mx-auto mt-6" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/10">
           {PROMISES.map((promise) => (
-            <div key={promise.title} className="bg-[var(--black)] p-8 sm:p-10 text-center group hover:bg-white/5 transition-colors duration-300">
+            <div key={promise.title} className="bg-[var(--ink)] p-8 sm:p-10 text-center group hover:bg-white/5 transition-colors duration-300">
               <div className="w-8 h-px bg-white/30 mx-auto mb-6 group-hover:w-14 transition-all duration-300" />
               <h3
-                className="text-2xl font-light text-white mb-4"
+                className="text-2xl font-medium text-white mb-4"
               >
                 {promise.title}
               </h3>
@@ -366,10 +365,10 @@ function PromiseSection() {
 
         <div className="mt-16 text-center">
           <p
-            className="text-2xl sm:text-3xl font-light italic text-white/70 max-w-2xl mx-auto leading-relaxed"
+            className="font-display text-2xl sm:text-3xl italic text-white/70 max-w-2xl mx-auto leading-relaxed"
           >
-            &ldquo;Fashion is not just about what you wear — it is about how wearing it makes you feel.
-            At Memonaas, we design for that feeling.&rdquo;
+            &ldquo;Clothing shouldn't need a special occasion to feel considered.
+            At Memonaas, we design for the every day.&rdquo;
           </p>
         </div>
       </div>
@@ -385,13 +384,12 @@ function CtaSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
         <SectionLabel>Ready to Explore?</SectionLabel>
         <h2
-          className="text-4xl sm:text-5xl font-light text-[var(--black)] mb-6"
+          className="font-display text-4xl sm:text-5xl text-[var(--ink)] mb-6"
         >
-          Begin Your Fashion Journey
+          Begin Your Everyday
         </h2>
         <p className="text-[13px] text-[var(--muted)] leading-relaxed max-w-md mx-auto mb-10">
-          Explore our latest collections and discover what makes Memonaas the preferred choice of
-          discerning Pakistani women.
+          Explore the collection and see what considered, everyday clothing looks like.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
@@ -402,9 +400,9 @@ function CtaSection() {
           </Link>
           <Link
             href="/contact-us"
-            className="py-4 px-10 border border-[var(--black)] text-[var(--black)] text-[11px] tracking-[0.25em] uppercase hover:bg-[var(--black)] hover:text-white transition-colors duration-200"
+            className="btn-fill py-4 px-10 border border-[var(--ink)] text-[var(--ink)] text-[11px] tracking-[0.25em] uppercase"
           >
-            Contact Us
+            <span>Contact Us</span>
           </Link>
         </div>
       </div>

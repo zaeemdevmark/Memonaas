@@ -9,7 +9,7 @@ function StatCard({ value, label, icon }: { value: string | number; label: strin
       <div className="flex items-start justify-between mb-4">
         <div className="text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors duration-200">{icon}</div>
       </div>
-      <p className="text-3xl font-light text-[var(--black)] mb-1">{value}</p>
+      <p className="font-display text-3xl text-[var(--ink)] mb-1">{value}</p>
       <p className="text-[11px] tracking-[0.15em] uppercase text-[var(--muted)]">{label}</p>
     </div>
   );
@@ -28,7 +28,7 @@ export default async function DashboardHomePage() {
     <div>
       <div className="mb-10">
         <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--muted)] mb-2">Member Area</p>
-        <h1 className="text-3xl sm:text-4xl font-light text-[var(--black)]">
+        <h1 className="font-display text-3xl sm:text-4xl text-[var(--ink)]">
           Welcome back, {firstName}
         </h1>
       </div>

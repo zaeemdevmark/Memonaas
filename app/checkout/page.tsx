@@ -341,12 +341,12 @@ export default function CheckoutPage() {
   if ((!cart || cart.items.length === 0) && !placedOrder) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center px-4 text-center gap-6">
-        <h1 className="text-3xl font-light text-[var(--black)]">
+        <h1 className="font-display text-3xl text-[var(--ink)]">
           Your cart is empty
         </h1>
         <p className="text-[12px] text-[var(--muted)]">Add items before proceeding to checkout.</p>
         <Link href="/shop" className="text-[11px] tracking-[0.25em] uppercase btn-fill border border-[var(--ink)] text-[var(--ink)] px-10 py-3.5">
-          Shop Now
+          <span>Shop Now</span>
         </Link>
       </div>
     );
@@ -363,7 +363,7 @@ export default function CheckoutPage() {
         </div>
 
         <p className="text-[10px] tracking-[0.35em] uppercase text-[var(--muted)] mb-3">Order Confirmed</p>
-        <h1 className="text-4xl sm:text-5xl font-light text-[var(--black)] mb-4">
+        <h1 className="font-display text-4xl sm:text-5xl text-[var(--ink)] mb-4">
           Thank you, {form.firstName || "dear customer"}
         </h1>
         <p className="text-[13px] text-[var(--muted)] mb-10">
@@ -412,7 +412,7 @@ export default function CheckoutPage() {
 
       <div className="mb-10 border-b border-[var(--border)] pb-6">
         <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--muted)] mb-1">Memonaas</p>
-        <h1 className="text-4xl sm:text-5xl font-light text-[var(--black)]">
+        <h1 className="font-display text-4xl sm:text-5xl text-[var(--ink)]">
           Checkout
         </h1>
       </div>

@@ -910,7 +910,7 @@ function ProductForm({
                   <input
                     value={form.sku}
                     onChange={e => setField("sku", e.target.value)}
-                    placeholder="e.g. NP-FC-001"
+                    placeholder="e.g. MN-FC-001"
                     className={inp(errors.sku)}
                   />
                 </FormField>

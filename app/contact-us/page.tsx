@@ -66,11 +66,11 @@ function HeroSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
         <SectionLabel>Get in Touch</SectionLabel>
         <h1
-          className="text-5xl sm:text-6xl lg:text-7xl font-light text-[var(--black)] mb-6 leading-tight"
+          className="font-display text-5xl sm:text-6xl lg:text-7xl text-[var(--ink)] mb-6 leading-tight"
         >
           We&apos;re Here to Help
         </h1>
-        <div className="w-10 h-px bg-[var(--black)] mx-auto mb-6" />
+        <div className="w-10 h-px bg-[var(--ink)] mx-auto mb-6" />
         <p className="text-[14px] sm:text-[15px] text-[var(--muted)] leading-relaxed max-w-lg mx-auto">
           Have a question about an order, need sizing advice, or just want to say hello?
           Our team is ready to assist you Monday through Saturday.
@@ -131,12 +131,12 @@ const CONTACT_INFO = [
 
 function ContactCardsSection() {
   return (
-    <section className="py-16 sm:py-20 bg-white border-b border-[var(--border)]">
+    <section className="py-16 sm:py-20 bg-[var(--surface)] border-b border-[var(--border)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--border)]">
           {CONTACT_INFO.map((info) => {
             const inner = (
-              <div className="bg-white p-7 sm:p-8 group hover:bg-[var(--black)] transition-colors duration-300 h-full flex flex-col">
+              <div className="bg-[var(--surface)] p-7 sm:p-8 group hover:bg-[var(--ink)] transition-colors duration-300 h-full flex flex-col">
                 <div className="text-[var(--muted)] group-hover:text-white/50 transition-colors duration-300 mb-4">
                   {info.icon}
                 </div>
@@ -144,7 +144,7 @@ function ContactCardsSection() {
                   {info.title}
                 </p>
                 <p
-                  className="text-lg font-light text-[var(--black)] group-hover:text-white transition-colors duration-300 mb-1"
+                  className="text-lg font-medium text-[var(--ink)] group-hover:text-[var(--surface)] transition-colors duration-300 mb-1"
                 >
                   {info.value}
                 </p>
@@ -186,7 +186,7 @@ function FormSection() {
           <div className="lg:col-span-3">
             <SectionLabel>Send Us a Message</SectionLabel>
             <h2
-              className="text-3xl sm:text-4xl font-light text-[var(--black)] mb-8"
+              className="font-display text-3xl sm:text-4xl text-[var(--ink)] mb-8"
             >
               Write to Us
             </h2>
@@ -198,7 +198,7 @@ function FormSection() {
             <div>
               <SectionLabel>Reach Us Directly</SectionLabel>
               <h2
-                className="text-3xl sm:text-4xl font-light text-[var(--black)] mb-6"
+                className="font-display text-3xl sm:text-4xl text-[var(--ink)] mb-6"
               >
                 Get In Touch
               </h2>
@@ -206,18 +206,18 @@ function FormSection() {
               <div className="space-y-5">
                 <div>
                   <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] mb-1.5">Business Name</p>
-                  <p className="text-[14px] font-medium text-[var(--black)]">Memonaas</p>
+                  <p className="text-[14px] font-medium text-[var(--ink)]">Memonaas</p>
                 </div>
                 <div>
                   <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] mb-1.5">Working Hours</p>
                   <div className="space-y-1">
                     <div className="flex items-center justify-between text-[13px]">
                       <span className="text-[var(--muted)]">Monday – Friday</span>
-                      <span className="text-[var(--black)] font-medium">10:00 – 19:00</span>
+                      <span className="text-[var(--ink)] font-medium">10:00 – 19:00</span>
                     </div>
                     <div className="flex items-center justify-between text-[13px]">
                       <span className="text-[var(--muted)]">Saturday</span>
-                      <span className="text-[var(--black)] font-medium">11:00 – 18:00</span>
+                      <span className="text-[var(--ink)] font-medium">11:00 – 18:00</span>
                     </div>
                     <div className="flex items-center justify-between text-[13px]">
                       <span className="text-[var(--muted)]">Sunday</span>
@@ -232,7 +232,7 @@ function FormSection() {
             <div className="space-y-2.5">
               <a
                 href="tel:+923276248585"
-                className="flex items-center gap-3 py-3.5 px-5 border border-[var(--black)] text-[var(--black)] hover:bg-[var(--black)] hover:text-white transition-colors duration-200 group w-full"
+                className="flex items-center gap-3 py-3.5 px-5 btn-fill border border-[var(--ink)] text-[var(--ink)] transition-colors duration-200 group w-full"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
@@ -263,12 +263,12 @@ function FormSection() {
 
 function FaqSection() {
   return (
-    <section className="py-20 sm:py-28 bg-white border-t border-[var(--border)]">
+    <section className="py-20 sm:py-28 bg-[var(--surface)] border-t border-[var(--border)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
           <SectionLabel>Common Questions</SectionLabel>
           <h2
-            className="text-4xl sm:text-5xl font-light text-[var(--black)]"
+            className="font-display text-4xl sm:text-5xl text-[var(--ink)]"
           >
             Frequently Asked Questions
           </h2>

@@ -85,7 +85,7 @@ function RatingSummary({ summary }: { summary: ReviewSummary }) {
     <div className="flex flex-col sm:flex-row gap-8 py-8 border-b border-[var(--border)]">
       {/* Big average */}
       <div className="flex flex-col items-center justify-center shrink-0 min-w-[120px]">
-        <p className="text-5xl font-light text-[var(--black)] leading-none mb-2">
+        <p className="font-display text-5xl text-[var(--ink)] leading-none mb-2">
           {averageRating != null ? averageRating.toFixed(1) : "–"}
         </p>
         <Stars rating={averageRating ?? 0} size="sm" />
@@ -368,7 +368,7 @@ export default function ProductReviews({ productSlug }: { productSlug: string })
       {/* Section header */}
       <div className="flex items-center justify-between mb-2">
         <h2
-          className="text-2xl sm:text-3xl font-light text-[var(--black)]"
+          className="font-display text-2xl sm:text-3xl text-[var(--ink)]"
         >
           Customer Reviews
         </h2>

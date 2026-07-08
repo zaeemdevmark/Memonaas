@@ -43,7 +43,7 @@ function generateOrderNumber(): string {
   const m    = String(now.getMonth() + 1).padStart(2, "0");
   const d    = String(now.getDate()).padStart(2, "0");
   const rand = Math.random().toString(36).substring(2, 8).toUpperCase();
-  return `NP-${y}${m}${d}-${rand}`;
+  return `MN-${y}${m}${d}-${rand}`;
 }
 
 // ── Serialization ──────────────────────────────────────────────────────────

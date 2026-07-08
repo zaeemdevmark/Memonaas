@@ -49,7 +49,7 @@ function FieldWrapper({ label, error, children }: { label: string; error?: strin
 }
 
 const inputClass = (hasError?: string) =>
-  `w-full border px-4 py-3.5 text-[13px] text-[var(--black)] placeholder-[#C8C8C8] bg-white outline-none transition-colors duration-200 rounded-none ${
+  `w-full border px-4 py-3.5 text-[13px] text-[var(--black)] placeholder-[var(--muted)] bg-white outline-none transition-colors duration-200 rounded-none ${
     hasError
       ? "border-red-300 focus:border-red-400"
       : "border-[var(--border)] focus:border-[var(--black)]"
@@ -124,7 +124,7 @@ export default function ContactForm() {
         </div>
         <div>
           <p className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mb-2">Message Received</p>
-          <h3 className="text-2xl font-light text-[var(--black)] mb-2">
+          <h3 className="font-display text-2xl text-[var(--ink)] mb-2">
             Thank You for Reaching Out
           </h3>
           <p className="text-[13px] text-[var(--muted)] leading-relaxed max-w-xs mx-auto">
