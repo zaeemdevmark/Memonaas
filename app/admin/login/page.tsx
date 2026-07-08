@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
-import Image from "next/image";
 import Link from "next/link";
 
 function Spinner() {
@@ -73,8 +72,8 @@ export default function AdminLoginPage() {
 
         {/* Logo */}
         <div className="text-center mb-10">
-          <Link href="/">
-            <Image src="/logo.png" alt="Memonaas" width={140} height={52} className="h-10 w-auto object-contain brightness-0 invert mx-auto mb-6" />
+          <Link href="/" className="inline-block mb-6 font-serif text-3xl tracking-tight text-white">
+            Memonaas
           </Link>
           <p className="text-white/40 text-[10px] tracking-[0.3em] uppercase">Admin Panel</p>
         </div>
