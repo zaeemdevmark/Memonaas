@@ -64,10 +64,6 @@ export function organizationSchema() {
     "@type":    "Organization",
     name:       SITE_NAME,
     url:        SITE_URL,
-    logo: {
-      "@type": "ImageObject",
-      url:     `${SITE_URL}/logo.png`,
-    },
     sameAs:      [] as string[],
     contactPoint: {
       "@type":           "ContactPoint",
