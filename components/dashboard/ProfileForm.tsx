@@ -52,8 +52,8 @@ export default function ProfileForm({ initialProfile }: Props) {
     <div className="border border-[var(--border)] p-6 mb-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-[var(--black)] flex items-center justify-center">
-            <span className="text-white text-[13px] font-light">
+          <div className="w-12 h-12 rounded-full bg-[var(--accent)] flex items-center justify-center">
+            <span className="text-[var(--surface)] text-[13px] font-medium">
               {initials(profile.name)}
             </span>
           </div>
@@ -80,7 +80,7 @@ export default function ProfileForm({ initialProfile }: Props) {
           <InlineInput label="Full Name"    value={form.name}  onChange={(v) => setForm((f) => ({ ...f, name: v }))}  placeholder="Sara Khan" />
           <div className="space-y-1.5">
             <label className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] block">Email Address</label>
-            <p className="w-full border border-[#F0F0F0] bg-[var(--bg)] px-4 py-3 text-[13px] text-[var(--muted)]">
+            <p className="w-full border border-[var(--border)] bg-[var(--bg)] px-4 py-3 text-[13px] text-[var(--muted)]">
               {profile.email}
             </p>
             <p className="text-[10px] text-[var(--muted)]">Email cannot be changed here.</p>
@@ -109,7 +109,7 @@ export default function ProfileForm({ initialProfile }: Props) {
             ["Email Address", profile.email],
             ["Phone Number",  profile.phone ?? "—"],
           ].map(([label, val]) => (
-            <div key={label} className="border-b border-[#F5F5F5] pb-4 last:border-0 last:pb-0">
+            <div key={label} className="border-b border-[var(--border)] pb-4 last:border-0 last:pb-0">
               <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] mb-1">{label}</p>
               <p className="text-[13px] text-[var(--black)]">{val}</p>
             </div>

@@ -32,9 +32,9 @@ function OrderTimeline({ order }: { order: CustomerOrderDTO }) {
               <div className={`absolute left-[9px] top-5 w-px h-9 transition-colors ${filled ? "bg-[var(--black)]" : "bg-[var(--border)]"}`} />
             )}
             <div className={`w-[18px] h-[18px] rounded-full shrink-0 mt-0.5 flex items-center justify-center border-2 transition-colors ${
-              cancelled ? "border-[var(--border)] bg-white"
+              cancelled ? "border-[var(--border)] bg-[var(--surface)]"
               : filled  ? "border-[var(--black)] bg-[var(--black)]"
-              :            "border-[#E0E0E0] bg-white"
+              :            "border-[var(--border)] bg-[var(--surface)]"
             }`}>
               {filled && (
                 <svg fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={3} className="w-2.5 h-2.5">
@@ -43,7 +43,7 @@ function OrderTimeline({ order }: { order: CustomerOrderDTO }) {
               )}
             </div>
             <div className="pb-8">
-              <p className={`text-[12px] font-medium transition-colors ${filled && !cancelled ? "text-[var(--black)]" : "text-[#C0C0C0]"}`}>
+              <p className={`text-[12px] font-medium transition-colors ${filled && !cancelled ? "text-[var(--black)]" : "text-[var(--border)]"}`}>
                 {step === "Pending" ? "Order Placed" : step}
               </p>
               {filled && date && (

@@ -218,7 +218,7 @@ export default function AddressManager({ initialAddresses }: Props) {
         {!showAdd && !editId && (
           <button
             onClick={() => { setShowAdd(true); setEditId(null); setForm(EMPTY_FORM); }}
-            className="flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase border border-[var(--black)] text-[var(--black)] px-4 py-2.5 hover:bg-[var(--black)] hover:text-white transition-colors duration-200"
+            className="flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase border border-[var(--black)] text-[var(--black)] px-4 py-2.5 hover:bg-[var(--ink)] hover:text-[var(--surface)] transition-colors duration-200"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3.5 h-3.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -248,12 +248,12 @@ export default function AddressManager({ initialAddresses }: Props) {
             editId === addr.id ? (
               <AddressForm key={addr.id} onCancel={cancelForm} />
             ) : (
-              <div key={addr.id} className="border border-[var(--border)] p-6 hover:border-[#BBBBBB] transition-colors duration-200">
+              <div key={addr.id} className="border border-[var(--border)] p-6 hover:border-[var(--muted)] transition-colors duration-200">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-2 mb-2">
                       {addr.label && (
-                        <span className="text-[10px] tracking-[0.2em] uppercase bg-[#F5F5F5] text-[var(--black)] px-2 py-0.5">
+                        <span className="text-[10px] tracking-[0.2em] uppercase bg-[var(--accent-soft)] text-[var(--ink)] px-2 py-0.5">
                           {addr.label}
                         </span>
                       )}

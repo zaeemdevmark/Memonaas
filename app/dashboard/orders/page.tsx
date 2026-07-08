@@ -17,7 +17,7 @@ function Pagination({ page, totalPages }: { page: number; totalPages: number }) 
         aria-disabled={page <= 1}
         className={`text-[10px] tracking-[0.2em] uppercase border px-4 py-2 transition-colors ${
           page <= 1
-            ? "border-[var(--border)] text-[#D0D0D0] pointer-events-none"
+            ? "border-[var(--border)] text-[var(--border)] pointer-events-none"
             : "border-[var(--border)] text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
         }`}
       >
@@ -31,7 +31,7 @@ function Pagination({ page, totalPages }: { page: number; totalPages: number }) 
         aria-disabled={page >= totalPages}
         className={`text-[10px] tracking-[0.2em] uppercase border px-4 py-2 transition-colors ${
           page >= totalPages
-            ? "border-[var(--border)] text-[#D0D0D0] pointer-events-none"
+            ? "border-[var(--border)] text-[var(--border)] pointer-events-none"
             : "border-[var(--border)] text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
         }`}
       >
@@ -73,7 +73,7 @@ export default async function OrdersPage({ searchParams }: Props) {
         <>
           <div className="space-y-3">
             {orders.map((order) => (
-              <div key={order.id} className="border border-[var(--border)] hover:border-[#BBBBBB] transition-colors duration-200">
+              <div key={order.id} className="border border-[var(--border)] hover:border-[var(--muted)] transition-colors duration-200">
                 <div className="px-6 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="space-y-1">
                     <p className="text-[13px] font-medium text-[var(--black)]">#{order.orderNumber}</p>
@@ -87,7 +87,7 @@ export default async function OrdersPage({ searchParams }: Props) {
                     <span className="text-[13px] font-medium text-[var(--black)]">{fp(order.total)}</span>
                     <Link
                       href={`/dashboard/orders/${order.id}`}
-                      className="text-[10px] tracking-[0.2em] uppercase border border-[var(--black)] text-[var(--black)] px-4 py-2 hover:bg-[var(--black)] hover:text-white transition-colors duration-200"
+                      className="text-[10px] tracking-[0.2em] uppercase border border-[var(--black)] text-[var(--black)] px-4 py-2 hover:bg-[var(--ink)] hover:text-[var(--surface)] transition-colors duration-200"
                     >
                       View Details
                     </Link>

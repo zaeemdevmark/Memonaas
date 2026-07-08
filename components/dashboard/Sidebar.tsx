@@ -67,15 +67,15 @@ export default function DashboardSidebar({ user, onClose }: Props) {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="px-6 py-7 border-b border-[#F0F0F0]">
+      <div className="px-6 py-7 border-b border-[var(--border)]">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-[var(--black)] flex items-center justify-center shrink-0">
-            <span className="text-white text-[12px]">
+          <div className="w-10 h-10 rounded-full bg-[var(--accent)] flex items-center justify-center shrink-0">
+            <span className="text-[var(--surface)] text-[12px] font-medium">
               {initials(user.name)}
             </span>
           </div>
           <div className="min-w-0">
-            <p className="text-[13px] font-medium text-[var(--black)] truncate">{user.name}</p>
+            <p className="text-[13px] font-medium text-[var(--ink)] truncate">{user.name}</p>
             <p className="text-[10px] text-[var(--muted)] truncate">{user.email}</p>
           </div>
         </div>
@@ -93,7 +93,7 @@ export default function DashboardSidebar({ user, onClose }: Props) {
               onClick={onClose}
               className={`w-full flex items-center gap-3 px-6 py-3.5 text-left transition-all duration-150 border-l-2 ${
                 isActive
-                  ? "border-[var(--black)] bg-[#F7F7F7] text-[var(--black)]"
+                  ? "border-[var(--accent)] bg-[var(--accent-soft)]/30 text-[var(--ink)]"
                   : "border-transparent text-[var(--muted)] hover:text-[var(--accent)] hover:bg-[var(--bg)]"
               }`}
             >
@@ -104,7 +104,7 @@ export default function DashboardSidebar({ user, onClose }: Props) {
         })}
       </nav>
 
-      <div className="border-t border-[#F0F0F0] p-4">
+      <div className="border-t border-[var(--border)] p-4">
         <form action={signOutAction}>
           <button
             type="submit"

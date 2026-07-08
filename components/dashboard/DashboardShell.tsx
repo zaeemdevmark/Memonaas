@@ -26,7 +26,7 @@ export default function DashboardShell({ user, children }: Props) {
     : (PAGE_LABELS[pathname] ?? "Dashboard");
 
   return (
-    <div className="flex min-h-[calc(100vh-96px)] relative bg-white">
+    <div className="flex min-h-[calc(100vh-96px)] relative bg-[var(--bg)]">
       {sidebarOpen && (
         <div
           onClick={() => setSidebarOpen(false)}
@@ -36,7 +36,7 @@ export default function DashboardShell({ user, children }: Props) {
 
       <aside className={`
         fixed lg:relative inset-y-0 left-0 z-[55] lg:z-auto
-        w-64 bg-white border-r border-[var(--border)]
+        w-64 bg-[var(--surface)] border-r border-[var(--border)]
         flex flex-col shrink-0
         transition-transform duration-300 ease-in-out
         ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
@@ -46,7 +46,7 @@ export default function DashboardShell({ user, children }: Props) {
       </aside>
 
       <div className="flex-1 flex flex-col min-w-0">
-        <div className="lg:hidden flex items-center gap-4 px-4 py-4 border-b border-[var(--border)] bg-white sticky top-0 z-10">
+        <div className="lg:hidden flex items-center gap-4 px-4 py-4 border-b border-[var(--border)] bg-[var(--surface)] sticky top-0 z-10">
           <button
             onClick={() => setSidebarOpen(true)}
             className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
@@ -56,7 +56,7 @@ export default function DashboardShell({ user, children }: Props) {
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
           </button>
-          <span className="text-[11px] tracking-[0.2em] uppercase text-[var(--black)]">{label}</span>
+          <span className="text-[11px] tracking-[0.2em] uppercase text-[var(--ink)]">{label}</span>
         </div>
 
         <div className="flex-1 overflow-y-auto px-6 sm:px-10 py-10">

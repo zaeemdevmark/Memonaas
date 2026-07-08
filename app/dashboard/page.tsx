@@ -5,7 +5,7 @@ import { fp, formatDate, StatusBadge } from "@/components/dashboard/ui";
 
 function StatCard({ value, label, icon }: { value: string | number; label: string; icon: React.ReactNode }) {
   return (
-    <div className="border border-[var(--border)] p-6 hover:border-[#BBBBBB] transition-colors duration-200 group">
+    <div className="border border-[var(--border)] p-6 hover:border-[var(--muted)] transition-colors duration-200 group">
       <div className="flex items-start justify-between mb-4">
         <div className="text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors duration-200">{icon}</div>
       </div>
@@ -93,7 +93,7 @@ export default async function DashboardHomePage() {
             {recentOrders.map((order) => (
               <div
                 key={order.id}
-                className="border border-[var(--border)] px-5 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-[#BBBBBB] transition-colors duration-200"
+                className="border border-[var(--border)] px-5 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-[var(--muted)] transition-colors duration-200"
               >
                 <div className="flex items-center gap-4">
                   <div>

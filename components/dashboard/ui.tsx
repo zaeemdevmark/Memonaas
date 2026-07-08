@@ -36,7 +36,7 @@ export function SectionTitle({ children }: { children: React.ReactNode }) {
 export function EmptyState({ icon, title, body }: { icon: React.ReactNode; title: string; body?: string }) {
   return (
     <div className="flex flex-col items-center justify-center py-20 text-center gap-4">
-      <div className="text-[#CCCCCC]">{icon}</div>
+      <div className="text-[var(--border)]">{icon}</div>
       <p className="text-[13px] text-[var(--black)] font-medium">{title}</p>
       {body && <p className="text-[12px] text-[var(--muted)]">{body}</p>}
     </div>
@@ -57,7 +57,7 @@ export function InlineInput({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className={`w-full border px-4 py-3 text-[13px] text-[var(--black)] placeholder-[#C8C8C8] bg-white outline-none transition-colors duration-200 rounded-none ${
+        className={`w-full border px-4 py-3 text-[13px] text-[var(--black)] placeholder-[var(--muted)] bg-white outline-none transition-colors duration-200 rounded-none ${
           error ? "border-red-300 focus:border-red-400" : "border-[var(--border)] focus:border-[var(--black)]"
         }`}
       />
