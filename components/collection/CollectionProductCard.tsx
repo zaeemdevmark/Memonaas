@@ -70,7 +70,7 @@ export default function CollectionProductCard({
           <>
             <div className="absolute inset-0 bg-white/30" />
             <div className="absolute bottom-4 left-0 right-0 flex justify-center">
-              <span className="bg-white/90 text-[#111] text-[10px] tracking-[0.25em] uppercase px-3 py-1.5">
+              <span className="bg-white/90 text-[var(--ink)] text-[10px] tracking-[0.25em] uppercase px-3 py-1.5">
                 Sold Out
               </span>
             </div>

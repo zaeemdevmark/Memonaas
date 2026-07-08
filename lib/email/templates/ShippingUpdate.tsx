@@ -51,7 +51,7 @@ export default function ShippingUpdateEmail({ order }: Props) {
 
           <Section style={s.header}>
             <Text style={s.brand}>Memonaas</Text>
-            <Text style={s.tagline}>Luxury Fashion</Text>
+            <Text style={s.tagline}>Considered Everyday Wear</Text>
           </Section>
 
           <Section style={s.hero}>
@@ -113,7 +113,7 @@ export default function ShippingUpdateEmail({ order }: Props) {
           </Section>
 
           <Section style={s.footer}>
-            <Text style={s.footerTxt}>Memonaas — Luxury Fashion</Text>
+            <Text style={s.footerTxt}>Memonaas — Considered Everyday Wear</Text>
             <Text style={s.footerTxt}>Questions about your delivery? Reply to this email.</Text>
           </Section>
 

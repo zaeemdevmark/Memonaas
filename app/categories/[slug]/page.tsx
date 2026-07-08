@@ -106,14 +106,14 @@ export async function generateMetadata({
     return buildMetadata({
       title:       `${category.name} — ${SITE_NAME}`,
       description: category.description ??
-        `Shop the ${category.name} collection at ${SITE_NAME}. Premium ladies clothing crafted for the refined woman.`,
+        `Shop the ${category.name} collection at ${SITE_NAME}. Considered clothing made for everyday life.`,
       path:        `/categories/${slug}`,
       image:       category.imageThumbnailUrl ?? undefined,
       keywords:    [
         category.name,
         `${category.name} Pakistan`,
-        "luxury ladies fashion",
-        "Pakistani designer wear",
+        "modern women's fashion",
+        "Pakistani clothing brand",
         SITE_NAME,
       ],
     });
@@ -181,14 +181,14 @@ export default async function CategoryPage({
         </div>
 
         {/* Category header */}
-        <div className="pt-4 pb-0 sm:pt-8 sm:pb-6 sm:border-b sm:border-[#E8E8E8]">
+        <div className="pt-4 pb-0 sm:pt-8 sm:pb-6 sm:border-b sm:border-[var(--border)]">
           <h1
             className="text-[23px] font-medium sm:text-5xl sm:font-light text-[var(--black)]"
           >
             {category.name}
           </h1>
           {category.description && (
-            <p className="mt-3 text-[14px] text-[#666] max-w-2xl leading-relaxed">
+            <p className="mt-3 text-[14px] text-[var(--muted)] max-w-2xl leading-relaxed">
               {category.description}
             </p>
           )}
@@ -203,12 +203,12 @@ export default async function CategoryPage({
           </div>
         ) : (
           <div className="py-24 text-center">
-            <p className="text-[13px] text-[var(--muted)] tracking-wide sm:text-[14px] sm:text-[#999] sm:tracking-normal">
+            <p className="text-[13px] text-[var(--muted)] tracking-wide sm:text-[14px] sm:text-[var(--muted)] sm:tracking-normal">
               No products in this collection yet.
             </p>
             <Link
               href="/shop"
-              className="mt-4 inline-block text-[12px] tracking-widest uppercase text-[#111] border-b border-[#111] pb-0.5 hover:opacity-60 transition-opacity"
+              className="mt-4 inline-block text-[12px] tracking-widest uppercase text-[var(--ink)] border-b border-[var(--ink)] pb-0.5 hover:opacity-60 transition-opacity"
             >
               View all products
             </Link>
@@ -216,12 +216,12 @@ export default async function CategoryPage({
         )}
 
         {/* Mobile breadcrumb — bottom placement, matches shop page style */}
-        <nav className="sm:hidden flex items-center gap-2 py-6 mt-6 border-t border-[#E8E8E8] text-[11px] text-[var(--muted)] tracking-wide">
+        <nav className="sm:hidden flex items-center gap-2 py-6 mt-6 border-t border-[var(--border)] text-[11px] text-[var(--muted)] tracking-wide">
           {breadcrumbNavItems.map((item, i) => (
             <span key={i} className="flex items-center gap-2">
               {i > 0 && <span>/</span>}
               {item.href ? (
-                <Link href={item.href} className="hover:text-[var(--black)] transition-colors">
+                <Link href={item.href} className="hover:text-[var(--accent)] transition-colors">
                   {item.label}
                 </Link>
               ) : (

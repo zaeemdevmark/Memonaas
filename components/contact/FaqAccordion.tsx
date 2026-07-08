@@ -139,7 +139,7 @@ export default function FaqAccordion() {
               className={`flex items-center gap-2.5 px-4 py-3 text-left whitespace-nowrap lg:whitespace-normal rounded-lg transition-colors duration-150 shrink-0 lg:shrink ${
                 activeCategory === i
                   ? "bg-[var(--black)] text-white"
-                  : "bg-[var(--bg)] text-[var(--muted)] hover:text-[var(--black)]"
+                  : "bg-[var(--bg)] text-[var(--muted)] hover:text-[var(--accent)]"
               }`}
             >
               <span className={`shrink-0 ${activeCategory === i ? "text-white" : "text-[var(--muted)]"}`}>

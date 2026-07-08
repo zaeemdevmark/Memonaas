@@ -36,7 +36,7 @@ export default function DashboardShell({ user, children }: Props) {
 
       <aside className={`
         fixed lg:relative inset-y-0 left-0 z-[55] lg:z-auto
-        w-64 bg-white border-r border-[#E8E8E8]
+        w-64 bg-white border-r border-[var(--border)]
         flex flex-col shrink-0
         transition-transform duration-300 ease-in-out
         ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
@@ -46,10 +46,10 @@ export default function DashboardShell({ user, children }: Props) {
       </aside>
 
       <div className="flex-1 flex flex-col min-w-0">
-        <div className="lg:hidden flex items-center gap-4 px-4 py-4 border-b border-[#E8E8E8] bg-white sticky top-0 z-10">
+        <div className="lg:hidden flex items-center gap-4 px-4 py-4 border-b border-[var(--border)] bg-white sticky top-0 z-10">
           <button
             onClick={() => setSidebarOpen(true)}
-            className="text-[var(--muted)] hover:text-[var(--black)] transition-colors"
+            className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
             aria-label="Open menu"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">

@@ -8,14 +8,14 @@ export const revalidate = 60;
 
 export const metadata: Metadata = buildMetadata({
   title:       `Shop All — ${SITE_NAME}`,
-  description: "Browse the complete Memonaas collection. Premium ladies clothing including festive wear, formal attire, and luxury ready-to-wear from Pakistan's finest designer brand.",
+  description: "Browse the complete Memonaas collection — considered everyday pieces, modern silhouettes, and honest fabrics.",
   path:        "/shop",
   keywords:    [
     "shop women's clothing Pakistan",
-    "luxury ladies fashion online",
-    "Pakistani designer clothes",
-    "festive wear Pakistan",
-    "formal women's wear",
+    "modern women's fashion online",
+    "Pakistani clothing brand",
+    "everyday wear Pakistan",
+    "contemporary women's wear",
     "Memonaas collection",
   ],
 });
@@ -39,10 +39,10 @@ export default async function ShopPage() {
   }));
 
   return (
-    <div className="px-5 sm:px-[30px]">
+    <div className="px-5 sm:px-[30px] max-w-[1400px] mx-auto">
 
-      <div className="pt-4 lg:pt-0">
-        <h1 className="text-[23px] font-medium text-[var(--black)]">
+      <div className="pt-10 lg:pt-14">
+        <h1 className="font-display text-3xl md:text-4xl text-[var(--ink)]">
           Shop All
         </h1>
       </div>
@@ -56,10 +56,10 @@ export default async function ShopPage() {
       )}
 
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 py-6 mt-6 border-t border-[#E8E8E8] text-[11px] text-[var(--muted)] tracking-wide">
-        <Link href="/" className="hover:text-[var(--black)] transition-colors">Home</Link>
+      <nav className="flex items-center gap-2 py-6 mt-6 border-t border-[var(--border)] text-[11px] text-[var(--muted)] tracking-wide">
+        <Link href="/" className="hover:text-[var(--accent)] transition-colors">Home</Link>
         <span>/</span>
-        <span className="text-[var(--black)]">Shop All</span>
+        <span className="text-[var(--ink)]">Shop All</span>
       </nav>
 
     </div>

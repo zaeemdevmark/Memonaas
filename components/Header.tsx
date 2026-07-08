@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCartStore } from "@/store/cartStore";
-import { useUIStore } from "@/store/uiStore";
 import { useWishlistStore } from "@/store/wishlistStore";
 import MobileNav from "@/components/MobileNav";
 
@@ -64,7 +63,6 @@ export default function Header({ role }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const { openCart, items } = useCartStore();
   const cartCount = items.reduce((n, i) => n + i.quantity, 0);
-  const { openSearch } = useUIStore();
   const { setIds: setWishlistIds } = useWishlistStore();
   const pathname = usePathname();
   const accHref = accountHref(role);
@@ -120,9 +118,9 @@ export default function Header({ role }: Props) {
 
         {/* Right — search / account / cart */}
         <div className="flex items-center gap-5 text-[var(--ink)]">
-          <button onClick={openSearch} aria-label="Search" className="hover:text-[var(--accent)] transition-colors p-1">
+          <Link href="/search" aria-label="Search" className="hover:text-[var(--accent)] transition-colors p-1">
             <SearchIcon />
-          </button>
+          </Link>
           <Link href={accHref} aria-label="Account" className="hidden min-[992px]:inline-flex hover:text-[var(--accent)] transition-colors p-1">
             <AccountIcon />
           </Link>

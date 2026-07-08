@@ -334,12 +334,12 @@ export default function CollectionSection({
   if (!products.length) return null;
 
   return (
-    <section className={`bg-white mt-[10px] ${className}`}>
+    <section className={`bg-[var(--surface)] mt-[10px] ${className}`}>
       <div className="flex flex-col lg:flex-row">
 
-        {/* ── Left — text column — IDENTICAL to original ──────────────── */}
+        {/* ── Left — text column ── */}
         <div className="lg:w-[25%] px-6 pt-10 pb-4 lg:pb-10 flex flex-col justify-center shrink-0">
-          <h2 className="text-[18px] font-medium text-[var(--black)] leading-snug mb-3">
+          <h2 className="font-display text-2xl text-[var(--ink)] leading-snug mb-3">
             {title}
           </h2>
           {description && (
@@ -349,7 +349,7 @@ export default function CollectionSection({
           )}
           <Link
             href={`/collections/${slug}`}
-            className="btn-fill self-start text-[10px] tracking-[0.18em] uppercase border border-[var(--black)] text-[var(--black)] px-5 py-2"
+            className="btn-fill self-start text-[10px] tracking-[0.18em] uppercase border border-[var(--ink)] text-[var(--ink)] px-5 py-2 rounded-full"
           >
             <span>View All Collection</span>
           </Link>

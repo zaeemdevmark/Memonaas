@@ -53,7 +53,7 @@ export default function CollectionPagination({
         onClick={() => goTo(currentPage - 1)}
         disabled={currentPage === 1}
         aria-label="Previous page"
-        className="w-9 h-9 flex items-center justify-center text-[var(--muted)] hover:text-[var(--black)] disabled:opacity-25 disabled:cursor-not-allowed transition-colors"
+        className="w-9 h-9 flex items-center justify-center text-[var(--muted)] hover:text-[var(--accent)] disabled:opacity-25 disabled:cursor-not-allowed transition-colors"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={chevronCls}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
@@ -78,7 +78,7 @@ export default function CollectionPagination({
             className={`w-9 h-9 flex items-center justify-center text-[12px] tracking-[0.08em] transition-colors ${
               p === currentPage
                 ? "bg-[var(--black)] text-white"
-                : "text-[var(--muted)] hover:text-[var(--black)] hover:bg-[var(--bg)]"
+                : "text-[var(--muted)] hover:text-[var(--accent)] hover:bg-[var(--bg)]"
             }`}
           >
             {p}
@@ -91,7 +91,7 @@ export default function CollectionPagination({
         onClick={() => goTo(currentPage + 1)}
         disabled={currentPage === totalPages}
         aria-label="Next page"
-        className="w-9 h-9 flex items-center justify-center text-[var(--muted)] hover:text-[var(--black)] disabled:opacity-25 disabled:cursor-not-allowed transition-colors"
+        className="w-9 h-9 flex items-center justify-center text-[var(--muted)] hover:text-[var(--accent)] disabled:opacity-25 disabled:cursor-not-allowed transition-colors"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={chevronCls}>
           <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />

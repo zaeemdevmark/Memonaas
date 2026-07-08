@@ -107,7 +107,7 @@ function AccordionRow({
   children: React.ReactNode;
 }) {
   return (
-    <div className="border-t border-[#E8E8E8]">
+    <div className="border-t border-[var(--border)]">
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between py-4 text-left group"
@@ -308,7 +308,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             <span className="text-xl text-[var(--black)] font-medium">{product.salePrice}</span>
             <span className="text-lg text-[var(--muted)] line-through">{product.price}</span>
             {discountPercent && (
-              <span className="text-[11px] tracking-[0.1em] uppercase text-white bg-black px-2 py-0.5">
+              <span className="text-[11px] tracking-[0.1em] uppercase text-[var(--surface)] bg-[var(--accent)] px-2 py-0.5">
                 -{discountPercent}%
               </span>
             )}
@@ -348,8 +348,8 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                     unavailable
                       ? "border-[#D8D8D8] text-[#BBBBBB] cursor-not-allowed"
                       : selectedSize === size
-                      ? "bg-[var(--black)] border-[var(--black)] text-white"
-                      : "bg-white border-[var(--black)] text-[var(--black)]"
+                      ? "bg-[var(--accent)] border-[var(--accent)] text-[var(--surface)]"
+                      : "bg-[var(--surface)] border-[var(--ink)] text-[var(--ink)]"
                   }`}
                 >
                   <span className={unavailable ? "line-through" : ""}>{size}</span>
@@ -377,7 +377,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
       {/* Quantity + Add to Cart — inline row; or Out of Stock block */}
       {product.soldOut ? (
         <div className="flex items-stretch gap-3 mb-6">
-          <div className="flex-1 py-4 text-center text-[12px] tracking-[0.25em] uppercase font-medium border border-[#E8E8E8] text-[var(--muted)] cursor-not-allowed">
+          <div className="flex-1 py-4 text-center text-[12px] tracking-[0.25em] uppercase font-medium border border-[var(--border)] text-[var(--muted)] cursor-not-allowed">
             Out of Stock
           </div>
           {product.id && (
@@ -390,14 +390,14 @@ export default function ProductDetailClient({ product }: { product: Product }) {
         <div className="flex items-stretch gap-3 mb-6">
 
           {/* Quantity stepper */}
-          <div className="flex items-center border border-[#E8E8E8] shrink-0">
+          <div className="flex items-center border border-[var(--border)] shrink-0">
             <button
               onClick={() => { setQuantity((q) => Math.max(1, q - 1)); setStockWarning(false); }}
-              className="w-10 h-full flex items-center justify-center text-[var(--black)] hover:bg-[#F5F5F5] transition-colors text-lg"
+              className="w-10 h-full flex items-center justify-center text-[var(--black)] hover:bg-[var(--bg)] transition-colors text-lg"
             >
               −
             </button>
-            <span className="w-10 flex items-center justify-center text-[13px] text-[var(--black)] border-x border-[#E8E8E8] self-stretch">
+            <span className="w-10 flex items-center justify-center text-[13px] text-[var(--black)] border-x border-[var(--border)] self-stretch">
               {quantity}
             </span>
             <button
@@ -408,7 +408,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                 }
                 setQuantity((q) => q + 1);
               }}
-              className="w-10 h-full flex items-center justify-center text-[var(--black)] hover:bg-[#F5F5F5] transition-colors text-lg"
+              className="w-10 h-full flex items-center justify-center text-[var(--black)] hover:bg-[var(--bg)] transition-colors text-lg"
             >
               +
             </button>
@@ -419,7 +419,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             onClick={handleAddToCart}
             disabled={adding}
             className={`flex-1 py-4 text-[12px] tracking-[0.25em] uppercase font-medium
-                       bg-white border border-[var(--black)] text-[var(--black)]
+                       bg-[var(--surface)] border border-[var(--ink)] text-[var(--ink)]
                        active:scale-[0.98] transition-transform duration-150
                        disabled:opacity-60 disabled:cursor-not-allowed
                        ${!adding ? "btn-fill" : ""}`}
@@ -439,7 +439,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
 
       {/* Short description */}
       <div
-        className="prose-product text-[13px] text-[#3D3D3D] leading-relaxed border-t border-[#E8E8E8] pt-6"
+        className="prose-product text-[13px] text-[#3D3D3D] leading-relaxed border-t border-[var(--border)] pt-6"
         dangerouslySetInnerHTML={{ __html: product.description ?? "" }}
       />
 
@@ -495,7 +495,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                     Contact us at{" "}
                     <a
                       href="mailto:wecare@memonaas.com"
-                      className="underline hover:text-[var(--black)] transition-colors"
+                      className="underline hover:text-[var(--accent)] transition-colors"
                     >
                       wecare@memonaas.com
                     </a>
@@ -503,7 +503,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                 </div>
               </AccordionRow>
 
-              <div className="border-t border-[#E8E8E8]" />
+              <div className="border-t border-[var(--border)]" />
             </>
           );
         })()}
@@ -594,10 +594,10 @@ export default function ProductDetailClient({ product }: { product: Product }) {
       </div>
 
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 px-[30px] py-6 mt-6 border-t border-[#E8E8E8] text-[11px] text-[var(--muted)] tracking-wide">
-        <Link href="/" className="hover:text-[var(--black)] transition-colors">Home</Link>
+      <nav className="flex items-center gap-2 px-[30px] py-6 mt-6 border-t border-[var(--border)] text-[11px] text-[var(--muted)] tracking-wide">
+        <Link href="/" className="hover:text-[var(--accent)] transition-colors">Home</Link>
         <span>/</span>
-        <Link href="/shop" className="hover:text-[var(--black)] transition-colors">Shop All</Link>
+        <Link href="/shop" className="hover:text-[var(--accent)] transition-colors">Shop All</Link>
         <span>/</span>
         <span className="text-[var(--black)]">{product.name}</span>
       </nav>

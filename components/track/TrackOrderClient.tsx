@@ -168,7 +168,7 @@ function OrderCard({ order, onReset }: { order: TrackOrderDTO; onReset: () => vo
           </span>
           <button
             onClick={onReset}
-            className="text-[11px] tracking-[0.1em] uppercase text-[var(--muted)] hover:text-[var(--black)] transition-colors underline underline-offset-2"
+            className="text-[11px] tracking-[0.1em] uppercase text-[var(--muted)] hover:text-[var(--accent)] transition-colors underline underline-offset-2"
           >
             Track another
           </button>
@@ -384,7 +384,7 @@ export default function TrackOrderClient() {
             onChange={(e) => { setOrderNumber(e.target.value); setErrors((p) => ({ ...p, orderNumber: undefined })); }}
             placeholder="e.g. NP-20260620-ABC123"
             className={`w-full border px-4 py-3.5 text-[13px] text-[var(--black)] placeholder-[#C8C8C8] bg-white outline-none transition-colors duration-200 rounded-none ${
-              errors.orderNumber ? "border-red-300 focus:border-red-400" : "border-[#E8E8E8] focus:border-[var(--black)]"
+              errors.orderNumber ? "border-red-300 focus:border-red-400" : "border-[var(--border)] focus:border-[var(--black)]"
             }`}
           />
           {errors.orderNumber && <p className="text-[11px] text-red-500">{errors.orderNumber}</p>}
@@ -402,7 +402,7 @@ export default function TrackOrderClient() {
             placeholder="your@email.com"
             autoComplete="email"
             className={`w-full border px-4 py-3.5 text-[13px] text-[var(--black)] placeholder-[#C8C8C8] bg-white outline-none transition-colors duration-200 rounded-none ${
-              errors.email ? "border-red-300 focus:border-red-400" : "border-[#E8E8E8] focus:border-[var(--black)]"
+              errors.email ? "border-red-300 focus:border-red-400" : "border-[var(--border)] focus:border-[var(--black)]"
             }`}
           />
           {errors.email && <p className="text-[11px] text-red-500">{errors.email}</p>}

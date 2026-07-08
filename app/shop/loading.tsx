@@ -6,7 +6,7 @@ export default function ShopLoading() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6">
       {/* Page header */}
-      <div className="pt-14 pb-6 border-b border-[#E8E8E8]">
+      <div className="pt-14 pb-6 border-b border-[var(--border)]">
         <Sk className="h-12 w-44" />
       </div>
 

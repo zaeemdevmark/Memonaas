@@ -8,15 +8,15 @@ import { getProducts } from "@/lib/services/product.service";
 export const revalidate = 60; // ISR: serve from CDN, regenerate in background every 60 s
 
 export const metadata: Metadata = buildMetadata({
-  title:       `${SITE_NAME} — Refined Luxury`,
-  description: "Discover premium ladies clothing at Memonaas. Timeless silhouettes, the finest fabrics, and curated collections for the refined woman.",
+  title:       `${SITE_NAME} — Considered Everyday Wear`,
+  description: "Discover considered everyday clothing at Memonaas — modern silhouettes, honest fabrics, and thoughtfully made collections.",
   path:        "/",
   keywords:    [
-    "luxury ladies clothing Pakistan",
-    "premium women fashion",
+    "everyday clothing Pakistan",
+    "modern women's fashion",
     "Memonaas",
-    "Pakistani designer wear",
-    "luxury fashion Lahore",
+    "Pakistani clothing brand",
+    "contemporary fashion Lahore",
     "women's clothing online Pakistan",
   ],
 });

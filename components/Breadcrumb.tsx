@@ -9,7 +9,7 @@ export default function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
   return (
     <nav
       aria-label="Breadcrumb"
-      className="flex items-center flex-wrap gap-1.5 text-[11px] tracking-[0.08em] uppercase text-[#999] pt-5 pb-2 px-4 sm:px-6 max-w-7xl mx-auto"
+      className="flex items-center flex-wrap gap-1.5 text-[11px] tracking-[0.08em] uppercase text-[var(--muted)] pt-5 pb-2 px-4 sm:px-6 max-w-7xl mx-auto"
     >
       {items.map((item, i) => (
         <span key={i} className="flex items-center gap-1.5">
@@ -21,7 +21,7 @@ export default function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
           {item.href && i < items.length - 1 ? (
             <Link
               href={item.href}
-              className="hover:text-[#111] transition-colors duration-150"
+              className="hover:text-[var(--ink)] transition-colors duration-150"
             >
               {item.label}
             </Link>

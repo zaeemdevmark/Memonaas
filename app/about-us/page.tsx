@@ -294,7 +294,7 @@ function ValuesSection() {
           {VALUES.map((value) => (
             <div key={value.number} className="group">
               <p
-                className="text-5xl font-light text-[var(--border)] group-hover:text-[var(--black)] transition-colors duration-300 mb-4 leading-none"
+                className="text-5xl font-light text-[var(--border)] group-hover:text-[var(--accent)] transition-colors duration-300 mb-4 leading-none"
               >
                 {value.number}
               </p>

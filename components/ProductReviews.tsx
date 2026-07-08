@@ -82,7 +82,7 @@ function RatingSummary({ summary }: { summary: ReviewSummary }) {
   const max = Math.max(...Object.values(distribution), 1);
 
   return (
-    <div className="flex flex-col sm:flex-row gap-8 py-8 border-b border-[#E8E8E8]">
+    <div className="flex flex-col sm:flex-row gap-8 py-8 border-b border-[var(--border)]">
       {/* Big average */}
       <div className="flex flex-col items-center justify-center shrink-0 min-w-[120px]">
         <p className="text-5xl font-light text-[var(--black)] leading-none mb-2">
@@ -135,7 +135,7 @@ function ReviewCard({
   isOwner:   boolean;
 }) {
   return (
-    <div className="py-6 border-b border-[#E8E8E8]">
+    <div className="py-6 border-b border-[var(--border)]">
       <div className="flex items-start justify-between gap-4 mb-2">
         <div className="flex items-center gap-3">
           {/* Avatar initials */}
@@ -163,7 +163,7 @@ function ReviewCard({
           {isOwner && (
             <>
               {onEdit && (
-                <button onClick={onEdit} className="text-[11px] text-[var(--muted)] hover:text-[var(--black)] underline transition-colors">
+                <button onClick={onEdit} className="text-[11px] text-[var(--muted)] hover:text-[var(--accent)] underline transition-colors">
                   Edit
                 </button>
               )}
@@ -234,7 +234,7 @@ function ReviewForm({ initial, onSubmit, onCancel, submitLabel = "Submit Review"
         <input
           type="text" maxLength={120} value={title} onChange={(e) => setTitle(e.target.value)}
           placeholder="Summarise your experience"
-          className="w-full border border-[#E8E8E8] px-3 py-2.5 text-[13px] text-[var(--black)] placeholder-[var(--muted)] focus:outline-none focus:border-[var(--black)] transition-colors bg-white"
+          className="w-full border border-[var(--border)] px-3 py-2.5 text-[13px] text-[var(--black)] placeholder-[var(--muted)] focus:outline-none focus:border-[var(--black)] transition-colors bg-white"
         />
       </div>
       <div>
@@ -244,7 +244,7 @@ function ReviewForm({ initial, onSubmit, onCancel, submitLabel = "Submit Review"
         <textarea
           rows={4} maxLength={2000} value={body} onChange={(e) => setBody(e.target.value)}
           placeholder="Tell us about your experience with this product..."
-          className="w-full border border-[#E8E8E8] px-3 py-2.5 text-[13px] text-[var(--black)] placeholder-[var(--muted)] focus:outline-none focus:border-[var(--black)] transition-colors bg-white resize-none"
+          className="w-full border border-[var(--border)] px-3 py-2.5 text-[13px] text-[var(--black)] placeholder-[var(--muted)] focus:outline-none focus:border-[var(--black)] transition-colors bg-white resize-none"
         />
       </div>
       {error && <p className="text-[12px] text-red-500">{error}</p>}
@@ -257,7 +257,7 @@ function ReviewForm({ initial, onSubmit, onCancel, submitLabel = "Submit Review"
         </button>
         <button
           type="button" onClick={onCancel}
-          className="px-4 py-2.5 text-[12px] tracking-[0.15em] uppercase text-[var(--muted)] hover:text-[var(--black)] transition-colors"
+          className="px-4 py-2.5 text-[12px] tracking-[0.15em] uppercase text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
         >
           Cancel
         </button>
@@ -337,7 +337,7 @@ export default function ProductReviews({ productSlug }: { productSlug: string })
 
   if (loading) {
     return (
-      <div className="border-t border-[#E8E8E8] pt-14 pb-10">
+      <div className="border-t border-[var(--border)] pt-14 pb-10">
         <div className="animate-pulse space-y-4">
           <div className="h-5 w-40 bg-[#E8E8E8] rounded" />
           <div className="h-24 bg-[#F5F5F5] rounded" />
@@ -351,7 +351,7 @@ export default function ProductReviews({ productSlug }: { productSlug: string })
 
   if (fetchError) {
     return (
-      <div className="border-t border-[#E8E8E8] pt-14 pb-10">
+      <div className="border-t border-[var(--border)] pt-14 pb-10">
         <p className="text-[13px] text-red-500">{fetchError}</p>
       </div>
     );
@@ -363,7 +363,7 @@ export default function ProductReviews({ productSlug }: { productSlug: string })
   const editTarget = editingId ? (userReview?.id === editingId ? userReview : null) : null;
 
   return (
-    <div className="border-t border-[#E8E8E8] pt-14 pb-10">
+    <div className="border-t border-[var(--border)] pt-14 pb-10">
 
       {/* Section header */}
       <div className="flex items-center justify-between mb-2">
@@ -386,14 +386,14 @@ export default function ProductReviews({ productSlug }: { productSlug: string })
       {summary.approvedReviews > 0 || summary.totalReviews > 0 ? (
         <RatingSummary summary={summary} />
       ) : (
-        <div className="py-6 border-b border-[#E8E8E8]">
+        <div className="py-6 border-b border-[var(--border)]">
           <p className="text-[13px] text-[var(--muted)]">No reviews yet. Be the first to review this product.</p>
         </div>
       )}
 
       {/* Write review form */}
       {showForm && isAuthenticated && !userReview && (
-        <div className="py-8 border-b border-[#E8E8E8]">
+        <div className="py-8 border-b border-[var(--border)]">
           <h3 className="text-[13px] tracking-[0.15em] uppercase text-[var(--black)] mb-5">Write a Review</h3>
           <ReviewForm onSubmit={handleCreate} onCancel={() => setShowForm(false)} />
         </div>
@@ -401,7 +401,7 @@ export default function ProductReviews({ productSlug }: { productSlug: string })
 
       {/* Not authenticated prompt */}
       {!isAuthenticated && (
-        <div className="py-6 border-b border-[#E8E8E8]">
+        <div className="py-6 border-b border-[var(--border)]">
           <p className="text-[13px] text-[var(--muted)]">
             <a href="/login" className="text-[var(--black)] underline">Sign in</a> to write a review.
           </p>
@@ -410,7 +410,7 @@ export default function ProductReviews({ productSlug }: { productSlug: string })
 
       {/* User's own review (pending approval) */}
       {userReview && (
-        <div className="py-4 bg-[#FAFAFA] border border-[#E8E8E8] px-4 my-6 rounded-sm">
+        <div className="py-4 bg-[#FAFAFA] border border-[var(--border)] px-4 my-6 rounded-sm">
           <p className="text-[11px] tracking-[0.15em] uppercase text-[var(--muted)] mb-3">Your Review</p>
           {editingId === userReview.id && editTarget ? (
             <ReviewForm
@@ -459,7 +459,7 @@ export default function ProductReviews({ productSlug }: { productSlug: string })
           <button
             disabled={page <= 1}
             onClick={() => fetchReviews(page - 1)}
-            className="text-[12px] tracking-[0.1em] uppercase text-[var(--muted)] hover:text-[var(--black)] disabled:opacity-30 transition-colors"
+            className="text-[12px] tracking-[0.1em] uppercase text-[var(--muted)] hover:text-[var(--accent)] disabled:opacity-30 transition-colors"
           >
             ← Prev
           </button>
@@ -469,7 +469,7 @@ export default function ProductReviews({ productSlug }: { productSlug: string })
           <button
             disabled={page >= totalPages}
             onClick={() => fetchReviews(page + 1)}
-            className="text-[12px] tracking-[0.1em] uppercase text-[var(--muted)] hover:text-[var(--black)] disabled:opacity-30 transition-colors"
+            className="text-[12px] tracking-[0.1em] uppercase text-[var(--muted)] hover:text-[var(--accent)] disabled:opacity-30 transition-colors"
           >
             Next →
           </button>
@@ -493,7 +493,7 @@ export default function ProductReviews({ productSlug }: { productSlug: string })
               </button>
               <button
                 onClick={() => setDeleteId(null)} disabled={deleting}
-                className="flex-1 py-2.5 text-[12px] tracking-[0.15em] uppercase border border-[#E8E8E8] text-[var(--black)] hover:bg-[#F5F5F5] transition-colors"
+                className="flex-1 py-2.5 text-[12px] tracking-[0.15em] uppercase border border-[var(--border)] text-[var(--black)] hover:bg-[#F5F5F5] transition-colors"
               >
                 Cancel
               </button>

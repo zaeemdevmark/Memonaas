@@ -32,7 +32,7 @@ function OrderTimeline({ order }: { order: CustomerOrderDTO }) {
               <div className={`absolute left-[9px] top-5 w-px h-9 transition-colors ${filled ? "bg-[var(--black)]" : "bg-[#E8E8E8]"}`} />
             )}
             <div className={`w-[18px] h-[18px] rounded-full shrink-0 mt-0.5 flex items-center justify-center border-2 transition-colors ${
-              cancelled ? "border-[#E8E8E8] bg-white"
+              cancelled ? "border-[var(--border)] bg-white"
               : filled  ? "border-[var(--black)] bg-[var(--black)]"
               :            "border-[#E0E0E0] bg-white"
             }`}>
@@ -82,7 +82,7 @@ export default async function OrderDetailPage({ params }: Props) {
     <div>
       <Link
         href="/dashboard/orders"
-        className="flex items-center gap-2 text-[11px] tracking-[0.15em] uppercase text-[var(--muted)] hover:text-[var(--black)] transition-colors mb-8 w-fit"
+        className="flex items-center gap-2 text-[11px] tracking-[0.15em] uppercase text-[var(--muted)] hover:text-[var(--accent)] transition-colors mb-8 w-fit"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
           <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
@@ -91,7 +91,7 @@ export default async function OrderDetailPage({ params }: Props) {
       </Link>
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-8 pb-7 border-b border-[#E8E8E8]">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-8 pb-7 border-b border-[var(--border)]">
         <div>
           <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--muted)] mb-1">Order</p>
           <h2 className="text-2xl font-light text-[var(--black)]">
@@ -110,7 +110,7 @@ export default async function OrderDetailPage({ params }: Props) {
             <p className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mb-5">Items Ordered</p>
             <div className="space-y-4">
               {order.items.map((item) => (
-                <div key={item.id} className="flex items-start gap-4 border border-[#E8E8E8] p-4">
+                <div key={item.id} className="flex items-start gap-4 border border-[var(--border)] p-4">
                   <div className="w-16 h-20 rounded-[6px] bg-[#EDE8E1] shrink-0 overflow-hidden relative">
                     {item.productImage ? (
                       <Image
@@ -145,7 +145,7 @@ export default async function OrderDetailPage({ params }: Props) {
           </div>
 
           {/* Order Summary */}
-          <div className="border border-[#E8E8E8] p-5 space-y-3">
+          <div className="border border-[var(--border)] p-5 space-y-3">
             <p className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mb-4">Order Summary</p>
             {[
               ["Subtotal",          fp(order.subtotal)],
@@ -158,7 +158,7 @@ export default async function OrderDetailPage({ params }: Props) {
                 <span className="text-[var(--black)]">{value}</span>
               </div>
             ))}
-            <div className="border-t border-[#E8E8E8] pt-3 flex justify-between">
+            <div className="border-t border-[var(--border)] pt-3 flex justify-between">
               <span className="text-[13px] font-medium text-[var(--black)]">Total</span>
               <span className="text-[15px] font-light text-[var(--black)]">
                 {fp(order.total)}
@@ -169,7 +169,7 @@ export default async function OrderDetailPage({ params }: Props) {
           {/* Shipping Address */}
           <div>
             <p className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mb-3">Shipping Address</p>
-            <div className="border border-[#E8E8E8] px-5 py-4 text-[12px] text-[var(--muted)] leading-relaxed">
+            <div className="border border-[var(--border)] px-5 py-4 text-[12px] text-[var(--muted)] leading-relaxed">
               <p className="text-[var(--black)] font-medium mb-1">{order.shipping.name}</p>
               <p>{order.shipping.street}</p>
               <p>{order.shipping.city}{order.shipping.province ? `, ${order.shipping.province}` : ""}, {order.shipping.country}</p>
@@ -182,7 +182,7 @@ export default async function OrderDetailPage({ params }: Props) {
           {order.payment && (
             <div>
               <p className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mb-3">Payment</p>
-              <div className="border border-[#E8E8E8] px-5 py-4 text-[12px] text-[var(--muted)] flex items-center justify-between">
+              <div className="border border-[var(--border)] px-5 py-4 text-[12px] text-[var(--muted)] flex items-center justify-between">
                 <span>{order.payment.method === "COD" ? "Cash on Delivery" : "Card"}</span>
                 <span className={order.payment.status === "Completed" ? "text-green-600" : "text-amber-600"}>
                   {order.payment.status}
@@ -194,7 +194,7 @@ export default async function OrderDetailPage({ params }: Props) {
           {order.notes && (
             <div>
               <p className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mb-3">Notes</p>
-              <div className="border border-[#E8E8E8] px-5 py-4 text-[12px] text-[var(--muted)] leading-relaxed">
+              <div className="border border-[var(--border)] px-5 py-4 text-[12px] text-[var(--muted)] leading-relaxed">
                 {order.notes}
               </div>
             </div>

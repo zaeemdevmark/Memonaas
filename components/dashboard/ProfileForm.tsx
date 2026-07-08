@@ -49,7 +49,7 @@ export default function ProfileForm({ initialProfile }: Props) {
   }
 
   return (
-    <div className="border border-[#E8E8E8] p-6 mb-6">
+    <div className="border border-[var(--border)] p-6 mb-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-full bg-[var(--black)] flex items-center justify-center">
@@ -65,7 +65,7 @@ export default function ProfileForm({ initialProfile }: Props) {
         {!editing && (
           <button
             onClick={() => { setForm({ name: profile.name, phone: profile.phone ?? "" }); setEditing(true); }}
-            className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)] hover:text-[var(--black)] transition-colors border border-[#E8E8E8] hover:border-[var(--black)] px-3 py-1.5"
+            className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)] hover:text-[var(--accent)] transition-colors border border-[var(--border)] hover:border-[var(--black)] px-3 py-1.5"
           >
             Edit
           </button>
@@ -96,7 +96,7 @@ export default function ProfileForm({ initialProfile }: Props) {
             </button>
             <button
               onClick={cancelEdit}
-              className="px-6 py-3 border border-[#E8E8E8] text-[var(--muted)] text-[11px] tracking-[0.2em] uppercase hover:border-[var(--black)] hover:text-[var(--black)] transition-colors"
+              className="px-6 py-3 border border-[var(--border)] text-[var(--muted)] text-[11px] tracking-[0.2em] uppercase hover:border-[var(--black)] hover:text-[var(--accent)] transition-colors"
             >
               Cancel
             </button>

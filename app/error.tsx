@@ -17,15 +17,15 @@ export default function Error({
 
   return (
     <div className="flex min-h-[70vh] flex-col items-center justify-center px-6 text-center">
-      <p className="text-[11px] tracking-[0.3em] uppercase text-[#999] mb-6">
+      <p className="text-[11px] tracking-[0.3em] uppercase text-[var(--muted)] mb-6">
         Error 500
       </p>
       <h1
-        className="text-5xl sm:text-7xl font-light text-[#111] leading-none mb-4"
+        className="text-5xl sm:text-7xl font-light text-[var(--ink)] leading-none mb-4"
       >
         Something went wrong
       </h1>
-      <p className="text-[14px] text-[#666] max-w-sm leading-relaxed mb-10">
+      <p className="text-[14px] text-[var(--muted)] max-w-sm leading-relaxed mb-10">
         An unexpected error occurred. Our team has been notified.
         {error.digest && (
           <span className="block mt-2 text-[11px] text-[#aaa]">
@@ -42,7 +42,7 @@ export default function Error({
         </button>
         <Link
           href="/"
-          className="text-[11px] tracking-widest uppercase text-[#111] border-b border-[#111] pb-0.5 hover:opacity-60 transition-opacity"
+          className="text-[11px] tracking-widest uppercase text-[var(--ink)] border-b border-[var(--ink)] pb-0.5 hover:opacity-60 transition-opacity"
         >
           Return home
         </Link>

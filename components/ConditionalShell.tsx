@@ -5,10 +5,9 @@ import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-// Overlay components: defer loading until after hydration.
-// Neither is needed for the initial paint or for crawlers.
-const CartDrawer  = dynamic(() => import("@/components/CartDrawer"),  { ssr: false });
-const SearchModal = dynamic(() => import("@/components/SearchModal"), { ssr: false });
+// Overlay: defer loading until after hydration.
+// Not needed for the initial paint or for crawlers.
+const CartDrawer = dynamic(() => import("@/components/CartDrawer"), { ssr: false });
 
 interface Props {
   children: React.ReactNode;
@@ -27,7 +26,6 @@ export default function ConditionalShell({ children, role }: Props) {
       <main className="flex-1">{children}</main>
       <Footer />
       <CartDrawer />
-      <SearchModal />
     </>
   );
 }

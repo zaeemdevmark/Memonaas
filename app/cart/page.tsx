@@ -59,7 +59,7 @@ export default function CartPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 pb-24">
 
       {/* Page heading */}
-      <div className="mb-10 border-b border-[#E8E8E8] pb-6">
+      <div className="mb-10 border-b border-[var(--border)] pb-6">
         <h1
           className="text-4xl sm:text-5xl font-light text-[var(--black)]"
         >
@@ -76,7 +76,7 @@ export default function CartPage() {
         <div className="flex-1 min-w-0">
 
           {/* Column labels */}
-          <div className="hidden sm:grid grid-cols-[1fr_auto_auto_auto] gap-4 text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] pb-4 border-b border-[#E8E8E8] mb-2">
+          <div className="hidden sm:grid grid-cols-[1fr_auto_auto_auto] gap-4 text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] pb-4 border-b border-[var(--border)] mb-2">
             <span>Product</span>
             <span className="text-right">Price</span>
             <span className="text-center">Quantity</span>
@@ -151,15 +151,15 @@ export default function CartPage() {
 
                   {/* Quantity */}
                   <div className="flex sm:justify-center">
-                    <div className="flex items-center border border-[#E8E8E8]">
+                    <div className="flex items-center border border-[var(--border)]">
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        className="w-9 h-9 flex items-center justify-center text-[var(--muted)] hover:text-[var(--black)] hover:bg-[#F9F9F9] transition-all duration-200 text-sm"
+                        className="w-9 h-9 flex items-center justify-center text-[var(--muted)] hover:text-[var(--accent)] hover:bg-[#F9F9F9] transition-all duration-200 text-sm"
                         aria-label="Decrease quantity"
                       >
                         −
                       </button>
-                      <span className="w-9 h-9 flex items-center justify-center text-[13px] text-[var(--black)] border-x border-[#E8E8E8]">
+                      <span className="w-9 h-9 flex items-center justify-center text-[13px] text-[var(--black)] border-x border-[var(--border)]">
                         {item.quantity}
                       </span>
                       <button
@@ -168,7 +168,7 @@ export default function CartPage() {
                           updateQuantity(item.id, item.quantity + 1);
                         }}
                         disabled={item.stock !== undefined && item.quantity >= item.stock}
-                        className="w-9 h-9 flex items-center justify-center text-[var(--muted)] hover:text-[var(--black)] hover:bg-[#F9F9F9] transition-all duration-200 text-sm disabled:opacity-30 disabled:cursor-not-allowed"
+                        className="w-9 h-9 flex items-center justify-center text-[var(--muted)] hover:text-[var(--accent)] hover:bg-[#F9F9F9] transition-all duration-200 text-sm disabled:opacity-30 disabled:cursor-not-allowed"
                         aria-label="Increase quantity"
                       >
                         +
@@ -201,7 +201,7 @@ export default function CartPage() {
           <div className="mt-8">
             <Link
               href="/shop"
-              className="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] hover:text-[var(--black)] transition-colors duration-200"
+              className="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] hover:text-[var(--accent)] transition-colors duration-200"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
@@ -213,7 +213,7 @@ export default function CartPage() {
 
         {/* ── RIGHT: Order Summary ── */}
         <div className="w-full lg:w-[360px] shrink-0">
-          <div className="border border-[#E8E8E8] p-7 sticky top-24">
+          <div className="border border-[var(--border)] p-7 sticky top-24">
             <h2
               className="text-2xl font-light text-[var(--black)] mb-7"
             >
@@ -238,7 +238,7 @@ export default function CartPage() {
               })}
             </div>
 
-            <div className="border-t border-[#E8E8E8] pt-5 space-y-3">
+            <div className="border-t border-[var(--border)] pt-5 space-y-3">
               <div className="flex justify-between items-center">
                 <span className="text-[12px] text-[var(--muted)]">Subtotal</span>
                 <span className="text-[13px] text-[var(--black)]">{formatPrice(subtotal)}</span>
@@ -249,7 +249,7 @@ export default function CartPage() {
               </div>
             </div>
 
-            <div className="border-t border-[#E8E8E8] mt-5 pt-5 flex justify-between items-center mb-8">
+            <div className="border-t border-[var(--border)] mt-5 pt-5 flex justify-between items-center mb-8">
               <span className="text-[13px] font-medium text-[var(--black)] tracking-wide">
                 Estimated Total
               </span>

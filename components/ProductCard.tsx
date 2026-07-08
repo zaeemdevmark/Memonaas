@@ -34,7 +34,7 @@ export default function ProductCard({ id, image, hoverImage, name, price, salePr
 
       {/* Image */}
       <div
-        className={`relative aspect-[3/4] max-[639px]:aspect-auto max-[639px]:h-[var(--mobile-product-h)] w-full overflow-hidden bg-[#EDE8E1] rounded-[10px]${hoverImage ? " transition-[border-radius] duration-[400ms] ease-in-out group-hover:rounded-none" : ""}`}
+        className={`relative aspect-[3/4] max-[639px]:aspect-auto max-[639px]:h-[var(--mobile-product-h)] w-full overflow-hidden bg-[var(--accent-soft)]/40 rounded-[10px]${hoverImage ? " transition-[border-radius] duration-[400ms] ease-in-out group-hover:rounded-none" : ""}`}
       >
         <Link
           href={`/products/${slug}`}
@@ -82,7 +82,7 @@ export default function ProductCard({ id, image, hoverImage, name, price, salePr
           </span>
         ) : discountPercent ? (
           <span
-            className="absolute top-[15px] left-[10px] text-[10px] tracking-[0.2em] uppercase text-black font-medium"
+            className="absolute top-[15px] left-[10px] text-[10px] tracking-[0.2em] uppercase text-[var(--accent)] font-medium"
             style={verticalStyle}
           >
             Sale {discountPercent}%
@@ -109,7 +109,7 @@ export default function ProductCard({ id, image, hoverImage, name, price, salePr
         <div className="flex items-center gap-1.5 shrink-0">
           {salePrice ? (
             <>
-              <span className="text-[14px] text-[#9B9B9B] line-through">{price}</span>
+              <span className="text-[14px] text-[var(--sold-out)] line-through">{price}</span>
               <span className="text-[14px] text-[var(--muted)]">{salePrice}</span>
             </>
           ) : (

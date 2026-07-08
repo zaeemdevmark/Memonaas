@@ -59,7 +59,7 @@ export default function PolicyLayout({
                   <a
                     key={s.id}
                     href={`#${s.id}`}
-                    className="flex items-center gap-2.5 py-2 text-[12px] text-[var(--muted)] hover:text-[var(--black)] transition-colors group"
+                    className="flex items-center gap-2.5 py-2 text-[12px] text-[var(--muted)] hover:text-[var(--accent)] transition-colors group"
                   >
                     <span className="text-[10px] tabular-nums text-[var(--border)] group-hover:text-[var(--muted)] transition-colors">
                       {String(i + 1).padStart(2, "0")}

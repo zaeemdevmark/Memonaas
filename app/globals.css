@@ -56,7 +56,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--black);
+  background: var(--accent);
   transform: translateX(-100%);
   transition: transform 350ms ease-in-out;
   z-index: 0;
@@ -65,7 +65,8 @@ body {
   transform: translateX(0);
 }
 .btn-fill:hover {
-  color: white;
+  color: var(--surface);
+  border-color: var(--accent) !important;
 }
 .btn-fill > * {
   position: relative;

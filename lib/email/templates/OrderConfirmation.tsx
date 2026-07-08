@@ -66,7 +66,7 @@ export default function OrderConfirmationEmail({ order }: Props) {
           {/* Header */}
           <Section style={s.header}>
             <Text style={s.brand}>Memonaas</Text>
-            <Text style={s.tagline}>Luxury Fashion</Text>
+            <Text style={s.tagline}>Considered Everyday Wear</Text>
           </Section>
 
           {/* Body */}
@@ -164,7 +164,7 @@ export default function OrderConfirmationEmail({ order }: Props) {
 
           {/* Footer */}
           <Section style={s.footer}>
-            <Text style={s.footerText}>Memonaas — Luxury Fashion</Text>
+            <Text style={s.footerText}>Memonaas — Considered Everyday Wear</Text>
             <Text style={s.footerText}>Questions? Reply to this email or contact our support team.</Text>
           </Section>
 

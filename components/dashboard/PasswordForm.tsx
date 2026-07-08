@@ -48,7 +48,7 @@ export default function PasswordForm() {
   ];
 
   return (
-    <div className="border border-[#E8E8E8] p-6">
+    <div className="border border-[var(--border)] p-6">
       <p className="text-[11px] tracking-[0.2em] uppercase text-[var(--black)] font-medium mb-6">Change Password</p>
 
       {success && <div className="mb-5"><SuccessBanner msg={success} /></div>}
@@ -68,7 +68,7 @@ export default function PasswordForm() {
               className={`w-full border px-4 py-3 text-[13px] text-[var(--black)] bg-white outline-none transition-colors rounded-none ${
                 errors[key]
                   ? "border-red-300 focus:border-red-400"
-                  : "border-[#E8E8E8] focus:border-[var(--black)]"
+                  : "border-[var(--border)] focus:border-[var(--black)]"
               }`}
             />
             {errors[key] && <p className="text-[11px] text-red-500">{errors[key]}</p>}

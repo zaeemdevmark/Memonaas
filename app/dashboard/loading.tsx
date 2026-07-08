@@ -12,7 +12,7 @@ export default function DashboardLoading() {
       </div>
       <div className="space-y-3">
         {Array.from({ length: 3 }).map((_, i) => (
-          <div key={i} className="border border-[#E8E8E8] px-5 py-4">
+          <div key={i} className="border border-[var(--border)] px-5 py-4">
             <SkeletonLine w="w-1/3" h="h-4" />
             <div className="mt-2"><SkeletonLine w="w-1/2" h="h-3" /></div>
           </div>

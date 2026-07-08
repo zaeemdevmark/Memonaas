@@ -13,7 +13,7 @@ export default function CategoryLoading() {
       </div>
 
       {/* Category header */}
-      <div className="pt-8 pb-6 border-b border-[#E8E8E8] space-y-3">
+      <div className="pt-8 pb-6 border-b border-[var(--border)] space-y-3">
         <Sk className="h-12 w-56" />
         <Sk className="h-4 w-96 max-w-full" />
         <Sk className="h-4 w-72 max-w-full" />

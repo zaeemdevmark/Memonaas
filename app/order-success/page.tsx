@@ -30,7 +30,7 @@ function LoadingState() {
     <div className="min-h-[70vh] flex flex-col items-center justify-center gap-8 px-4">
       {/* Pulsing ring */}
       <div className="relative w-20 h-20">
-        <div className="absolute inset-0 rounded-full border border-[#E8E8E8] animate-ping opacity-30" />
+        <div className="absolute inset-0 rounded-full border border-[var(--border)] animate-ping opacity-30" />
         <div className="absolute inset-2 rounded-full border border-[#D0D0D0] animate-ping opacity-20" style={{ animationDelay: "300ms" }} />
         <div className="w-20 h-20 rounded-full border border-[#E0E0E0] flex items-center justify-center">
           <svg className="animate-spin w-6 h-6 text-[var(--muted)]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -60,7 +60,7 @@ function CheckIcon({ visible }: { visible: boolean }) {
     >
       {/* Outer ring */}
       <div
-        className={`absolute inset-0 rounded-full border border-[#E8E8E8] transition-all duration-1000 ${
+        className={`absolute inset-0 rounded-full border border-[var(--border)] transition-all duration-1000 ${
           visible ? "scale-110 opacity-0" : "scale-100 opacity-100"
         }`}
         style={{ transitionDelay: "400ms" }}
@@ -100,7 +100,7 @@ function InfoCard({
 }) {
   return (
     <div
-      className={`border border-[#E8E8E8] p-6 transition-all duration-500 ease-out ${
+      className={`border border-[var(--border)] p-6 transition-all duration-500 ease-out ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
       }`}
       style={{ transitionDelay: `${delay}ms` }}
@@ -153,7 +153,7 @@ export default function OrderSuccessPage() {
 
         {/* Order number */}
         <div
-          className={`inline-block mt-8 border border-[#E8E8E8] px-10 py-5 transition-all duration-500 ease-out ${
+          className={`inline-block mt-8 border border-[var(--border)] px-10 py-5 transition-all duration-500 ease-out ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
           }`}
           style={{ transitionDelay: "380ms" }}
@@ -170,13 +170,13 @@ export default function OrderSuccessPage() {
 
       {/* ── Order Summary card ── */}
       <div
-        className={`border border-[#E8E8E8] mb-8 transition-all duration-500 ease-out ${
+        className={`border border-[var(--border)] mb-8 transition-all duration-500 ease-out ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
         }`}
         style={{ transitionDelay: "480ms" }}
       >
         {/* Card header */}
-        <div className="px-7 py-5 border-b border-[#E8E8E8] flex items-center justify-between">
+        <div className="px-7 py-5 border-b border-[var(--border)] flex items-center justify-between">
           <h2 className="text-[11px] tracking-[0.25em] uppercase text-[var(--black)] font-medium">
             Order Summary
           </h2>
@@ -186,7 +186,7 @@ export default function OrderSuccessPage() {
         </div>
 
         {/* Items */}
-        <div className="px-7 py-5 space-y-4 border-b border-[#E8E8E8]">
+        <div className="px-7 py-5 space-y-4 border-b border-[var(--border)]">
           {ORDER.items.map((item, i) => (
             <div key={i} className="flex items-center gap-4">
               {/* Image placeholder */}
@@ -225,7 +225,7 @@ export default function OrderSuccessPage() {
               <span className="text-[var(--black)]">{formatPrice(ORDER.shipping)}</span>
             )}
           </div>
-          <div className="flex justify-between items-center border-t border-[#E8E8E8] pt-4 mt-1">
+          <div className="flex justify-between items-center border-t border-[var(--border)] pt-4 mt-1">
             <span className="text-[12px] font-medium text-[var(--black)]">Total</span>
             <span
               className="text-[20px] font-light text-[var(--black)]"

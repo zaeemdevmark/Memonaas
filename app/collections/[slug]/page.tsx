@@ -74,14 +74,14 @@ export async function generateMetadata({
       title:       `${category.name} — ${SITE_NAME}`,
       description:
         category.description ??
-        `Shop the ${category.name} collection at ${SITE_NAME}. Premium ladies clothing crafted for the refined woman.`,
+        `Shop the ${category.name} collection at ${SITE_NAME}. Considered clothing made for everyday life.`,
       path:        `/collections/${slug}`,
       image:       category.imageThumbnailUrl ?? undefined,
       keywords:    [
         category.name,
         `${category.name} Pakistan`,
-        "luxury ladies fashion",
-        "Pakistani designer wear",
+        "modern women's fashion",
+        "Pakistani clothing brand",
         SITE_NAME,
       ],
     });
@@ -168,10 +168,10 @@ export default async function CollectionPage({
         )}
 
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 py-6 mt-6 border-t border-[#E8E8E8] text-[11px] text-[var(--muted)] tracking-wide">
-          <Link href="/" className="hover:text-[var(--black)] transition-colors">Home</Link>
+        <nav className="flex items-center gap-2 py-6 mt-6 border-t border-[var(--border)] text-[11px] text-[var(--muted)] tracking-wide">
+          <Link href="/" className="hover:text-[var(--accent)] transition-colors">Home</Link>
           <span>/</span>
-          <Link href="/shop" className="hover:text-[var(--black)] transition-colors">Shop All</Link>
+          <Link href="/shop" className="hover:text-[var(--accent)] transition-colors">Shop All</Link>
           <span>/</span>
           <span className="text-[var(--black)]">{category.name}</span>
         </nav>

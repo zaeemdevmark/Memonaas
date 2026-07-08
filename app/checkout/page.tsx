@@ -149,10 +149,10 @@ function PaymentOption({ selected, onSelect, label, sublabel, icon, disabled }: 
       disabled={disabled}
       className={`relative flex items-center gap-4 border px-5 py-4 text-left transition-all duration-200 w-full ${
         disabled
-          ? "border-[#E8E8E8] opacity-50 cursor-not-allowed"
+          ? "border-[var(--border)] opacity-50 cursor-not-allowed"
           : selected
           ? "border-[var(--black)] bg-[#FAFAFA]"
-          : "border-[#E8E8E8] hover:border-[#AAAAAA]"
+          : "border-[var(--border)] hover:border-[#AAAAAA]"
       }`}
     >
       <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
@@ -370,14 +370,14 @@ export default function CheckoutPage() {
           Your order has been placed successfully. Our team will contact you shortly to confirm delivery.
         </p>
 
-        <div className="border border-[#E8E8E8] inline-block px-10 py-5 mb-10">
+        <div className="border border-[var(--border)] inline-block px-10 py-5 mb-10">
           <p className="text-[10px] tracking-[0.2em] uppercase text-[#3D3D3D] mb-1">Order Number</p>
           <p className="text-[18px] font-medium text-[var(--black)]">
             {placedOrder.orderNumber}
           </p>
         </div>
 
-        <div className="border-t border-[#E8E8E8] pt-8 mb-10 space-y-3 text-left max-w-sm mx-auto">
+        <div className="border-t border-[var(--border)] pt-8 mb-10 space-y-3 text-left max-w-sm mx-auto">
           {placedOrder.items.map((item) => (
             <div key={item.id} className="flex justify-between items-center text-[12px]">
               <span className="text-[var(--black)]">
@@ -388,7 +388,7 @@ export default function CheckoutPage() {
               <span className="text-[var(--black)]">{formatPrice(item.lineTotal)}</span>
             </div>
           ))}
-          <div className="border-t border-[#E8E8E8] pt-3 flex justify-between font-medium text-[13px]">
+          <div className="border-t border-[var(--border)] pt-3 flex justify-between font-medium text-[13px]">
             <span>Total</span>
             <span>{formatPrice(placedOrder.total)}</span>
           </div>
@@ -410,7 +410,7 @@ export default function CheckoutPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 pb-24">
 
-      <div className="mb-10 border-b border-[#E8E8E8] pb-6">
+      <div className="mb-10 border-b border-[var(--border)] pb-6">
         <p className="text-[10px] tracking-[0.3em] uppercase text-[#3D3D3D] mb-1">Memonaas</p>
         <h1 className="text-4xl sm:text-5xl font-light text-[var(--black)]">
           Checkout
@@ -499,7 +499,7 @@ export default function CheckoutPage() {
               </div>
 
               {form.payment === "cod" && (
-                <div className="mt-4 bg-[#FAFAFA] border border-[#E8E8E8] px-5 py-4 flex items-start gap-3">
+                <div className="mt-4 bg-[#FAFAFA] border border-[var(--border)] px-5 py-4 flex items-start gap-3">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-[#3D3D3D] shrink-0 mt-0.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
                   </svg>
@@ -528,7 +528,7 @@ export default function CheckoutPage() {
             </section>
 
             <div className="lg:hidden">
-              <Link href="/cart" className="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-[#3D3D3D] hover:text-[var(--black)] transition-colors duration-200">
+              <Link href="/cart" className="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-[#3D3D3D] hover:text-[var(--accent)] transition-colors duration-200">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                 </svg>
@@ -539,7 +539,7 @@ export default function CheckoutPage() {
 
           {/* ── RIGHT — Order Summary ── */}
           <div className="w-full lg:w-[380px] shrink-0 lg:sticky lg:top-[108px]">
-            <div className="border border-[#E8E8E8] p-7">
+            <div className="border border-[var(--border)] p-7">
               <h2 className="text-[11px] tracking-[0.25em] uppercase text-[var(--black)] mb-7 font-medium">
                 Order Summary
               </h2>
@@ -593,7 +593,7 @@ export default function CheckoutPage() {
                 ))}
               </div>
 
-              <div className="border-t border-[#E8E8E8] pt-5 space-y-3">
+              <div className="border-t border-[var(--border)] pt-5 space-y-3">
                 <div className="flex justify-between text-[12px]">
                   <span className="text-[#3D3D3D]">Subtotal</span>
                   <span className="text-[var(--black)]">{formatPrice(cart?.subtotal ?? 0)}</span>
@@ -608,7 +608,7 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              <div className="border-t border-[#E8E8E8] mt-4 pt-5 flex justify-between items-center mb-8">
+              <div className="border-t border-[var(--border)] mt-4 pt-5 flex justify-between items-center mb-8">
                 <span className="text-[12px] font-medium text-[var(--black)] tracking-wide">Estimated Total</span>
                 <span className="text-[16px] font-medium text-[var(--black)]">
                   {formatPrice(total)}
@@ -635,7 +635,7 @@ export default function CheckoutPage() {
                 </button>
                 <Link
                   href="/cart"
-                  className="w-full py-3.5 border border-[#E8E8E8] text-[#3D3D3D] text-[11px] tracking-[0.2em] uppercase hover:border-[var(--black)] hover:text-[var(--black)] transition-colors duration-200 flex items-center justify-center gap-2"
+                  className="w-full py-3.5 border border-[var(--border)] text-[#3D3D3D] text-[11px] tracking-[0.2em] uppercase hover:border-[var(--black)] hover:text-[var(--accent)] transition-colors duration-200 flex items-center justify-center gap-2"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3.5 h-3.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />

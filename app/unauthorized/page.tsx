@@ -16,7 +16,7 @@ export default function UnauthorizedPage() {
 
         {/* Icon */}
         <div className="flex justify-center mb-6">
-          <div className="w-14 h-14 rounded-full border border-[#E8E8E8] flex items-center justify-center">
+          <div className="w-14 h-14 rounded-full border border-[var(--border)] flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -55,7 +55,7 @@ export default function UnauthorizedPage() {
           </Link>
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-[#E8E8E8] text-[#666666] text-[11px] tracking-[0.2em] uppercase hover:border-[var(--black)] hover:text-[var(--black)] transition-colors duration-200"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-[var(--border)] text-[#666666] text-[11px] tracking-[0.2em] uppercase hover:border-[var(--black)] hover:text-[var(--accent)] transition-colors duration-200"
           >
             Go Home
           </Link>

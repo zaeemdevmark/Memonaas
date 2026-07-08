@@ -11,14 +11,14 @@ interface Props {
 function Pagination({ page, totalPages }: { page: number; totalPages: number }) {
   if (totalPages <= 1) return null;
   return (
-    <div className="flex items-center justify-between mt-8 pt-6 border-t border-[#E8E8E8]">
+    <div className="flex items-center justify-between mt-8 pt-6 border-t border-[var(--border)]">
       <Link
         href={page > 1 ? `?page=${page - 1}` : "#"}
         aria-disabled={page <= 1}
         className={`text-[10px] tracking-[0.2em] uppercase border px-4 py-2 transition-colors ${
           page <= 1
-            ? "border-[#E8E8E8] text-[#D0D0D0] pointer-events-none"
-            : "border-[#E8E8E8] text-[var(--muted)] hover:border-[var(--black)] hover:text-[var(--black)]"
+            ? "border-[var(--border)] text-[#D0D0D0] pointer-events-none"
+            : "border-[var(--border)] text-[var(--muted)] hover:border-[var(--black)] hover:text-[var(--accent)]"
         }`}
       >
         Previous
@@ -31,8 +31,8 @@ function Pagination({ page, totalPages }: { page: number; totalPages: number }) 
         aria-disabled={page >= totalPages}
         className={`text-[10px] tracking-[0.2em] uppercase border px-4 py-2 transition-colors ${
           page >= totalPages
-            ? "border-[#E8E8E8] text-[#D0D0D0] pointer-events-none"
-            : "border-[#E8E8E8] text-[var(--muted)] hover:border-[var(--black)] hover:text-[var(--black)]"
+            ? "border-[var(--border)] text-[#D0D0D0] pointer-events-none"
+            : "border-[var(--border)] text-[var(--muted)] hover:border-[var(--black)] hover:text-[var(--accent)]"
         }`}
       >
         Next
@@ -73,7 +73,7 @@ export default async function OrdersPage({ searchParams }: Props) {
         <>
           <div className="space-y-3">
             {orders.map((order) => (
-              <div key={order.id} className="border border-[#E8E8E8] hover:border-[#BBBBBB] transition-colors duration-200">
+              <div key={order.id} className="border border-[var(--border)] hover:border-[#BBBBBB] transition-colors duration-200">
                 <div className="px-6 py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="space-y-1">
                     <p className="text-[13px] font-medium text-[var(--black)]">#{order.orderNumber}</p>

@@ -29,12 +29,12 @@ export async function generateMetadata({
   return buildMetadata({
     title:       `${product.name} — ${SITE_NAME}`,
     description: product.description ??
-      `Shop ${product.name} at ${SITE_NAME}. Premium ladies clothing crafted for the refined woman.`,
+      `Shop ${product.name} at ${SITE_NAME}. Considered clothing made for everyday life.`,
     path:        `/products/${slug}`,
     keywords:    [
       product.name,
-      "luxury ladies clothing",
-      "Pakistani designer wear",
+      "everyday women's clothing",
+      "Pakistani clothing brand",
       SITE_NAME,
       "women's fashion Pakistan",
     ],

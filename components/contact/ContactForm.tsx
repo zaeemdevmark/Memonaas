@@ -52,7 +52,7 @@ const inputClass = (hasError?: string) =>
   `w-full border px-4 py-3.5 text-[13px] text-[var(--black)] placeholder-[#C8C8C8] bg-white outline-none transition-colors duration-200 rounded-none ${
     hasError
       ? "border-red-300 focus:border-red-400"
-      : "border-[#E8E8E8] focus:border-[var(--black)]"
+      : "border-[var(--border)] focus:border-[var(--black)]"
   }`;
 
 function Spinner() {
@@ -133,7 +133,7 @@ export default function ContactForm() {
         </div>
         <button
           onClick={() => setSuccess(false)}
-          className="text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] hover:text-[var(--black)] transition-colors underline underline-offset-2 mt-2"
+          className="text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] hover:text-[var(--accent)] transition-colors underline underline-offset-2 mt-2"
         >
           Send Another Message
         </button>

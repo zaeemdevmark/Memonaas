@@ -156,7 +156,7 @@ export default function AddressManager({ initialAddresses }: Props) {
   }
 
   const AddressForm = ({ onCancel }: { onCancel: () => void }) => (
-    <div className="border border-[#E8E8E8] p-6 space-y-4">
+    <div className="border border-[var(--border)] p-6 space-y-4">
       <p className="text-[11px] tracking-[0.2em] uppercase text-[var(--black)] font-medium mb-5">
         {editId ? "Edit Address" : "New Address"}
       </p>
@@ -166,7 +166,7 @@ export default function AddressManager({ initialAddresses }: Props) {
           <select
             value={form.label}
             onChange={(e) => setF("label", e.target.value)}
-            className="w-full border border-[#E8E8E8] focus:border-[var(--black)] px-4 py-3 text-[13px] text-[var(--black)] bg-white outline-none appearance-none rounded-none"
+            className="w-full border border-[var(--border)] focus:border-[var(--black)] px-4 py-3 text-[13px] text-[var(--black)] bg-white outline-none appearance-none rounded-none"
           >
             {["Home", "Work", "Other"].map((l) => <option key={l}>{l}</option>)}
           </select>
@@ -203,7 +203,7 @@ export default function AddressManager({ initialAddresses }: Props) {
         </button>
         <button
           onClick={onCancel}
-          className="px-6 py-3 border border-[#E8E8E8] text-[var(--muted)] text-[11px] tracking-[0.2em] uppercase hover:border-[var(--black)] hover:text-[var(--black)] transition-colors"
+          className="px-6 py-3 border border-[var(--border)] text-[var(--muted)] text-[11px] tracking-[0.2em] uppercase hover:border-[var(--black)] hover:text-[var(--accent)] transition-colors"
         >
           Cancel
         </button>
@@ -248,7 +248,7 @@ export default function AddressManager({ initialAddresses }: Props) {
             editId === addr.id ? (
               <AddressForm key={addr.id} onCancel={cancelForm} />
             ) : (
-              <div key={addr.id} className="border border-[#E8E8E8] p-6 hover:border-[#BBBBBB] transition-colors duration-200">
+              <div key={addr.id} className="border border-[var(--border)] p-6 hover:border-[#BBBBBB] transition-colors duration-200">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-2 mb-2">
@@ -276,14 +276,14 @@ export default function AddressManager({ initialAddresses }: Props) {
                   <div className="flex flex-col gap-2 shrink-0">
                     <button
                       onClick={() => startEdit(addr)}
-                      className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)] hover:text-[var(--black)] transition-colors border border-[#E8E8E8] hover:border-[var(--black)] px-3 py-1.5"
+                      className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)] hover:text-[var(--accent)] transition-colors border border-[var(--border)] hover:border-[var(--black)] px-3 py-1.5"
                     >
                       Edit
                     </button>
                     {!addr.isDefault && (
                       <button
                         onClick={() => handleSetDefault(addr.id)}
-                        className="text-[10px] tracking-[0.1em] uppercase text-[var(--muted)] hover:text-[var(--black)] transition-colors border border-[#E8E8E8] hover:border-[var(--black)] px-3 py-1.5"
+                        className="text-[10px] tracking-[0.1em] uppercase text-[var(--muted)] hover:text-[var(--accent)] transition-colors border border-[var(--border)] hover:border-[var(--black)] px-3 py-1.5"
                       >
                         Set Default
                       </button>
@@ -299,7 +299,7 @@ export default function AddressManager({ initialAddresses }: Props) {
                         </button>
                         <button
                           onClick={() => setDeleteId(null)}
-                          className="text-[10px] px-2 py-1.5 border border-[#E8E8E8] text-[var(--muted)] hover:border-[var(--black)] transition-colors"
+                          className="text-[10px] px-2 py-1.5 border border-[var(--border)] text-[var(--muted)] hover:border-[var(--black)] transition-colors"
                         >
                           No
                         </button>

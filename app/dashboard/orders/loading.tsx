@@ -6,7 +6,7 @@ export default function OrdersLoading() {
       <div className="mb-7"><SkeletonLine w="w-32" h="h-8" /></div>
       <div className="space-y-3">
         {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} className="border border-[#E8E8E8] px-6 py-5">
+          <div key={i} className="border border-[var(--border)] px-6 py-5">
             <div className="flex justify-between items-center">
               <div className="space-y-2">
                 <SkeletonLine w="w-40" h="h-4" />

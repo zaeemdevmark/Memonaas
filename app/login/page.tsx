@@ -44,7 +44,7 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder} autoComplete={autoComplete}
         className={`w-full border px-4 py-3.5 text-[13px] text-[var(--black)] placeholder-[#C8C8C8] bg-white outline-none transition-colors duration-200 rounded-none ${
-          error ? "border-red-300 focus:border-red-400" : "border-[#E8E8E8] focus:border-[var(--black)]"
+          error ? "border-red-300 focus:border-red-400" : "border-[var(--border)] focus:border-[var(--black)]"
         }`}
       />
       {error && (
@@ -75,11 +75,11 @@ function PasswordField({
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder} autoComplete={autoComplete}
           className={`w-full border px-4 py-3.5 pr-11 text-[13px] text-[var(--black)] placeholder-[#C8C8C8] bg-white outline-none transition-colors duration-200 rounded-none ${
-            error ? "border-red-300 focus:border-red-400" : "border-[#E8E8E8] focus:border-[var(--black)]"
+            error ? "border-red-300 focus:border-red-400" : "border-[var(--border)] focus:border-[var(--black)]"
           }`}
         />
         <button type="button" onClick={() => setShow((s) => !s)}
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--muted)] hover:text-[var(--black)] transition-colors">
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--muted)] hover:text-[var(--accent)] transition-colors">
           <EyeIcon open={show} />
         </button>
       </div>
@@ -241,7 +241,7 @@ function LoginForm() {
                 <button
                   type="button"
                   onClick={() => { setStep("email"); setEmail(""); setErrors({}); }}
-                  className="w-full py-4 border border-[#E8E8E8] text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] hover:border-[var(--black)] hover:text-[var(--black)] transition-colors"
+                  className="w-full py-4 border border-[var(--border)] text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] hover:border-[var(--black)] hover:text-[var(--accent)] transition-colors"
                 >
                   Try a Different Email
                 </button>

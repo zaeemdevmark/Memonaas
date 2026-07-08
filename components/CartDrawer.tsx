@@ -55,13 +55,13 @@ export default function CartDrawer() {
         }`}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-[#E8E8E8]">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-[var(--border)]">
           <h2 className="text-[13px] tracking-[0.25em] uppercase font-medium text-[var(--black)]">
             Your Cart {items.length > 0 && <span className="text-[var(--muted)]">({items.length})</span>}
           </h2>
           <button
             onClick={closeCart}
-            className="text-[var(--muted)] hover:text-[var(--black)] transition-colors"
+            className="text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
             aria-label="Close cart"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
@@ -138,18 +138,18 @@ export default function CartDrawer() {
                       </div>
 
                       {/* Quantity */}
-                      <div className="flex items-center border border-[#E8E8E8]">
+                      <div className="flex items-center border border-[var(--border)]">
                         <button
                           onClick={() => {
                             const next = item.quantity - 1;
                             updateQuantity(item.id, next);
                             if (item.apiId) { next < 1 ? apiRemove(item.apiId) : apiUpdateQty(item.apiId, next); }
                           }}
-                          className="w-7 h-7 flex items-center justify-center text-[var(--muted)] hover:text-[var(--black)] transition-colors text-sm"
+                          className="w-7 h-7 flex items-center justify-center text-[var(--muted)] hover:text-[var(--accent)] transition-colors text-sm"
                         >
                           −
                         </button>
-                        <span className="w-7 h-7 flex items-center justify-center text-[12px] text-[var(--black)] border-x border-[#E8E8E8]">
+                        <span className="w-7 h-7 flex items-center justify-center text-[12px] text-[var(--black)] border-x border-[var(--border)]">
                           {item.quantity}
                         </span>
                         <button
@@ -160,7 +160,7 @@ export default function CartDrawer() {
                             if (item.apiId) apiUpdateQty(item.apiId, next);
                           }}
                           disabled={item.stock !== undefined && item.quantity >= item.stock}
-                          className="w-7 h-7 flex items-center justify-center text-[var(--muted)] hover:text-[var(--black)] transition-colors text-sm disabled:opacity-30 disabled:cursor-not-allowed"
+                          className="w-7 h-7 flex items-center justify-center text-[var(--muted)] hover:text-[var(--accent)] transition-colors text-sm disabled:opacity-30 disabled:cursor-not-allowed"
                         >
                           +
                         </button>
@@ -172,7 +172,7 @@ export default function CartDrawer() {
             </div>
 
             {/* Footer */}
-            <div className="border-t border-[#E8E8E8] px-6 py-6 space-y-3">
+            <div className="border-t border-[var(--border)] px-6 py-6 space-y-3">
               <div className="flex justify-between text-[12px] text-[var(--muted)]">
                 <span>Subtotal</span>
                 <span>{formatPrice(subtotal)}</span>

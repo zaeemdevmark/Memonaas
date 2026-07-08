@@ -5,9 +5,9 @@ import { fp, formatDate, StatusBadge } from "@/components/dashboard/ui";
 
 function StatCard({ value, label, icon }: { value: string | number; label: string; icon: React.ReactNode }) {
   return (
-    <div className="border border-[#E8E8E8] p-6 hover:border-[#BBBBBB] transition-colors duration-200 group">
+    <div className="border border-[var(--border)] p-6 hover:border-[#BBBBBB] transition-colors duration-200 group">
       <div className="flex items-start justify-between mb-4">
-        <div className="text-[var(--muted)] group-hover:text-[var(--black)] transition-colors duration-200">{icon}</div>
+        <div className="text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors duration-200">{icon}</div>
       </div>
       <p className="text-3xl font-light text-[var(--black)] mb-1">{value}</p>
       <p className="text-[11px] tracking-[0.15em] uppercase text-[var(--muted)]">{label}</p>
@@ -77,14 +77,14 @@ export default async function DashboardHomePage() {
           <h2 className="text-[11px] tracking-[0.25em] uppercase text-[var(--black)] font-medium">Recent Orders</h2>
           <Link
             href="/dashboard/orders"
-            className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)] hover:text-[var(--black)] transition-colors underline underline-offset-2"
+            className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)] hover:text-[var(--accent)] transition-colors underline underline-offset-2"
           >
             View all
           </Link>
         </div>
 
         {recentOrders.length === 0 ? (
-          <div className="border border-[#E8E8E8] px-6 py-12 text-center">
+          <div className="border border-[var(--border)] px-6 py-12 text-center">
             <p className="text-[13px] text-[var(--black)] font-medium mb-1">No orders yet</p>
             <p className="text-[12px] text-[var(--muted)]">Your recent orders will appear here.</p>
           </div>
@@ -93,7 +93,7 @@ export default async function DashboardHomePage() {
             {recentOrders.map((order) => (
               <div
                 key={order.id}
-                className="border border-[#E8E8E8] px-5 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-[#BBBBBB] transition-colors duration-200"
+                className="border border-[var(--border)] px-5 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-[#BBBBBB] transition-colors duration-200"
               >
                 <div className="flex items-center gap-4">
                   <div>
@@ -108,7 +108,7 @@ export default async function DashboardHomePage() {
                   <span className="text-[12px] text-[var(--black)] font-medium">{fp(order.total)}</span>
                   <Link
                     href={`/dashboard/orders/${order.id}`}
-                    className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)] hover:text-[var(--black)] transition-colors border border-[#E8E8E8] hover:border-[var(--black)] px-3 py-1.5"
+                    className="text-[10px] tracking-[0.15em] uppercase text-[var(--muted)] hover:text-[var(--accent)] transition-colors border border-[var(--border)] hover:border-[var(--black)] px-3 py-1.5"
                   >
                     View
                   </Link>

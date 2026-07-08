@@ -55,11 +55,11 @@ export default function ProductLoading() {
           {/* Accordion rows */}
           <div className="pt-4 space-y-0">
             {Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="border-t border-[#E8E8E8] py-4">
+              <div key={i} className="border-t border-[var(--border)] py-4">
                 <Sk className="h-4 w-40" />
               </div>
             ))}
-            <div className="border-t border-[#E8E8E8]" />
+            <div className="border-t border-[var(--border)]" />
           </div>
         </div>
       </div>

@@ -58,7 +58,7 @@ export function InlineInput({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         className={`w-full border px-4 py-3 text-[13px] text-[var(--black)] placeholder-[#C8C8C8] bg-white outline-none transition-colors duration-200 rounded-none ${
-          error ? "border-red-300 focus:border-red-400" : "border-[#E8E8E8] focus:border-[var(--black)]"
+          error ? "border-red-300 focus:border-red-400" : "border-[var(--border)] focus:border-[var(--black)]"
         }`}
       />
       {error && <p className="text-[11px] text-red-500">{error}</p>}
@@ -94,7 +94,7 @@ export function SkeletonLine({ w = "w-full", h = "h-4" }: { w?: string; h?: stri
 
 export function SkeletonCard() {
   return (
-    <div className="border border-[#E8E8E8] p-6 space-y-3 animate-pulse">
+    <div className="border border-[var(--border)] p-6 space-y-3 animate-pulse">
       <SkeletonLine w="w-1/3" h="h-8" />
       <SkeletonLine w="w-1/2" />
     </div>
