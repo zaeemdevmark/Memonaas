@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+:root {
+  --white: #FFFFFF;
+  --black: #111111;
+  --muted: #3D3D3D;
+  --border: #E5E5E5;
+  --bg: #FAFAFA;
+  --badge-bg: #F0F0F0;
+  --sold-out: #888888;
+  --header-height: 100px;
+  --vh: 10.39px;
+
+  /* Mobile product card image height. clamp() instead of a plain svh %:
+     browser-chrome height varies enough (iOS Safari's persistent bars vs
+     Android Chrome's auto-hiding ones) that a bare percentage rendered
+     too short on some browsers. The min/max bounds keep it a consistent
+     portrait shape everywhere without needing any browser detection. */
+  --mobile-product-h: clamp(440px, 65svh, 580px);
+}
+
+body {
+  background-color: var(--white);
+  color: var(--black);
+  letter-spacing: 0.01em;
+}
+
+/* Click ripple effect */
+@keyframes click-ripple {
+  0%   { transform: translate(-50%, -50%) scale(0); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1);  opacity: 0; }
+}
+
+/* Slide-fill hover effect used on "View All Collection" and "Add to Cart" */
+.btn-fill {
+  position: relative;
+  overflow: hidden;
+  transition: color 80ms ease 270ms;
+}
+.btn-fill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--black);
+  transform: translateX(-100%);
+  transition: transform 350ms ease-in-out;
+  z-index: 0;
+}
+.btn-fill:hover::before {
+  transform: translateX(0);
+}
+.btn-fill:hover {
+  color: white;
+}
+.btn-fill > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Rich text editor (Tiptap) — admin panel */
+.rich-editor ul       { list-style: disc;    padding-left: 1.25rem; margin: 0.5rem 0; }
+.rich-editor ol       { list-style: decimal; padding-left: 1.25rem; margin: 0.5rem 0; }
+.rich-editor li       { margin: 0.2rem 0; }
+.rich-editor h2       { font-size: 1rem;   font-weight: 600; margin: 0.75rem 0 0.25rem; }
+.rich-editor h3       { font-size: 0.875rem; font-weight: 600; margin: 0.5rem 0 0.2rem; }
+.rich-editor p        { margin: 0 0 0.4rem; }
+.rich-editor p:last-child { margin-bottom: 0; }
+.rich-editor p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #9ca3af;
+  pointer-events: none;
+  float: left;
+  height: 0;
+}
+
+/* Rich text rendering — product detail page */
+.prose-product ul       { list-style: disc;    padding-left: 1.25rem; margin: 0.5rem 0; }
+.prose-product ol       { list-style: decimal; padding-left: 1.25rem; margin: 0.5rem 0; }
+.prose-product li       { margin: 0.2rem 0; }
+.prose-product h2       { font-size: 0.95rem; font-weight: 600; color: var(--black); margin: 0.75rem 0 0.25rem; }
+.prose-product h3       { font-size: 0.85rem; font-weight: 600; color: var(--black); margin: 0.5rem 0 0.2rem; }
+.prose-product p        { margin: 0 0 0.4rem; }
+.prose-product p:last-child { margin-bottom: 0; }
+.prose-product strong   { font-weight: 600; }
+.prose-product em       { font-style: italic; }
+.prose-product u        { text-decoration: underline; }
+.prose-product s        { text-decoration: line-through; }

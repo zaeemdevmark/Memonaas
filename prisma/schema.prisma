@@ -1,0 +1,539 @@
+// ─────────────────────────────────────────────────────────────────
+// Nayab Posh — Prisma Schema
+// Database: PostgreSQL
+// ─────────────────────────────────────────────────────────────────
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─────────────────────────────────────────────────────────────────
+// Enums
+// ─────────────────────────────────────────────────────────────────
+
+enum Role {
+  Customer
+  Admin
+}
+
+enum ProductStatus {
+  Active
+  Draft
+  Archived
+}
+
+enum Size {
+  XS
+  S
+  M
+  L
+  XL
+  XXL
+}
+
+enum OrderStatus {
+  Pending
+  Processing
+  Shipped
+  Delivered
+  Cancelled
+}
+
+enum PaymentMethod {
+  COD
+  Card
+}
+
+enum PaymentStatus {
+  Pending
+  Completed
+  Failed
+  Refunded
+}
+
+enum DiscountType {
+  Percentage
+  Fixed
+}
+
+enum BrandAssetType {
+  Logo
+  Favicon
+  Banner
+}
+
+// ─────────────────────────────────────────────────────────────────
+// Customer — email-centric business profile
+// Created automatically on first order (guest or registered).
+// One record per email address, regardless of account status.
+// ─────────────────────────────────────────────────────────────────
+
+model Customer {
+  id    String  @id @default(uuid())
+  email String  @unique
+  name  String
+  phone String?
+
+  // Linked to a User account when the customer registers.
+  // Null = guest (has ordered but never created an account).
+  userId   String? @unique
+  user     User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  addresses Address[]
+  orders    Order[]
+  reviews   Review[]
+  cart      Cart?
+  wishlist  Wishlist?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([name])
+  @@index([phone])
+  @@map("customers")
+}
+
+// ─────────────────────────────────────────────────────────────────
+// User — authentication credentials only
+// Admin users have no linked Customer record.
+// Customer users are linked via Customer.userId.
+// ─────────────────────────────────────────────────────────────────
+
+model User {
+  id           String  @id @default(uuid())
+  email        String  @unique
+  passwordHash String
+  role         Role    @default(Customer)
+  isActive     Boolean @default(true)
+
+  customer Customer? // back-relation; null for Admin users
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([role])
+  @@map("users")
+}
+
+// ─────────────────────────────────────────────────────────────────
+// Address — belongs to a Customer
+// ─────────────────────────────────────────────────────────────────
+
+model Address {
+  id         String   @id @default(uuid())
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  label      String?
+  fullName   String
+  phone      String
+  street     String
+  city       String
+  province   String
+  postalCode String
+  country    String   @default("Pakistan")
+  isDefault  Boolean  @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([customerId])
+  @@map("addresses")
+}
+
+// ─────────────────────────────────────────────────────────────────
+// Catalogue
+// ─────────────────────────────────────────────────────────────────
+
+model Category {
+  id               String     @id @default(uuid())
+  name             String
+  slug             String     @unique
+  description      String?
+  imageUrl         String?
+  imagePublicId    String?
+  imageOptimizedUrl String?
+  imageThumbnailUrl String?
+  sortOrder        Int        @default(0)
+  isActive         Boolean    @default(true)
+
+  parentId String?
+  parent   Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children Category[] @relation("CategoryHierarchy")
+
+  products Product[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([parentId])
+  @@index([isActive])
+  @@map("categories")
+}
+
+model Product {
+  id          String        @id @default(uuid())
+  name        String
+  slug        String        @unique
+  description String?
+  sku         String        @unique
+  basePrice   Decimal       @db.Decimal(10, 2)
+  salePrice   Decimal?      @db.Decimal(10, 2)
+  status      ProductStatus @default(Draft)
+  isFeatured  Boolean       @default(false)
+  sortOrder   Int           @default(0)
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  images        ProductImage[]
+  variants      ProductVariant[]
+  orderItems    OrderItem[]
+  reviews       Review[]
+  wishlistItems WishlistItem[]
+
+  sizeGuideImage1Url          String?
+  sizeGuideImage1OptimizedUrl String?
+  sizeGuideImage1PublicId     String?
+  sizeGuideImage2Url          String?
+  sizeGuideImage2OptimizedUrl String?
+  sizeGuideImage2PublicId     String?
+
+  tab1Title   String?
+  tab1Content String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([categoryId])
+  @@index([status])
+  @@index([isFeatured])
+  @@index([categoryId, status])
+  @@index([sortOrder])
+  @@map("products")
+}
+
+model ProductImage {
+  id        String  @id @default(uuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  url          String
+  optimizedUrl String?
+  thumbnailUrl String?
+  publicId     String?
+  altText      String?
+  position     Int     @default(0)
+  isDefault    Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([productId])
+  @@map("product_images")
+}
+
+model ProductVariant {
+  id        String  @id @default(uuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  sku               String  @unique
+  size              Size
+  color             String
+  colorHex          String?
+  stock             Int     @default(0)
+  reservedStock     Int     @default(0)
+  lowStockThreshold Int     @default(5)
+
+  price     Decimal  @db.Decimal(10, 2)
+  salePrice Decimal? @db.Decimal(10, 2)
+
+  cartItems  CartItem[]
+  orderItems OrderItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([productId, size, color])
+  @@index([productId])
+  @@index([stock])
+  @@index([reservedStock])
+  @@map("product_variants")
+}
+
+// ─────────────────────────────────────────────────────────────────
+// Cart — identified by UUID stored in a browser cookie
+// ─────────────────────────────────────────────────────────────────
+
+model Cart {
+  id         String    @id @default(uuid())
+  customerId String?   @unique
+  customer   Customer? @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  items      CartItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("carts")
+}
+
+model CartItem {
+  id        String         @id @default(uuid())
+  cartId    String
+  cart      Cart           @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  variantId String
+  variant   ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+  quantity  Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([cartId, variantId])
+  @@index([cartId])
+  @@index([variantId])
+  @@map("cart_items")
+}
+
+// ─────────────────────────────────────────────────────────────────
+// Orders & Payments
+// ─────────────────────────────────────────────────────────────────
+
+model Order {
+  id          String      @id @default(uuid())
+  orderNumber String      @unique
+  status      OrderStatus @default(Pending)
+
+  // Every order is linked to a Customer (created automatically on checkout).
+  customerId String?
+  customer   Customer? @relation(fields: [customerId], references: [id], onDelete: SetNull)
+
+  items         OrderItem[]
+  payment       Payment?
+  statusHistory OrderStatusHistory[]
+
+  couponId String?
+  coupon   Coupon? @relation(fields: [couponId], references: [id], onDelete: SetNull)
+
+  subtotal       Decimal @db.Decimal(10, 2)
+  discountAmount Decimal @db.Decimal(10, 2) @default(0)
+  shippingCost   Decimal @db.Decimal(10, 2) @default(0)
+  taxAmount      Decimal @db.Decimal(10, 2) @default(0)
+  total          Decimal @db.Decimal(10, 2)
+
+  // Shipping snapshot captured at checkout
+  shipName       String
+  shipEmail      String  @default("")
+  shipPhone      String
+  shipStreet     String
+  shipCity       String
+  shipProvince   String
+  shipPostalCode String
+  shipCountry    String  @default("Pakistan")
+
+  notes String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([customerId])
+  @@index([status])
+  @@index([customerId, status])
+  @@index([customerId, createdAt(sort: Desc)])
+  @@index([couponId])
+  @@map("orders")
+}
+
+model OrderStatusHistory {
+  id      String      @id @default(uuid())
+  orderId String
+  order   Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  status  OrderStatus
+  note    String?
+
+  createdAt DateTime @default(now())
+
+  @@index([orderId])
+  @@map("order_status_history")
+}
+
+model OrderItem {
+  id      String @id @default(uuid())
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  productId String
+  product   Product        @relation(fields: [productId], references: [id])
+  variantId String
+  variant   ProductVariant @relation(fields: [variantId], references: [id])
+
+  productName String
+  size        String
+  color       String
+  unitPrice   Decimal  @db.Decimal(10, 2)
+  salePrice   Decimal? @db.Decimal(10, 2)
+  quantity    Int
+  lineTotal   Decimal  @db.Decimal(10, 2)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([orderId])
+  @@index([productId])
+  @@index([variantId])
+  @@map("order_items")
+}
+
+model Payment {
+  id      String @id @default(uuid())
+  orderId String @unique
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  method        PaymentMethod
+  status        PaymentStatus @default(Pending)
+  amount        Decimal       @db.Decimal(10, 2)
+  transactionId String?
+  failureReason String?
+  paidAt        DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@map("payments")
+}
+
+// ─────────────────────────────────────────────────────────────────
+// Coupons
+// ─────────────────────────────────────────────────────────────────
+
+model Coupon {
+  id            String       @id @default(uuid())
+  code          String       @unique
+  description   String?
+  discountType  DiscountType
+  discountValue Decimal      @db.Decimal(10, 2)
+  minOrderValue Decimal?     @db.Decimal(10, 2)
+  maxDiscount   Decimal?     @db.Decimal(10, 2)
+  usageLimit    Int?
+  usedCount     Int          @default(0)
+  isActive      Boolean      @default(true)
+  startDate     DateTime?
+  expiresAt     DateTime?
+
+  orders Order[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isActive])
+  @@index([isActive, expiresAt])
+  @@map("coupons")
+}
+
+// ─────────────────────────────────────────────────────────────────
+// Reviews — requires a Customer with an account (registered)
+// ─────────────────────────────────────────────────────────────────
+
+model Review {
+  id         String   @id @default(uuid())
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  rating     Int
+  title      String?
+  body       String?
+  isVerified Boolean @default(false)
+  isApproved Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([customerId, productId])
+  @@index([productId, isApproved])
+  @@index([productId, rating])
+  @@map("reviews")
+}
+
+// ─────────────────────────────────────────────────────────────────
+// Wishlist — requires a Customer with an account (registered)
+// ─────────────────────────────────────────────────────────────────
+
+model Wishlist {
+  id         String   @id @default(uuid())
+  customerId String   @unique
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  items      WishlistItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("wishlists")
+}
+
+model WishlistItem {
+  id         String   @id @default(uuid())
+  wishlistId String
+  wishlist   Wishlist @relation(fields: [wishlistId], references: [id], onDelete: Cascade)
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([wishlistId, productId])
+  @@index([wishlistId])
+  @@index([productId])
+  @@map("wishlist_items")
+}
+
+// ─────────────────────────────────────────────────────────────────
+// Brand Assets
+// ─────────────────────────────────────────────────────────────────
+
+model BrandAsset {
+  id           String         @id @default(uuid())
+  type         BrandAssetType @unique
+  url          String
+  optimizedUrl String
+  thumbnailUrl String
+  publicId     String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("brand_assets")
+}
+
+// ─────────────────────────────────────────────────────────────────
+// Site Settings — singleton row (id = "default")
+// ─────────────────────────────────────────────────────────────────
+
+model SiteSettings {
+  id               String  @id @default("default")
+  storeName        String  @default("Nayab Posh")
+  storeEmail       String  @default("hello@nayabposh.com")
+  storePhone       String  @default("+92 300 123 4567")
+  storeAddress     String  @default("123 Liberty Market, Gulberg III, Lahore, Punjab 54660, Pakistan")
+  currency         String  @default("PKR")
+  timezone         String  @default("Asia/Karachi")
+  freeThreshold    Int     @default(5000)
+  standardCost     Int     @default(250)
+  expressCost      Int     @default(500)
+  taxEnabled       Boolean @default(true)
+  taxPercentage    Float   @default(17)
+  notifNewOrder       Boolean @default(true)
+  notifOrderShipped   Boolean @default(true)
+  notifOrderDelivered Boolean @default(false)
+
+  updatedAt DateTime @updatedAt
+
+  @@map("site_settings")
+}
