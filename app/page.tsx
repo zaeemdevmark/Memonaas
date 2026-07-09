@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import HeroSection from "@/components/HeroSection";
-import CollectionSection from "@/components/CollectionSection";
+import NewArrivalsSection from "@/components/home/NewArrivalsSection";
+import FeatureSplit from "@/components/home/FeatureSplit";
+import CategoryTiles from "@/components/home/CategoryTiles";
+import WhyChooseUs from "@/components/home/WhyChooseUs";
+import Testimonials from "@/components/home/Testimonials";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, SITE_NAME, SITE_URL } from "@/lib/seo";
 import { getProducts } from "@/lib/services/product.service";
@@ -35,65 +39,31 @@ function fmt(amount: number): string {
 export default async function Home() {
   let items: Awaited<ReturnType<typeof getProducts>>["items"] = [];
   try {
-    ({ items } = await getProducts({ page: 1, limit: 100, sort: "custom" }));
+    ({ items } = await getProducts({ page: 1, limit: 4, sort: "custom" }));
   } catch {
-    // Database unavailable — render page without collections rather than 500
+    // Database unavailable — render page without products rather than 500
   }
 
-  // Group products by category, ordered by the admin-defined category sortOrder
-  const categoryMap = new Map<string, {
-    name: string;
-    slug: string;
-    description: string | null;
-    sortOrder: number;
-    products: typeof items;
-  }>();
-
-  for (const p of items) {
-    if (!p.category) continue;
-    const key = p.category.slug;
-    if (!categoryMap.has(key)) {
-      categoryMap.set(key, {
-        name:        p.category.name,
-        slug:        key,
-        description: p.category.description ?? null,
-        sortOrder:   p.category.sortOrder,
-        products:    [],
-      });
-    }
-    categoryMap.get(key)!.products.push(p);
-  }
-
-  const collections = [...categoryMap.values()]
-    .sort((a, b) => a.sortOrder - b.sortOrder)
-    .slice(0, 3);
+  const newArrivals = items.map((p) => ({
+    id:        p.id,
+    slug:      p.slug,
+    name:      p.name,
+    price:     fmt(p.basePrice),
+    salePrice: p.salePrice != null ? fmt(p.salePrice) : undefined,
+    soldOut:   p.totalStock === 0,
+    image:     p.image?.optimizedUrl ?? p.image?.url ?? undefined,
+  }));
 
   return (
     <>
       <JsonLd schema={webSiteSchema} />
 
       <HeroSection />
-
-      {collections.map((col, i) => (
-        <CollectionSection
-          key={col.slug}
-          className={i === 0 ? "!mt-0 min-[992px]:!mt-[67px] !mb-6 min-[992px]:!mb-[137px]" : i === 1 ? "!mt-2 min-[992px]:!mt-0 !mb-[73px]" : i === 2 ? "!mb-6 min-[992px]:!mb-[70px]" : ""}
-          title={col.name}
-          description={col.description ?? ""}
-          slug={col.slug}
-          priorityFirst={i === 0}
-          products={col.products.map((p) => ({
-            id:         p.id,
-            slug:       p.slug,
-            name:       p.name,
-            price:      fmt(p.basePrice),
-            salePrice:  p.salePrice != null ? fmt(p.salePrice) : undefined,
-            soldOut:    p.totalStock === 0,
-            image:      p.image?.optimizedUrl ?? p.image?.url ?? undefined,
-            hoverImage: p.hoverImage?.optimizedUrl ?? p.hoverImage?.url ?? undefined,
-          }))}
-        />
-      ))}
+      <NewArrivalsSection products={newArrivals} />
+      <FeatureSplit />
+      <CategoryTiles />
+      <WhyChooseUs />
+      <Testimonials />
     </>
   );
 }

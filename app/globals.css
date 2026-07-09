@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  /* Memonaas palette — warm "modern atelier" identity */
-  --bg:          #F7F3EE; /* warm off-white page background */
+  /* Memonaas palette — soft blush "elegant atelier" identity */
+  --bg:          #FAF3EE; /* blush-cream page background */
   --surface:     #FFFFFF; /* cards, inputs, elevated panels */
-  --ink:         #1F1B18; /* primary text / near-black charcoal */
+  --ink:         #2B2118; /* primary text / warm near-black */
   --muted:       #6B6560; /* secondary text */
-  --border:      #E4DDD3; /* warm hairline border */
-  --accent:      #B5603D; /* terracotta — primary accent, CTAs */
-  --accent-ink:  #7A3F28; /* darker terracotta for hover/pressed states */
-  --accent-soft: #EFDCCF; /* light terracotta tint — badges, highlights */
+  --border:      #E8DDD0; /* warm hairline border */
+  --accent:      #C9A97E; /* gold-tan — primary accent, CTAs */
+  --accent-ink:  #A9825A; /* darker gold-tan for hover/pressed states */
+  --accent-soft: #F0E4D3; /* light gold-tan tint — badges, highlights */
   --sage:        #7C8B6F; /* secondary accent — success, tags */
   --sold-out:    #9C948C; /* muted warm gray */
 

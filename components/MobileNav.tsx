@@ -3,13 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const NAV_LINKS = [
-  { label: "Home",       href: "/" },
-  { label: "Shop All",   href: "/shop" },
-  { label: "About Us",   href: "/about-us" },
-  { label: "Contact Us", href: "/contact-us" },
-];
+import { NAV_LINKS } from "@/lib/nav";
 
 function isActive(href: string, pathname: string): boolean {
   if (href === "/") return pathname === "/";
