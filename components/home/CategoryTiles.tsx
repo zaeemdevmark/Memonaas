@@ -4,7 +4,7 @@ import Link from "next/link";
 const TILES = [
   { label: "3-Piece Lawn Suits", href: "/collections/3-piece-suits", image: "/seed/cat-suits.jpg" },
   { label: "Festive Wear", href: "/collections/festive-wear", image: "/seed/cat-festive.jpg" },
-  { label: "New Arrivals", href: "/shop", image: "/seed/cat-new.jpg" },
+  { label: "New Arrivals", href: "/shop", image: "/images/products/p8-01.jpg" },
 ];
 
 export default function CategoryTiles() {
