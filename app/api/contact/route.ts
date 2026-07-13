@@ -1,5 +1,5 @@
 import type { NextRequest } from "next/server";
-import resend from "@/lib/email/client";
+import getResend from "@/lib/email/client";
 import { ok, err } from "@/lib/api/response";
 
 interface ContactBody {
@@ -29,7 +29,7 @@ export async function POST(req: NextRequest): Promise<Response> {
   const from    = process.env.EMAIL_FROM     ?? "Memonaas <noreply@memonaas.com>";
 
   try {
-    await resend.emails.send({
+    await getResend().emails.send({
       from,
       to:      adminTo,
       replyTo: email.trim(),

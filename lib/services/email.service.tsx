@@ -1,6 +1,6 @@
 import * as React from "react";
 import { render } from "@react-email/render";
-import resend from "@/lib/email/client";
+import getResend from "@/lib/email/client";
 import type { OrderDTO } from "@/lib/types/order";
 import type { LowStockItem } from "@/lib/email/templates/LowStockAlert";
 import OrderConfirmationEmail from "@/lib/email/templates/OrderConfirmation";
@@ -14,7 +14,7 @@ const FROM        = process.env.EMAIL_FROM     ?? "Memonaas <noreply@memonaas.co
 const ADMIN_TO    = process.env.ADMIN_EMAIL_TO ?? "admin@memonaas.com";
 
 async function sendEmail(to: string, subject: string, html: string): Promise<void> {
-  await resend.emails.send({ from: FROM, to, subject, html });
+  await getResend().emails.send({ from: FROM, to, subject, html });
 }
 
 export async function sendOrderConfirmation(order: OrderDTO): Promise<void> {
