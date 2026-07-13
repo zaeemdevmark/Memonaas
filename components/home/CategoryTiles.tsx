@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const TILES = [
-  { label: "3-Piece Lawn Suits", href: "/collections/3-piece-suits", image: "/seed/cat-suits.jpg" },
-  { label: "Festive Wear", href: "/collections/festive-wear", image: "/seed/cat-festive.jpg" },
+  { label: "3-Piece Lawn Suits", href: "/collections/3-piece-suits", image: "/images/products/p1-01.jpg" },
+  { label: "Festive Wear", href: "/collections/festive-wear", image: "/images/products/p11-01.jpg" },
   { label: "New Arrivals", href: "/shop", image: "/images/products/p8-01.jpg" },
 ];
 
