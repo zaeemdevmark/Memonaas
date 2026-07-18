@@ -30,11 +30,11 @@ export default function ProductCard({ id, image, hoverImage, name, price, salePr
   };
 
   return (
-    <div className="group flex flex-col">
+    <div className="group flex flex-col transition-transform duration-300 ease-out hover:-translate-y-1">
 
       {/* Image */}
       <div
-        className={`relative aspect-[3/4] max-[639px]:aspect-auto max-[639px]:h-[var(--mobile-product-h)] w-full overflow-hidden bg-[var(--accent-soft)]/40 rounded-[10px]${hoverImage ? " transition-[border-radius] duration-[400ms] ease-in-out group-hover:rounded-none" : ""}`}
+        className="relative aspect-[3/4] max-[639px]:aspect-auto max-[639px]:h-[var(--mobile-product-h)] w-full overflow-hidden bg-white"
       >
         <Link
           href={`/products/${slug}`}
@@ -82,13 +82,20 @@ export default function ProductCard({ id, image, hoverImage, name, price, salePr
           </span>
         ) : discountPercent ? (
           <span
-            className="absolute top-[15px] left-[10px] text-[10px] tracking-[0.2em] uppercase text-[var(--accent)] font-medium"
+            className="absolute top-[15px] left-[10px] text-[10px] tracking-[0.2em] uppercase text-[var(--accent-text)] font-medium"
             style={verticalStyle}
           >
             Sale {discountPercent}%
           </span>
         ) : null}
       </Link>
+
+        {/* Gold hover-frame — the museum-frame accent used on every full-bleed
+            photo across the homepage, echoed here at card scale. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-2 border border-[var(--accent)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        />
 
         {/* Wishlist heart — sibling of the Link, not nested inside it */}
         {id && (
@@ -99,10 +106,10 @@ export default function ProductCard({ id, image, hoverImage, name, price, salePr
       </div>
 
       {/* Info — name left, price right */}
-      <div className="px-1 py-2.5 flex items-center justify-between gap-2">
+      <div className="px-0.5 pt-4 pb-1 flex items-center justify-between gap-3">
         <Link
           href={`/products/${slug}`}
-          className="text-[14px] font-semibold text-[var(--black)] hover:opacity-60 transition-opacity leading-snug truncate"
+          className="text-[13px] font-medium tracking-[0.02em] text-[var(--black)] hover:text-[var(--accent-text)] transition-colors leading-snug truncate"
         >
           {name}
         </Link>

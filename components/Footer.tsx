@@ -47,12 +47,13 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--surface)] border-t border-[var(--border)]">
-      <div className="max-w-[1400px] mx-auto px-5 md:px-10 pt-16 pb-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className="bg-[var(--bg)] border-t border-[var(--accent)]/30">
+      <div className="max-w-[1400px] mx-auto px-5 md:px-10 pt-20 pb-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-14">
 
           <div className="space-y-4 lg:col-span-2 lg:pr-12">
             <span className="font-display text-2xl text-[var(--ink)]">Memonaas</span>
+            <div className="w-10 h-px bg-[var(--accent)]" />
             <p className="text-sm text-[var(--muted)] leading-relaxed max-w-sm">
               Considered clothing for everyday life — modern silhouettes, honest fabrics,
               thoughtfully made.
@@ -74,7 +75,7 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-[11px] font-medium tracking-[0.2em] uppercase text-[var(--ink)]">Shop</h3>
+            <h3 className="text-[11px] font-medium tracking-[0.25em] uppercase text-[var(--accent-text)]">Shop</h3>
             <ul className="space-y-2.5">
               {shopLinks.map((link) => (
                 <li key={link.label}>
@@ -87,7 +88,7 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-[11px] font-medium tracking-[0.2em] uppercase text-[var(--ink)]">Support</h3>
+            <h3 className="text-[11px] font-medium tracking-[0.25em] uppercase text-[var(--accent-text)]">Support</h3>
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.label}>
@@ -101,15 +102,15 @@ export default function Footer() {
 
         </div>
 
-        <div className="mt-14 pt-8 border-t border-[var(--border)] grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
-          <div className="space-y-3">
-            <h3 className="text-[11px] font-medium tracking-[0.2em] uppercase text-[var(--ink)]">Stay in the loop</h3>
+        <div className="mt-16 pt-10 border-t border-[var(--accent)]/20">
+          <div className="max-w-md space-y-3">
+            <h3 className="text-[11px] font-medium tracking-[0.25em] uppercase text-[var(--accent-text)]">Stay in the loop</h3>
             <p className="text-sm text-[var(--muted)]">Be the first to know about new arrivals and offers.</p>
             <NewsletterForm />
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-[var(--border)] flex flex-col sm:flex-row justify-between items-center gap-3">
+        <div className="mt-12 pt-8 border-t border-[var(--accent)]/20 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-xs text-[var(--muted)]">
             © {new Date().getFullYear()} Memonaas. All rights reserved.
           </p>

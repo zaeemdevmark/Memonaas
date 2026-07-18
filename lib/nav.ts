@@ -1,7 +1,7 @@
 export const NAV_LINKS = [
-  { label: "Home",         href: "/" },
-  { label: "Shop",         href: "/shop" },
-  { label: "New Arrivals", href: "/#new-arrivals" },
-  { label: "Festive",      href: "/collections/festive-wear" },
-  { label: "Contact",      href: "/contact-us" },
+  { label: "Home",             href: "/" },
+  { label: "New Arrival",      href: "/#new-arrivals" },
+  { label: "Embroidered Pret", href: "/collections/3-piece-suits" },
+  { label: "Summer Print",     href: "/collections/printed-suits" },
+  { label: "Contact Us",       href: "/contact-us" },
 ];

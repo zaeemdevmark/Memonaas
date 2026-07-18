@@ -1,17 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  /* Memonaas palette — soft blush "elegant atelier" identity */
-  --bg:          #FAF3EE; /* blush-cream page background */
+  /* Memonaas brand palette */
+  --bg:          #F5EFE6; /* brand cream — main page background */
   --surface:     #FFFFFF; /* cards, inputs, elevated panels */
-  --ink:         #2B2118; /* primary text / warm near-black */
-  --muted:       #6B6560; /* secondary text */
-  --border:      #E8DDD0; /* warm hairline border */
-  --accent:      #C9A97E; /* gold-tan — primary accent, CTAs */
-  --accent-ink:  #A9825A; /* darker gold-tan for hover/pressed states */
-  --accent-soft: #F0E4D3; /* light gold-tan tint — badges, highlights */
-  --sage:        #7C8B6F; /* secondary accent — success, tags */
+  --ink:         #422B1C; /* brand umber — primary text */
+  --muted:       #938377; /* secondary text — ink/bg blend */
+  --border:      #E8CFC7; /* brand blush — hairline border */
+  --accent:      #C6A962; /* brand gold — primary accent, CTAs, icons, dividers, borders */
+  --accent-ink:  #A68E52; /* darker gold for hover/pressed states */
+  --accent-text: #7A5F32; /* deepened gold reserved for small text on --bg/white — the
+                              lighter --accent/--accent-ink tones read beautifully as
+                              icons or hairlines but fall short of readable contrast
+                              at 11–13px, so labels and captions use this instead */
+  --accent-soft: #EFE3C3; /* light gold tint — badges, highlights */
+  --sage:        #909D7B; /* brand sage — secondary accent */
   --sold-out:    #9C948C; /* muted warm gray */
+
+  /* Pastel versions of the brand gold/sage, used only as large section-gradient
+     fills — the full-strength tones above stay reserved for buttons, icons,
+     and borders where they need to read as an intentional accent. */
+  --blush:     #E8CFC7;
+  --gold-soft: #E0CBA4;
+  --sage-soft: #C2C6B0;
 
   /* legacy aliases kept during the frontend migration so any
      not-yet-restyled component still renders with the new palette */
@@ -36,8 +47,46 @@ body {
   letter-spacing: 0.01em;
 }
 
+/* Homepage background — one unbroken ivory canvas (same --bg as the header/
+   footer/body) from hero to footer, so no section ever cuts to a different
+   hue. Two faint botanical line-art watermarks bleed off the top-left and
+   bottom-right corners, low-opacity so they read as texture only. */
+.home-bg-texture {
+  background-color: var(--bg);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420' viewBox='0 0 420 420'%3E%3Cg fill='none' stroke='%23909D7B' stroke-width='1.4'%3E%3Cpath d='M30 20 C90 60 80 140 150 170 C210 195 220 260 280 300'/%3E%3Cpath d='M150 170 C130 140 90 130 60 145'/%3E%3Cpath d='M150 170 C180 155 205 120 195 80'/%3E%3Cpath d='M280 300 C260 270 220 260 190 275'/%3E%3Cpath d='M280 300 C310 285 335 250 325 210'/%3E%3Cellipse cx='105' cy='157' rx='16' ry='8' transform='rotate(35 105 157)'/%3E%3Cellipse cx='175' cy='100' rx='14' ry='7' transform='rotate(-40 175 100)'/%3E%3Cellipse cx='235' cy='287' rx='16' ry='8' transform='rotate(30 235 287)'/%3E%3Cellipse cx='305' cy='230' rx='14' ry='7' transform='rotate(-35 305 230)'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420' viewBox='0 0 420 420'%3E%3Cg fill='none' stroke='%23C6A962' stroke-width='1.4'%3E%3Cpath d='M390 20 C330 60 340 140 270 170 C210 195 200 260 140 300'/%3E%3Cpath d='M270 170 C290 140 330 130 360 145'/%3E%3Cpath d='M270 170 C240 155 215 120 225 80'/%3E%3Cpath d='M140 300 C160 270 200 260 230 275'/%3E%3Cpath d='M140 300 C110 285 85 250 95 210'/%3E%3Cellipse cx='315' cy='157' rx='16' ry='8' transform='rotate(-35 315 157)'/%3E%3Cellipse cx='245' cy='100' rx='14' ry='7' transform='rotate(40 245 100)'/%3E%3Cellipse cx='185' cy='287' rx='16' ry='8' transform='rotate(-30 185 287)'/%3E%3Cellipse cx='115' cy='230' rx='14' ry='7' transform='rotate(35 115 230)'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat, no-repeat;
+  background-position: top -60px left -60px, bottom -80px right -60px;
+  background-size: 420px 420px, 460px 460px;
+}
+
 .font-display {
   font-family: var(--font-fraunces), serif;
+}
+
+/* Hides the scrollbar on horizontally-scrolling product rows/carousels while
+   keeping the element natively scrollable — WebKit needs this pseudo-element
+   rule in addition to the scrollbar-width/-ms-overflow-style inline styles
+   already set on those elements for Firefox/Edge. */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Gold ticker strip below the hero — two copies of the track sit side by
+   side and scroll together by exactly one copy's width, so the loop point
+   is invisible. */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 32s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
 }
 
 /* Click ripple effect */

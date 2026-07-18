@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 const QUOTES = [
@@ -7,35 +10,46 @@ const QUOTES = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-[var(--surface)]">
-      <div className="flex flex-col min-[900px]:flex-row items-stretch">
-        <div className="relative w-full min-[900px]:w-[42%] aspect-[4/3] min-[900px]:aspect-auto min-h-[280px] min-[900px]:min-h-[420px]">
-          <Image
-            src="/images/testimonial.jpg"
-            alt="Memonaas customer wearing a piece from the collection"
-            fill
-            sizes="(max-width: 899px) 100vw, 42vw"
-            className="object-cover"
-          />
-          {/* Blend the photo's edge into the surface background, matching the hero treatment */}
-          <div
-            aria-hidden="true"
-            className="hidden min-[900px]:block absolute inset-y-0 right-0 w-24 bg-gradient-to-r from-transparent to-[var(--surface)]"
-          />
-          <div
-            aria-hidden="true"
-            className="min-[900px]:hidden absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[var(--surface)] to-transparent"
-          />
-        </div>
-        <div className="min-w-0 min-[900px]:w-[58%] flex flex-col justify-center gap-6 px-6 md:px-14 py-12">
-          {QUOTES.map((q) => (
-            <div key={q.author} className="border-l-2 border-[var(--accent)] pl-5">
-              <p className="font-display text-lg md:text-xl text-[var(--ink)] italic leading-snug max-w-lg">
-                &ldquo;{q.text}&rdquo;
-              </p>
-              <p className="mt-2 text-[13px] text-[var(--muted)]">— {q.author}</p>
+    <section className="bg-transparent py-20 md:py-28">
+      <div className="relative min-h-[560px] md:min-h-[640px] w-full">
+        <Image
+          src="/images/testimonial.jpg"
+          alt="Memonaas customer wearing a piece from the collection"
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-black/40" />
+        <div aria-hidden="true" className="absolute inset-4 md:inset-6 border border-white/25 pointer-events-none" />
+
+        <div className="relative z-10 flex items-center justify-center min-h-[560px] md:min-h-[640px] px-5 py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="w-full max-w-xl bg-[var(--bg)] shadow-[0_20px_50px_rgba(0,0,0,0.25)] border border-[var(--accent)]/30 px-7 py-10 md:px-14 md:py-14 text-center"
+          >
+            <span className="block text-[11px] font-medium tracking-[0.3em] uppercase text-[var(--accent-text)]">
+              In Their Words
+            </span>
+            <span aria-hidden="true" className="block font-display text-[56px] leading-none text-[var(--accent)]/30 mt-3">
+              &ldquo;
+            </span>
+
+            <div className="space-y-8 -mt-2">
+              {QUOTES.map((q) => (
+                <div key={q.author}>
+                  <p className="font-display italic text-lg md:text-xl text-[var(--ink)] leading-snug">
+                    {q.text}
+                  </p>
+                  <p className="mt-3 text-[11px] font-medium tracking-[0.2em] uppercase text-[var(--accent-text)]">
+                    {q.author}
+                  </p>
+                </div>
+              ))}
             </div>
-          ))}
+          </motion.div>
         </div>
       </div>
     </section>
