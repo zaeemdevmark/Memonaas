@@ -1,26 +1,35 @@
 @import "tailwindcss";
 
 :root {
+  /* Memonaas global brand colors — the 5 official palette colors. Every
+     semantic token below (--ink, --accent, --border, --sage, --blush, ...)
+     resolves to one of these, so a palette change only ever happens here. */
+  --color-cream: #E8CFC7;
+  --color-pink:  #F5EFE6;
+  --color-gold:  #C6A962;
+  --color-brown: #422B1C;
+  --color-olive: #909D7B;
+
   /* Memonaas brand palette */
-  --bg:          #F5EFE6; /* brand cream — main page background */
+  --bg:          #FFFFFF; /* main page background */
   --surface:     #FFFFFF; /* cards, inputs, elevated panels */
-  --ink:         #422B1C; /* brand umber — primary text */
+  --ink:         var(--color-brown); /* primary text */
   --muted:       #938377; /* secondary text — ink/bg blend */
-  --border:      #E8CFC7; /* brand blush — hairline border */
-  --accent:      #C6A962; /* brand gold — primary accent, CTAs, icons, dividers, borders */
+  --border:      var(--color-cream); /* hairline border */
+  --accent:      var(--color-gold); /* primary accent, CTAs, icons, dividers, borders */
   --accent-ink:  #A68E52; /* darker gold for hover/pressed states */
   --accent-text: #7A5F32; /* deepened gold reserved for small text on --bg/white — the
                               lighter --accent/--accent-ink tones read beautifully as
                               icons or hairlines but fall short of readable contrast
                               at 11–13px, so labels and captions use this instead */
   --accent-soft: #EFE3C3; /* light gold tint — badges, highlights */
-  --sage:        #909D7B; /* brand sage — secondary accent */
+  --sage:        var(--color-olive); /* secondary accent */
   --sold-out:    #9C948C; /* muted warm gray */
 
   /* Pastel versions of the brand gold/sage, used only as large section-gradient
      fills — the full-strength tones above stay reserved for buttons, icons,
      and borders where they need to read as an intentional accent. */
-  --blush:     #E8CFC7;
+  --blush:     var(--color-cream);
   --gold-soft: #E0CBA4;
   --sage-soft: #C2C6B0;
 
@@ -38,7 +47,7 @@
      Android Chrome's auto-hiding ones) that a bare percentage rendered
      too short on some browsers. The min/max bounds keep it a consistent
      portrait shape everywhere without needing any browser detection. */
-  --mobile-product-h: clamp(440px, 65svh, 580px);
+  --mobile-product-h: clamp(360px, 52svh, 480px);
 }
 
 body {
@@ -62,7 +71,7 @@ body {
 }
 
 .font-display {
-  font-family: var(--font-fraunces), serif;
+  font-family: var(--font-playfair-display), serif;
 }
 
 /* Hides the scrollbar on horizontally-scrolling product rows/carousels while

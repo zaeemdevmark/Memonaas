@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, Fraunces } from "next/font/google";
+import { Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import ConditionalShell from "@/components/ConditionalShell";
 import JsonLd from "@/components/JsonLd";
@@ -9,16 +9,15 @@ import { Analytics }      from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import ClickEffect from "@/components/ClickEffect";
 
-const instrumentSans = Instrument_Sans({
-  variable: "--font-instrument-sans",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets:  ["latin"],
   display:  "swap",
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair-display",
   subsets:  ["latin"],
-  axes:     ["opsz", "SOFT"],
   display:  "swap",
 });
 
@@ -49,8 +48,8 @@ export default async function RootLayout({
   const role    = session?.user?.role ?? null;
 
   return (
-    <html lang="en" className={`${instrumentSans.variable} ${fraunces.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-[var(--font-instrument-sans)] bg-[var(--bg)] text-[var(--ink)]">
+    <html lang="en" className={`${montserrat.variable} ${playfairDisplay.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col font-[var(--font-montserrat)] bg-[var(--bg)] text-[var(--ink)]">
         <JsonLd schema={organizationSchema()} />
         <ConditionalShell role={role}>{children}</ConditionalShell>
         <ClickEffect />

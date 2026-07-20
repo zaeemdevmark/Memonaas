@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function FeatureSplit() {
   return (
-    <section className="bg-transparent py-20 md:py-28">
+    <section className="bg-[var(--bg)] py-20 md:py-28">
       <div className="relative h-[560px] sm:h-[520px] md:h-[600px] w-full">
         <Image
           src="/images/about-story.jpg"

@@ -40,8 +40,8 @@ export default function CategoryProductRow({
   }
 
   return (
-    <section className="bg-transparent py-16 md:py-20">
-      <div className="mx-auto max-w-[1400px] px-5 md:px-10">
+    <section className="bg-[var(--bg)] py-16 md:py-20">
+      <div className="px-5 md:px-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

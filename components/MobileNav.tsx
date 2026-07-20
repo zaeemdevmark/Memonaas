@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "@/lib/nav";
@@ -36,7 +37,7 @@ export default function MobileNav({ open, onClose, role, accountHref }: Props) {
       }`}
     >
       <div className="flex items-center justify-between h-[64px] px-5 border-b border-[var(--border)] shrink-0">
-        <span className="font-display text-xl text-[var(--ink)]">Memonaas</span>
+        <Image src="/images/logo-memonaas.png" alt="Memonaas" width={1200} height={242} className="h-7 w-auto" />
         <button onClick={onClose} aria-label="Close menu" className="text-[var(--ink)] p-1 hover:text-[var(--accent)] transition-colors">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />

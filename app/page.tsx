@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import { auth } from "@/auth";
+import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import MarqueeStrip from "@/components/home/MarqueeStrip";
-import NewArrivalsSection from "@/components/home/NewArrivalsSection";
 import CategoryProductRow from "@/components/home/CategoryProductRow";
 import FeatureSplit from "@/components/home/FeatureSplit";
 import CategoryTiles from "@/components/home/CategoryTiles";
@@ -51,16 +51,16 @@ function toCardProps(items: Awaited<ReturnType<typeof getProducts>>["items"]) {
 }
 
 export default async function Home() {
-  let newArrivalItems: Awaited<ReturnType<typeof getProducts>>["items"] = [];
+  const session = await auth();
+  const role    = session?.user?.role ?? null;
+
   let embroideredPretItems: Awaited<ReturnType<typeof getProducts>>["items"] = [];
   let summerPrintItems: Awaited<ReturnType<typeof getProducts>>["items"] = [];
   try {
     [
-      { items: newArrivalItems },
       { items: embroideredPretItems },
       { items: summerPrintItems },
     ] = await Promise.all([
-      getProducts({ page: 1, limit: 4,  sort: "custom" }),
       getProducts({ page: 1, limit: 10, sort: "custom", category: "3-piece-suits" }),
       getProducts({ page: 1, limit: 10, sort: "custom", category: "printed-suits" }),
     ]);
@@ -68,35 +68,40 @@ export default async function Home() {
     // Database unavailable — render page without products rather than 500
   }
 
-  const newArrivals = toCardProps(newArrivalItems);
   const embroideredPret = toCardProps(embroideredPretItems);
   const summerPrint = toCardProps(summerPrintItems);
 
   return (
     <div className="relative">
-      <div aria-hidden="true" className="absolute inset-0 -z-10 home-bg-texture" />
-
       <JsonLd schema={webSiteSchema} />
 
       <HeroSection />
-      <MarqueeStrip />
-      <CategoryTiles />
-      <CategoryProductRow
-        eyebrow="Collection One"
-        title="Embroidered Pret"
-        href="/collections/3-piece-suits"
-        products={embroideredPret}
-      />
-      <CategoryProductRow
-        eyebrow="Collection Two"
-        title="Summer Print"
-        href="/collections/printed-suits"
-        products={summerPrint}
-      />
-      <NewArrivalsSection products={newArrivals} />
-      <FeatureSplit />
-      <WhyChooseUs />
-      <Testimonials />
+
+      <Header role={role} />
+
+      {/* Opaque + stacked above the pinned hero (z-0, fixed) so this whole
+          block scrolls up and covers the photo instead of just revealing
+          the page underneath it. */}
+      <div className="relative z-10 bg-[var(--bg)]">
+        <div aria-hidden="true" className="absolute inset-0 -z-10 home-bg-texture" />
+
+        <CategoryTiles />
+        <CategoryProductRow
+          eyebrow="Collection One"
+          title="Embroidered Pret"
+          href="/collections/3-piece-suits"
+          products={embroideredPret}
+        />
+        <CategoryProductRow
+          eyebrow="Collection Two"
+          title="Summer Print"
+          href="/collections/printed-suits"
+          products={summerPrint}
+        />
+        <FeatureSplit />
+        <WhyChooseUs />
+        <Testimonials />
+      </div>
     </div>
   );
 }

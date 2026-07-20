@@ -11,13 +11,13 @@ function StarIcon({ filled, half = false }: { filled: boolean; half?: boolean })
       <svg viewBox="0 0 24 24" className="w-4 h-4 inline-block" aria-hidden>
         <defs>
           <linearGradient id="half">
-            <stop offset="50%" stopColor="#0f172a" />
+            <stop offset="50%" stopColor="var(--accent)" />
             <stop offset="50%" stopColor="transparent" />
           </linearGradient>
         </defs>
         <path
           d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-          fill="url(#half)" stroke="#0f172a" strokeWidth="1.5"
+          fill="url(#half)" stroke="var(--accent)" strokeWidth="1.5"
         />
       </svg>
     );
@@ -26,7 +26,7 @@ function StarIcon({ filled, half = false }: { filled: boolean; half?: boolean })
     <svg viewBox="0 0 24 24" className="w-4 h-4 inline-block" aria-hidden>
       <path
         d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-        fill={filled ? "#0f172a" : "transparent"} stroke="#0f172a" strokeWidth="1.5"
+        fill={filled ? "var(--accent)" : "transparent"} stroke="var(--accent)" strokeWidth="1.5"
       />
     </svg>
   );
@@ -40,8 +40,9 @@ function Stars({ rating, size = "sm" }: { rating: number; size?: "sm" | "lg" }) 
         <svg key={n} viewBox="0 0 24 24" className={`${cls} inline-block`} aria-hidden>
           <path
             d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-            fill={rating >= n ? "#0f172a" : rating >= n - 0.5 ? "#666" : "transparent"}
-            stroke="#0f172a" strokeWidth="1.5"
+            fill={rating >= n ? "var(--accent)" : rating >= n - 0.5 ? "var(--accent)" : "transparent"}
+            fillOpacity={rating >= n ? 1 : rating >= n - 0.5 ? 0.5 : 1}
+            stroke="var(--accent)" strokeWidth="1.5"
           />
         </svg>
       ))}
@@ -410,7 +411,7 @@ export default function ProductReviews({ productSlug }: { productSlug: string })
 
       {/* User's own review (pending approval) */}
       {userReview && (
-        <div className="py-4 bg-[var(--bg)] border border-[var(--border)] px-4 my-6 rounded-sm">
+        <div className="py-4 bg-[var(--bg)] border border-[var(--border)] px-4 my-6">
           <p className="text-[11px] tracking-[0.15em] uppercase text-[var(--muted)] mb-3">Your Review</p>
           {editingId === userReview.id && editTarget ? (
             <ReviewForm
@@ -479,21 +480,21 @@ export default function ProductReviews({ productSlug }: { productSlug: string })
       {/* Delete confirmation modal */}
       {deleteId && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-          <div className="bg-white max-w-sm w-full p-6 shadow-xl">
-            <h3 className="text-[15px] font-medium text-[var(--black)] mb-2">Delete Review?</h3>
+          <div className="bg-[var(--surface)] max-w-sm w-full p-6 shadow-xl">
+            <h3 className="font-display text-[17px] text-[var(--black)] mb-2">Delete Review?</h3>
             <p className="text-[13px] text-[var(--muted)] mb-6">
               This action cannot be undone.
             </p>
             <div className="flex gap-3">
               <button
                 onClick={handleDelete} disabled={deleting}
-                className="flex-1 py-2.5 text-[12px] tracking-[0.15em] uppercase bg-red-500 text-white hover:bg-red-600 transition-colors disabled:opacity-50"
+                className="flex-1 py-2.5 text-[12px] tracking-[0.15em] uppercase border border-[var(--sold-out)] text-[var(--sold-out)] hover:bg-[var(--sold-out)] hover:text-white transition-colors disabled:opacity-50"
               >
                 {deleting ? "Deleting…" : "Delete"}
               </button>
               <button
                 onClick={() => setDeleteId(null)} disabled={deleting}
-                className="flex-1 py-2.5 text-[12px] tracking-[0.15em] uppercase border border-[var(--border)] text-[var(--black)] hover:bg-[#F5F5F5] transition-colors"
+                className="flex-1 py-2.5 text-[12px] tracking-[0.15em] uppercase border border-[var(--border)] text-[var(--black)] hover:bg-[var(--accent-soft)] transition-colors"
               >
                 Cancel
               </button>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { TrackOrderDTO } from "@/app/api/orders/track/route";
+import { StatusBadge } from "@/components/dashboard/ui";
 
 // ── Status helpers ─────────────────────────────────────────────────
 
@@ -27,16 +28,6 @@ function ftime(iso: string) {
     hour: "2-digit", minute: "2-digit", hour12: true,
   });
 }
-
-// ── Status badge ──────────────────────────────────────────────────
-
-const STATUS_BADGE: Record<string, string> = {
-  Pending:    "bg-amber-50 text-amber-600 ring-1 ring-amber-200",
-  Processing: "bg-blue-50 text-blue-600 ring-1 ring-blue-200",
-  Shipped:    "bg-violet-50 text-violet-600 ring-1 ring-violet-200",
-  Delivered:  "bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200",
-  Cancelled:  "bg-red-50 text-red-500 ring-1 ring-red-200",
-};
 
 // ── Timeline step icons ────────────────────────────────────────────
 
@@ -75,15 +66,15 @@ function OrderTimeline({ order }: { order: TrackOrderDTO }) {
 
   if (isCancelled) {
     return (
-      <div className="flex items-center gap-4 bg-red-50 border border-red-200 rounded-xl px-5 py-4">
-        <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center shrink-0">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 text-red-500">
+      <div className="flex items-center gap-4 bg-[var(--sold-out)]/10 border border-[var(--sold-out)]/40 px-5 py-4">
+        <div className="w-10 h-10 rounded-full bg-[var(--sold-out)]/15 flex items-center justify-center shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 text-[var(--sold-out)]">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
         </div>
         <div>
-          <p className="text-[13px] font-medium text-red-600">Order Cancelled</p>
-          <p className="text-[12px] text-red-400 mt-0.5">
+          <p className="text-[13px] font-medium text-[var(--sold-out)]">Order Cancelled</p>
+          <p className="text-[12px] text-[var(--muted)] mt-0.5">
             This order was cancelled.
             {historyMap.get("Cancelled") && ` on ${fdate(historyMap.get("Cancelled")!)}`}
           </p>
@@ -163,9 +154,7 @@ function OrderCard({ order, onReset }: { order: TrackOrderDTO; onReset: () => vo
           <p className="text-[12px] text-[var(--muted)] mt-1">Placed on {fdate(order.createdAt)}</p>
         </div>
         <div className="flex items-center gap-3">
-          <span className={`text-[10px] tracking-[0.08em] uppercase px-3 py-1.5 rounded-full ${STATUS_BADGE[order.status] ?? "bg-slate-100 text-slate-600"}`}>
-            {order.status}
-          </span>
+          <StatusBadge status={order.status} />
           <button
             onClick={onReset}
             className="text-[11px] tracking-[0.1em] uppercase text-[var(--muted)] hover:text-[var(--accent)] transition-colors underline underline-offset-2"
@@ -176,7 +165,7 @@ function OrderCard({ order, onReset }: { order: TrackOrderDTO; onReset: () => vo
       </div>
 
       {/* Timeline */}
-      <div className="bg-[var(--bg)] border border-[var(--border)] rounded-xl p-5 sm:p-6">
+      <div className="bg-[var(--bg)] border border-[var(--border)] p-5 sm:p-6">
         <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] mb-5">Order Progress</p>
         <OrderTimeline order={order} />
       </div>
@@ -184,7 +173,7 @@ function OrderCard({ order, onReset }: { order: TrackOrderDTO; onReset: () => vo
       {/* Details grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* Shipping */}
-        <div className="border border-[var(--border)] rounded-xl p-5">
+        <div className="border border-[var(--border)] p-5">
           <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] mb-3">Shipping To</p>
           <p className="text-[13px] font-medium text-[var(--black)] mb-1">{order.shipName}</p>
           <p className="text-[12px] text-[var(--muted)] leading-relaxed">
@@ -195,7 +184,7 @@ function OrderCard({ order, onReset }: { order: TrackOrderDTO; onReset: () => vo
         </div>
 
         {/* Order info */}
-        <div className="border border-[var(--border)] rounded-xl p-5 space-y-3">
+        <div className="border border-[var(--border)] p-5 space-y-3">
           <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)]">Order Details</p>
           <div className="space-y-2">
             {[
@@ -215,7 +204,7 @@ function OrderCard({ order, onReset }: { order: TrackOrderDTO; onReset: () => vo
 
       {/* Status history */}
       {order.statusHistory.length > 0 && (
-        <div className="border border-[var(--border)] rounded-xl p-5">
+        <div className="border border-[var(--border)] p-5">
           <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] mb-4">Status History</p>
           <div className="space-y-3">
             {[...order.statusHistory].reverse().map((h, i) => (
@@ -367,7 +356,7 @@ export default function TrackOrderClient() {
   return (
     <div className="space-y-6">
       {state === "error" && (
-        <div className="border border-red-200 bg-red-50 px-4 py-3 text-[12px] text-red-600">
+        <div className="border border-[var(--sold-out)]/40 bg-[var(--sold-out)]/10 px-4 py-3 text-[12px] text-[var(--sold-out)]">
           {errorMsg}
         </div>
       )}
@@ -383,11 +372,11 @@ export default function TrackOrderClient() {
             value={orderNumber}
             onChange={(e) => { setOrderNumber(e.target.value); setErrors((p) => ({ ...p, orderNumber: undefined })); }}
             placeholder="e.g. MN-20260620-ABC123"
-            className={`w-full border px-4 py-3.5 text-[13px] text-[var(--ink)] placeholder-[var(--muted)] bg-white outline-none transition-colors duration-200 rounded-none ${
-              errors.orderNumber ? "border-red-300 focus:border-red-400" : "border-[var(--border)] focus:border-[var(--black)]"
+            className={`w-full border px-4 py-3.5 text-[13px] text-[var(--ink)] placeholder-[var(--muted)] bg-[var(--surface)] outline-none transition-colors duration-200 rounded-none ${
+              errors.orderNumber ? "border-[var(--sold-out)] focus:border-[var(--sold-out)]" : "border-[var(--border)] focus:border-[var(--black)]"
             }`}
           />
-          {errors.orderNumber && <p className="text-[11px] text-red-500">{errors.orderNumber}</p>}
+          {errors.orderNumber && <p className="text-[11px] text-[var(--sold-out)]">{errors.orderNumber}</p>}
         </div>
 
         {/* Email */}
@@ -401,11 +390,11 @@ export default function TrackOrderClient() {
             onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: undefined })); }}
             placeholder="your@email.com"
             autoComplete="email"
-            className={`w-full border px-4 py-3.5 text-[13px] text-[var(--ink)] placeholder-[var(--muted)] bg-white outline-none transition-colors duration-200 rounded-none ${
-              errors.email ? "border-red-300 focus:border-red-400" : "border-[var(--border)] focus:border-[var(--black)]"
+            className={`w-full border px-4 py-3.5 text-[13px] text-[var(--ink)] placeholder-[var(--muted)] bg-[var(--surface)] outline-none transition-colors duration-200 rounded-none ${
+              errors.email ? "border-[var(--sold-out)] focus:border-[var(--sold-out)]" : "border-[var(--border)] focus:border-[var(--black)]"
             }`}
           />
-          {errors.email && <p className="text-[11px] text-red-500">{errors.email}</p>}
+          {errors.email && <p className="text-[11px] text-[var(--sold-out)]">{errors.email}</p>}
         </div>
 
         <button

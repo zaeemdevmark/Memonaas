@@ -292,7 +292,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
   const productInfoContent = (
     <>
       {/* Title */}
-      <h1 className="text-[26px] sm:text-4xl font-semibold text-[var(--black)] leading-snug mb-2">
+      <h1 className="font-display text-[26px] sm:text-4xl text-[var(--black)] leading-snug mb-2">
         {product.name}
       </h1>
 
@@ -319,7 +319,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
       </div>
 
       {/* Availability */}
-      <p className={`text-[12px] tracking-[0.15em] uppercase mb-6 ${product.soldOut ? "text-red-500" : "text-green-600"}`}>
+      <p className={`text-[12px] tracking-[0.15em] uppercase mb-6 ${product.soldOut ? "text-[var(--sold-out)]" : "text-[var(--sage)]"}`}>
         {product.soldOut ? "Sold Out" : "In Stock"}
       </p>
 
@@ -583,7 +583,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
 
       {/* You May Also Like — full width */}
       <div className="px-[30px] pb-[30px] pt-4 lg:pt-[30px]">
-        <h2 className="text-[23px] font-medium text-[var(--black)] mb-[20px]">
+        <h2 className="font-display text-[23px] text-[var(--black)] mb-[20px]">
           You May Also Like
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[30px]">

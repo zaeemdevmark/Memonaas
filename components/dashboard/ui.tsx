@@ -9,17 +9,17 @@ export function Spinner() {
   );
 }
 
-const STATUS_STYLE: Record<string, string> = {
-  Pending:    "bg-gray-50   text-gray-600   border border-gray-200",
-  Processing: "bg-amber-50  text-amber-600  border border-amber-200",
-  Shipped:    "bg-violet-50 text-violet-600 border border-violet-200",
-  Delivered:  "bg-green-50  text-green-600  border border-green-200",
-  Cancelled:  "bg-red-50    text-red-500    border border-red-200",
+export const STATUS_STYLE: Record<string, string> = {
+  Pending:    "bg-[var(--accent-soft)] text-[var(--accent-text)] border border-[var(--accent)]/30",
+  Processing: "bg-[var(--blush)] text-[var(--ink)] border border-[var(--accent)]/30",
+  Shipped:    "bg-[var(--sage-soft)] text-[var(--ink)] border border-[var(--sage)]/40",
+  Delivered:  "bg-[var(--sage)]/15 text-[var(--sage)] border border-[var(--sage)]/40",
+  Cancelled:  "bg-[var(--sold-out)]/10 text-[var(--sold-out)] border border-[var(--sold-out)]/30",
 };
 
 export function StatusBadge({ status }: { status: string }) {
   return (
-    <span className={`text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 ${STATUS_STYLE[status] ?? "bg-gray-50 text-gray-600 border border-gray-200"}`}>
+    <span className={`text-[10px] tracking-[0.12em] uppercase px-2.5 py-1 ${STATUS_STYLE[status] ?? "bg-[var(--accent-soft)] text-[var(--accent-text)] border border-[var(--accent)]/30"}`}>
       {status}
     </span>
   );
@@ -57,18 +57,18 @@ export function InlineInput({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className={`w-full border px-4 py-3 text-[13px] text-[var(--black)] placeholder-[var(--muted)] bg-white outline-none transition-colors duration-200 rounded-none ${
-          error ? "border-red-300 focus:border-red-400" : "border-[var(--border)] focus:border-[var(--black)]"
+        className={`w-full border px-4 py-3 text-[13px] text-[var(--black)] placeholder-[var(--muted)] bg-[var(--surface)] outline-none transition-colors duration-200 rounded-none ${
+          error ? "border-[var(--sold-out)] focus:border-[var(--sold-out)]" : "border-[var(--border)] focus:border-[var(--black)]"
         }`}
       />
-      {error && <p className="text-[11px] text-red-500">{error}</p>}
+      {error && <p className="text-[11px] text-[var(--sold-out)]">{error}</p>}
     </div>
   );
 }
 
 export function SuccessBanner({ msg }: { msg: string }) {
   return (
-    <div className="flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 text-[12px] px-4 py-3">
+    <div className="flex items-center gap-2 bg-[var(--sage-soft)] border border-[var(--sage)]/40 text-[var(--ink)] text-[12px] px-4 py-3">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 shrink-0">
         <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clipRule="evenodd" />
       </svg>
@@ -79,7 +79,7 @@ export function SuccessBanner({ msg }: { msg: string }) {
 
 export function ErrorBanner({ msg }: { msg: string }) {
   return (
-    <div className="flex items-center gap-2 bg-red-50 border border-red-200 text-red-700 text-[12px] px-4 py-3">
+    <div className="flex items-center gap-2 bg-[var(--sold-out)]/10 border border-[var(--sold-out)]/40 text-[var(--sold-out)] text-[12px] px-4 py-3">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 shrink-0">
         <path fillRule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22Z" clipRule="evenodd" />
       </svg>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCartStore } from "@/store/cartStore";
@@ -21,7 +22,7 @@ function isActive(href: string, pathname: string): boolean {
 
 function SearchIcon() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
       <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
     </svg>
   );
@@ -29,7 +30,7 @@ function SearchIcon() {
 
 function CartIcon() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
       <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.836l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.98-4.706 2.545-7.192.135-.6-.336-1.158-.95-1.158H5.106M7.5 14.25 5.106 5.272M6 18.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
     </svg>
   );
@@ -37,7 +38,7 @@ function CartIcon() {
 
 function AccountIcon() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
       <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
     </svg>
   );
@@ -75,8 +76,8 @@ export default function Header({ role }: Props) {
   }, [role]);
 
   return (
-    <header className="w-full bg-[var(--bg)]/95 backdrop-blur-sm sticky top-0 z-40 border-b border-[var(--border)]">
-      <div className="mx-auto max-w-[1400px] px-5 md:px-10 h-[76px] flex items-center justify-between gap-6">
+    <header className="sticky top-0 w-full z-40 bg-[var(--bg)] border-b border-[var(--border)]">
+      <div className="relative mx-auto max-w-[1400px] px-5 md:px-10 h-[76px] flex items-center justify-between gap-6">
 
         {/* Left — mobile hamburger / desktop wordmark */}
         <div className="flex items-center gap-8">
@@ -88,27 +89,41 @@ export default function Header({ role }: Props) {
             <HamburgerIcon />
           </button>
 
-          <Link href="/" className="font-display text-2xl tracking-tight text-[var(--ink)]">
-            Memonaas
+          <Link href="/" aria-label="Memonaas home" className="shrink-0">
+            <Image
+              src="/images/logo-memonaas.png"
+              alt="Memonaas"
+              width={1200}
+              height={242}
+              priority
+              className="h-8 md:h-9 w-auto -mt-1"
+            />
           </Link>
-
-          <nav className="hidden min-[992px]:flex items-center gap-7">
-            {NAV_LINKS.map((link) => {
-              const active = isActive(link.href, pathname);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`relative text-[13.5px] font-medium tracking-wide transition-colors ${
-                    active ? "text-[var(--accent)]" : "text-[var(--ink)] hover:text-[var(--accent)]"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
         </div>
+
+        {/* Center — desktop nav links, absolutely centered on the header row */}
+        <nav className="hidden min-[992px]:flex items-center gap-7 absolute left-1/2 -translate-x-1/2">
+          {NAV_LINKS.map((link) => {
+            const active = isActive(link.href, pathname);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`group relative pb-0.5 text-[16.5px] font-medium tracking-wide ${
+                  active ? "font-display text-[var(--accent)]" : "text-[var(--ink)]"
+                }`}
+              >
+                {link.label}
+                <span
+                  aria-hidden="true"
+                  className={`absolute left-0 -bottom-0 h-[1.5px] w-full bg-[var(--accent)] origin-left transition-transform duration-300 ease-out ${
+                    active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
+              </Link>
+            );
+          })}
+        </nav>
 
         {/* Right — search / account / cart */}
         <div className="flex items-center gap-5 text-[var(--ink)]">

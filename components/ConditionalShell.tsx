@@ -17,12 +17,15 @@ interface Props {
 export default function ConditionalShell({ children, role }: Props) {
   const pathname    = usePathname();
   const isAdminPath = pathname?.startsWith("/admin");
+  const isHome      = pathname === "/";
 
   if (isAdminPath) return <>{children}</>;
 
   return (
     <>
-      <Header role={role} />
+      {/* Homepage renders its own Header — placed between the hero and the
+          2nd section in app/page.tsx — instead of here at the very top. */}
+      {!isHome && <Header role={role} />}
       <main className="flex-1">{children}</main>
       <Footer />
       <CartDrawer />

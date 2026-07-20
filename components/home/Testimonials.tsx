@@ -10,7 +10,7 @@ const QUOTES = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-transparent py-20 md:py-28">
+    <section className="bg-[var(--bg)] py-20 md:py-28">
       <div className="relative min-h-[560px] md:min-h-[640px] w-full">
         <Image
           src="/images/testimonial.jpg"
