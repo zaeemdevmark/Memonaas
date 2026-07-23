@@ -520,7 +520,7 @@ model SiteSettings {
   id               String  @id @default("default")
   storeName        String  @default("Memonaas")
   storeEmail       String  @default("hello@memonaas.com")
-  storePhone       String  @default("+92 300 000 0000")
+  storePhone       String  @default("+92 304 6665494")
   storeAddress     String  @default("Lahore, Punjab, Pakistan")
   currency         String  @default("PKR")
   timezone         String  @default("Asia/Karachi")

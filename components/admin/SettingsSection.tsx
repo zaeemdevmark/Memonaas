@@ -28,7 +28,7 @@ interface BrandAssetData {
 const INIT_GENERAL: GeneralForm = {
   storeName:    "Memonaas",
   storeEmail:   "hello@memonaas.com",
-  storePhone:   "+92 300 123 4567",
+  storePhone:   "+92 304 6665494",
   storeAddress: "123 Liberty Market, Gulberg III, Lahore, Punjab 54660, Pakistan",
   currency:     "PKR",
   timezone:     "Asia/Karachi",

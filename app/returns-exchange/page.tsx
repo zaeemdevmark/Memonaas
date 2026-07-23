@@ -110,7 +110,7 @@ export default function ReturnsExchangePage() {
                 ]}
               />
               <PolicyContactBox
-                phone="+92 300 0000000"
+                phone="+92 304 6665494"
                 email="care@memonaas.com"
                 hours="Mon – Sat, 10:00 AM – 6:00 PM PKT"
               />
@@ -164,7 +164,7 @@ export default function ReturnsExchangePage() {
                 Our customer care team is here to make the process as smooth as possible. Reach out via WhatsApp for the fastest response — most queries are resolved within a few hours during business days.
               </PolicyP>
               <PolicyContactBox
-                phone="+92 300 0000000"
+                phone="+92 304 6665494"
                 email="care@memonaas.com"
                 hours="Mon – Sat, 10:00 AM – 6:00 PM PKT"
               />

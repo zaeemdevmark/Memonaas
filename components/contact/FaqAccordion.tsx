@@ -50,7 +50,7 @@ const FAQ_CATEGORIES: FaqCategory[] = [
       },
       {
         question: "How do I initiate a return or exchange?",
-        answer:   "To start a return or exchange, contact our customer support team via WhatsApp at +92 300 000 0000 or email us at support@memonaas.com with your order number and reason for the return. Our team will provide a return authorisation and guide you through the next steps.",
+        answer:   "To start a return or exchange, contact our customer support team via WhatsApp at +92 304 6665494 or email us at support@memonaas.com with your order number and reason for the return. Our team will provide a return authorisation and guide you through the next steps.",
       },
       {
         question: "How long does a refund take?",

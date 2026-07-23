@@ -206,7 +206,7 @@ export default function PrivacyPolicyPage() {
                 To exercise any of these rights, contact us at the details below. We will respond within 30 days.
               </PolicyP>
               <PolicyContactBox
-                phone="+92 300 0000000"
+                phone="+92 304 6665494"
                 email="privacy@memonaas.com"
                 hours="Mon – Sat, 10:00 AM – 6:00 PM PKT"
               />

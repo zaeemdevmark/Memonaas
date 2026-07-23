@@ -198,7 +198,7 @@ export default function ShippingPolicyPage() {
                 We will liaise with the courier on your behalf and ensure a resolution as quickly as possible.
               </PolicyP>
               <PolicyContactBox
-                phone="+92 300 0000000"
+                phone="+92 304 6665494"
                 email="care@memonaas.com"
                 hours="Mon – Sat, 10:00 AM – 6:00 PM PKT"
               />
