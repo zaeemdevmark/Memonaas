@@ -8,6 +8,7 @@ import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, organizationSchema } from "@/lib
 import { Analytics }      from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import ClickEffect from "@/components/ClickEffect";
+import MetaPixel from "@/components/MetaPixel";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -51,6 +52,7 @@ export default async function RootLayout({
     <html lang="en" className={`${montserrat.variable} ${playfairDisplay.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-[var(--font-montserrat)] bg-[var(--bg)] text-[var(--ink)]">
         <JsonLd schema={organizationSchema()} />
+        <MetaPixel />
         <ConditionalShell role={role}>{children}</ConditionalShell>
         <ClickEffect />
         <Analytics />
