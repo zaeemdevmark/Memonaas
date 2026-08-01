@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { CartDTO } from "@/lib/types/cart";
 import type { OrderDTO } from "@/lib/types/order";
 import { useCartStore } from "@/store/cartStore";
+import { FREE_SHIPPING_THRESHOLD } from "@/lib/constants/shipping";
 
 // ── Utilities ────────────────────────────────────────────────────
 
@@ -253,7 +254,7 @@ export default function CheckoutPage() {
     }
   }
 
-  const shipping = (cart?.subtotal ?? 0) >= 5000 ? 0 : 200;
+  const shipping = (cart?.subtotal ?? 0) >= FREE_SHIPPING_THRESHOLD ? 0 : 200;
   const total    = (cart?.subtotal ?? 0) + shipping;
 
   function validate(): Errors {

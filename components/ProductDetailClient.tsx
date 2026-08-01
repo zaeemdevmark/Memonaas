@@ -5,9 +5,14 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
+import ProductReviews from "@/components/ProductReviews";
 import SizeGuideButton from "@/components/SizeGuideButton";
 import SizeGuideModal  from "@/components/SizeGuideModal";
 import WishlistButton  from "@/components/WishlistButton";
+import Spinner          from "@/components/ui/Spinner";
+import TrustBadgesRow    from "@/components/TrustBadgesRow";
+import ProductBadge      from "@/components/ui/ProductBadge";
+import { getProductBadge } from "@/lib/badges";
 import { useCartStore } from "@/store/cartStore";
 
 // framer-motion lives inside ProductImageSlider — split it into its own chunk
@@ -58,6 +63,12 @@ interface RelatedProduct {
   soldOut?:    boolean;
   image?:      string;
   hoverImage?: string;
+  createdAt?:        string;
+  isBestseller?:     boolean;
+  isLimitedEdition?: boolean;
+  totalStock?:       number;
+  averageRating?:    number | null;
+  reviewCount?:      number;
 }
 
 interface SizeGuideImage {
@@ -79,6 +90,10 @@ interface Product {
   price: string;
   salePrice?: string;
   soldOut: boolean;
+  createdAt?:        string;
+  isBestseller?:     boolean;
+  isLimitedEdition?: boolean;
+  totalStock?:       number;
   sizes: string[];
   variants: Variant[];
   description:  string;
@@ -288,9 +303,24 @@ export default function ProductDetailClient({ product }: { product: Product }) {
     ? Math.round((1 - parsePrice(product.salePrice) / parsePrice(product.price)) * 100)
     : null;
 
+  const badge = getProductBadge({
+    soldOut:          product.soldOut,
+    isLimitedEdition: product.isLimitedEdition,
+    isBestseller:     product.isBestseller,
+    createdAt:        product.createdAt,
+    totalStock:       product.totalStock,
+  });
+
   // Product info content — shared between mobile (flex col) and desktop (sticky col 3)
   const productInfoContent = (
     <>
+      {/* Badge */}
+      {badge && (
+        <div className="mb-2">
+          <ProductBadge type={badge} stock={product.totalStock} />
+        </div>
+      )}
+
       {/* Title */}
       <h1 className="font-display text-[26px] sm:text-4xl text-[var(--black)] leading-snug mb-2">
         {product.name}
@@ -418,12 +448,14 @@ export default function ProductDetailClient({ product }: { product: Product }) {
           <button
             onClick={handleAddToCart}
             disabled={adding}
-            className={`flex-1 py-4 text-[12px] tracking-[0.25em] uppercase font-medium
-                       bg-[var(--surface)] border border-[var(--ink)] text-[var(--ink)]
-                       active:scale-[0.98] transition-transform duration-150
-                       disabled:opacity-60 disabled:cursor-not-allowed
-                       ${!adding ? "btn-fill" : ""}`}
+            className="flex-1 py-4 flex items-center justify-center gap-2 text-[12px] tracking-[0.25em] uppercase font-medium
+                       bg-[var(--ink)] border border-[var(--ink)] text-[var(--surface)]
+                       transition-all duration-300 ease-out
+                       hover:bg-[var(--accent-ink)] hover:border-[var(--accent-ink)]
+                       active:scale-[0.98]
+                       disabled:opacity-60 disabled:cursor-not-allowed disabled:pointer-events-none"
           >
+            {adding && <Spinner className="w-3.5 h-3.5" />}
             <span>{adding ? "Adding…" : "Add To Cart"}</span>
           </button>
 
@@ -436,6 +468,9 @@ export default function ProductDetailClient({ product }: { product: Product }) {
 
         </div>
       )}
+
+      {/* Trust badges */}
+      <TrustBadgesRow />
 
       {/* Short description */}
       <div
@@ -580,6 +615,11 @@ export default function ProductDetailClient({ product }: { product: Product }) {
       </div>
 
     </div>
+
+      {/* Customer Reviews */}
+      <div className="max-w-7xl mx-auto px-[30px] sm:px-6">
+        <ProductReviews productSlug={product.slug} />
+      </div>
 
       {/* You May Also Like — full width */}
       <div className="px-[30px] pb-[30px] pt-4 lg:pt-[30px]">

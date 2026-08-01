@@ -51,7 +51,11 @@ export default async function ProductPage({
   if (!product) notFound();
 
   // Related products from the same category (excluding self)
-  const related: Array<{ id: string; slug: string; name: string; price: string; salePrice?: string; soldOut?: boolean; image?: string; hoverImage?: string }> = [];
+  const related: Array<{
+    id: string; slug: string; name: string; price: string; salePrice?: string; soldOut?: boolean;
+    image?: string; hoverImage?: string; createdAt?: string; isBestseller?: boolean;
+    isLimitedEdition?: boolean; totalStock?: number; averageRating?: number | null; reviewCount?: number;
+  }> = [];
   if (product.category) {
     const { items } = await getProducts({
       page:     1,
@@ -62,14 +66,20 @@ export default async function ProductPage({
     for (const p of items) {
       if (p.slug === slug) continue;
       related.push({
-        id:         p.id,
-        slug:       p.slug,
-        name:       p.name,
-        price:      fmt(p.basePrice),
-        salePrice:  p.salePrice != null ? fmt(p.salePrice) : undefined,
-        soldOut:    p.totalStock === 0,
-        image:      p.image?.optimizedUrl ?? p.image?.url ?? undefined,
-        hoverImage: p.hoverImage?.optimizedUrl ?? p.hoverImage?.url ?? undefined,
+        id:               p.id,
+        slug:             p.slug,
+        name:             p.name,
+        price:            fmt(p.basePrice),
+        salePrice:        p.salePrice != null ? fmt(p.salePrice) : undefined,
+        soldOut:          p.totalStock === 0,
+        image:            p.image?.optimizedUrl ?? p.image?.url ?? undefined,
+        hoverImage:       p.hoverImage?.optimizedUrl ?? p.hoverImage?.url ?? undefined,
+        createdAt:        p.createdAt,
+        isBestseller:     p.isFeatured,
+        isLimitedEdition: p.isLimitedEdition,
+        totalStock:       p.totalStock,
+        averageRating:    p.averageRating,
+        reviewCount:      p.reviewCount,
       });
       if (related.length === 4) break;
     }
@@ -88,6 +98,10 @@ export default async function ProductPage({
     price:       fmt(product.basePrice),
     salePrice:   product.salePrice != null ? fmt(product.salePrice) : undefined,
     soldOut:     product.totalStock === 0,
+    createdAt:        product.createdAt,
+    isBestseller:     product.isFeatured,
+    isLimitedEdition: product.isLimitedEdition,
+    totalStock:       product.totalStock,
     sizes,
     variants:    product.variants.map((v) => ({ id: v.id, size: String(v.size), stock: v.stock })),
     description:  product.description  ?? "",

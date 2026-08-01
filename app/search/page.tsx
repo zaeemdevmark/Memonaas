@@ -11,6 +11,12 @@ interface Product {
   salePrice?: string;
   soldOut?:   boolean;
   image?:     string;
+  createdAt?:        string;
+  isBestseller?:     boolean;
+  isLimitedEdition?: boolean;
+  totalStock?:       number;
+  averageRating?:    number | null;
+  reviewCount?:      number;
 }
 
 function SkeletonCard() {

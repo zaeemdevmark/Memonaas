@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 export interface CartItem {
   id:         string;    // local key: {slug}-{size}
@@ -24,45 +25,56 @@ interface CartStore {
   clearCart:      () => void;
 }
 
-export const useCartStore = create<CartStore>((set) => ({
-  items:  [],
-  isOpen: false,
+export const useCartStore = create<CartStore>()(
+  persist(
+    (set) => ({
+      items:  [],
+      isOpen: false,
 
-  openCart:  () => set({ isOpen: true }),
-  closeCart: () => set({ isOpen: false }),
+      openCart:  () => set({ isOpen: true }),
+      closeCart: () => set({ isOpen: false }),
 
-  addItem: (item) =>
-    set((state) => {
-      const id       = `${item.slug}-${item.size}`;
-      const existing = state.items.find((i) => i.id === id);
-      if (existing) {
-        return {
-          items: state.items.map((i) =>
-            i.id === id
-              ? { ...i, quantity: i.quantity + item.quantity, apiId: item.apiId ?? i.apiId }
-              : i,
-          ),
-        };
-      }
-      return { items: [...state.items, { ...item, id }] };
-    }),
-
-  removeItem: (id) =>
-    set((state) => ({ items: state.items.filter((i) => i.id !== id) })),
-
-  updateQuantity: (id, quantity) =>
-    set((state) => {
-      if (quantity < 1) {
-        return { items: state.items.filter((i) => i.id !== id) };
-      }
-      return {
-        items: state.items.map((i) => {
-          if (i.id !== id) return i;
-          const capped = i.stock !== undefined ? Math.min(quantity, i.stock) : quantity;
-          return { ...i, quantity: capped };
+      addItem: (item) =>
+        set((state) => {
+          const id       = `${item.slug}-${item.size}`;
+          const existing = state.items.find((i) => i.id === id);
+          if (existing) {
+            return {
+              items: state.items.map((i) =>
+                i.id === id
+                  ? { ...i, quantity: i.quantity + item.quantity, apiId: item.apiId ?? i.apiId }
+                  : i,
+              ),
+            };
+          }
+          return { items: [...state.items, { ...item, id }] };
         }),
-      };
-    }),
 
-  clearCart: () => set({ items: [] }),
-}));
+      removeItem: (id) =>
+        set((state) => ({ items: state.items.filter((i) => i.id !== id) })),
+
+      updateQuantity: (id, quantity) =>
+        set((state) => {
+          if (quantity < 1) {
+            return { items: state.items.filter((i) => i.id !== id) };
+          }
+          return {
+            items: state.items.map((i) => {
+              if (i.id !== id) return i;
+              const capped = i.stock !== undefined ? Math.min(quantity, i.stock) : quantity;
+              return { ...i, quantity: capped };
+            }),
+          };
+        }),
+
+      clearCart: () => set({ items: [] }),
+    }),
+    {
+      name:    "memonaas-cart",
+      storage: createJSONStorage(() => localStorage),
+      // Only the cart contents survive a refresh — drawer open/close state
+      // shouldn't (a reload should never resume with the drawer sprung open).
+      partialize: (state) => ({ items: state.items }),
+    },
+  ),
+);

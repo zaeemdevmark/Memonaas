@@ -10,6 +10,7 @@ import Testimonials from "@/components/home/Testimonials";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, SITE_NAME, SITE_URL } from "@/lib/seo";
 import { getProducts } from "@/lib/services/product.service";
+import { getStoreRatingSummary } from "@/lib/services/review.service";
 
 export const revalidate = 60; // ISR: serve from CDN, regenerate in background every 60 s
 
@@ -40,13 +41,19 @@ function fmt(amount: number): string {
 
 function toCardProps(items: Awaited<ReturnType<typeof getProducts>>["items"]) {
   return items.map((p) => ({
-    id:        p.id,
-    slug:      p.slug,
-    name:      p.name,
-    price:     fmt(p.basePrice),
-    salePrice: p.salePrice != null ? fmt(p.salePrice) : undefined,
-    soldOut:   p.totalStock === 0,
-    image:     p.image?.optimizedUrl ?? p.image?.url ?? undefined,
+    id:               p.id,
+    slug:             p.slug,
+    name:             p.name,
+    price:            fmt(p.basePrice),
+    salePrice:        p.salePrice != null ? fmt(p.salePrice) : undefined,
+    soldOut:          p.totalStock === 0,
+    image:            p.image?.optimizedUrl ?? p.image?.url ?? undefined,
+    createdAt:        p.createdAt,
+    isBestseller:     p.isFeatured,
+    isLimitedEdition: p.isLimitedEdition,
+    totalStock:       p.totalStock,
+    averageRating:    p.averageRating,
+    reviewCount:      p.reviewCount,
   }));
 }
 
@@ -56,13 +63,16 @@ export default async function Home() {
 
   let embroideredPretItems: Awaited<ReturnType<typeof getProducts>>["items"] = [];
   let summerPrintItems: Awaited<ReturnType<typeof getProducts>>["items"] = [];
+  let storeRating: Awaited<ReturnType<typeof getStoreRatingSummary>> = { averageRating: null, verifiedReviews: 0 };
   try {
     [
       { items: embroideredPretItems },
       { items: summerPrintItems },
+      storeRating,
     ] = await Promise.all([
       getProducts({ page: 1, limit: 10, sort: "custom", category: "3-piece-suits" }),
       getProducts({ page: 1, limit: 10, sort: "custom", category: "printed-suits" }),
+      getStoreRatingSummary(),
     ]);
   } catch {
     // Database unavailable — render page without products rather than 500
@@ -100,7 +110,10 @@ export default async function Home() {
         />
         <FeatureSplit />
         <WhyChooseUs />
-        <Testimonials />
+        <Testimonials
+          averageRating={storeRating.averageRating}
+          verifiedReviews={storeRating.verifiedReviews}
+        />
       </div>
     </div>
   );

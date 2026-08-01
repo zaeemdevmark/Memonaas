@@ -2,13 +2,19 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import StarRating from "@/components/ui/StarRating";
 
 const QUOTES = [
   { text: "Absolutely loved the fabric and fit — every detail felt considered.", author: "Ayesha K." },
   { text: "Beautiful design and superb quality. I was genuinely impressed.", author: "Sara M." },
 ];
 
-export default function Testimonials() {
+interface TestimonialsProps {
+  averageRating?:   number | null;
+  verifiedReviews?: number;
+}
+
+export default function Testimonials({ averageRating, verifiedReviews }: TestimonialsProps) {
   return (
     <section className="bg-[var(--bg)] py-20 md:py-28">
       <div className="relative min-h-[560px] md:min-h-[640px] w-full">
@@ -33,6 +39,16 @@ export default function Testimonials() {
             <span className="block text-[11px] font-medium tracking-[0.3em] uppercase text-[var(--accent-text)]">
               In Their Words
             </span>
+
+            {averageRating != null && !!verifiedReviews && verifiedReviews > 0 && (
+              <div className="flex items-center justify-center gap-2 mt-3">
+                <StarRating rating={averageRating} count={verifiedReviews} showCount={false} />
+                <span className="text-[11px] text-[var(--muted)]">
+                  {averageRating.toFixed(1)} · {verifiedReviews} verified review{verifiedReviews === 1 ? "" : "s"}
+                </span>
+              </div>
+            )}
+
             <span aria-hidden="true" className="block font-display text-[56px] leading-none text-[var(--accent)]/30 mt-3">
               &ldquo;
             </span>

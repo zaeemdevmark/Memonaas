@@ -14,6 +14,9 @@ export interface ReviewDTO {
   user:       ReviewUser;
   createdAt:  string;
   updatedAt:  string;
+  /** Reserved for future customer-submitted media. Not yet surfaced in the UI. */
+  imageUrls:  string[];
+  videoUrl:   string | null;
 }
 
 export interface AdminReviewDTO extends ReviewDTO {

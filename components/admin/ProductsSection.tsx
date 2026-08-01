@@ -38,6 +38,7 @@ interface Product {
   salePrice?:   number | null;
   status:       "Active" | "Draft" | "Archived";
   isFeatured:   boolean;
+  isLimitedEdition: boolean;
   sortOrder:    number;
   totalStock:   number;
   wishlistCount: number;
@@ -84,6 +85,7 @@ interface FormData {
   colors:         string[];
   status:         "Active" | "Draft" | "Archived";
   isFeatured:     boolean;
+  isLimitedEdition: boolean;
 }
 
 type FormErrors = Partial<Record<keyof FormData | "general", string>>;
@@ -715,6 +717,7 @@ function ProductForm({
     colors:         initialColors,
     status:         (product?.status as FormData["status"]) ?? "Active",
     isFeatured:     product?.isFeatured ?? false,
+    isLimitedEdition: product?.isLimitedEdition ?? false,
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -1116,7 +1119,7 @@ function ProductForm({
               </div>
             </FormField>
 
-            <div className="mt-4">
+            <div className="mt-4 space-y-3">
               <label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"
@@ -1125,8 +1128,20 @@ function ProductForm({
                   className="accent-slate-800"
                 />
                 <div>
-                  <p className="text-[12px] font-medium text-slate-800">Featured product</p>
-                  <p className="text-[11px] text-slate-500">Show on homepage featured section</p>
+                  <p className="text-[12px] font-medium text-slate-800">Bestseller</p>
+                  <p className="text-[11px] text-slate-500">Show a &ldquo;Bestseller&rdquo; badge on this product</p>
+                </div>
+              </label>
+              <label className="flex items-center gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={form.isLimitedEdition}
+                  onChange={e => setForm(f => ({ ...f, isLimitedEdition: e.target.checked }))}
+                  className="accent-slate-800"
+                />
+                <div>
+                  <p className="text-[12px] font-medium text-slate-800">Limited Edition</p>
+                  <p className="text-[11px] text-slate-500">Show a &ldquo;Limited Edition&rdquo; badge on this product</p>
                 </div>
               </label>
             </div>
@@ -1642,6 +1657,7 @@ export default function ProductsSection() {
       salePrice:   sp,
       status:      data.status,
       isFeatured:  data.isFeatured,
+      isLimitedEdition: data.isLimitedEdition,
       variants,
     };
 

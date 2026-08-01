@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import WishlistButton from "@/components/WishlistButton";
+import ProductBadge from "@/components/ui/ProductBadge";
+import StarRating from "@/components/ui/StarRating";
+import { getProductBadge } from "@/lib/badges";
 
 interface ProductCardProps {
   id?: string;
@@ -12,17 +15,30 @@ interface ProductCardProps {
   slug: string;
   soldOut?: boolean;
   priority?: boolean;
+  createdAt?: string;
+  isBestseller?: boolean;
+  isLimitedEdition?: boolean;
+  totalStock?: number;
+  averageRating?: number | null;
+  reviewCount?: number;
 }
 
 function parsePrice(str: string): number {
   return parseInt(str.replace(/[^0-9]/g, ""), 10);
 }
 
-export default function ProductCard({ id, image, hoverImage, name, price, salePrice, slug, soldOut = false, priority = false }: ProductCardProps) {
+export default function ProductCard({
+  id, image, hoverImage, name, price, salePrice, slug, soldOut = false, priority = false,
+  createdAt, isBestseller, isLimitedEdition, totalStock, averageRating, reviewCount,
+}: ProductCardProps) {
   const discountPercent =
     salePrice
       ? Math.round((1 - parsePrice(salePrice) / parsePrice(price)) * 100)
       : null;
+
+  const badge = soldOut
+    ? null // sold-out keeps its own existing vertical treatment below
+    : getProductBadge({ soldOut: false, isLimitedEdition, isBestseller, createdAt, totalStock });
 
   const verticalStyle: React.CSSProperties = {
     writingMode: "vertical-rl",
@@ -72,7 +88,7 @@ export default function ProductCard({ id, image, hoverImage, name, price, salePr
           </div>
         )}
 
-        {/* Badge — Sold Out takes priority over Sale */}
+        {/* Sold Out / Sale — shown only when no other badge takes priority */}
         {soldOut ? (
           <span
             className="absolute top-[15px] left-[10px] text-[10px] tracking-[0.2em] uppercase text-red-500 font-medium"
@@ -80,7 +96,7 @@ export default function ProductCard({ id, image, hoverImage, name, price, salePr
           >
             Sold Out
           </span>
-        ) : discountPercent ? (
+        ) : !badge && discountPercent ? (
           <span
             className="absolute top-[15px] left-[10px] text-[10px] tracking-[0.2em] uppercase text-[var(--accent-text)] font-medium"
             style={verticalStyle}
@@ -97,6 +113,13 @@ export default function ProductCard({ id, image, hoverImage, name, price, salePr
           className="absolute inset-2 border border-[var(--accent)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
         />
 
+        {/* New Arrival / Bestseller / Limited Edition / Low Stock badge */}
+        {badge && (
+          <div className="absolute top-2.5 left-2.5 z-10">
+            <ProductBadge type={badge} stock={totalStock} />
+          </div>
+        )}
+
         {/* Wishlist heart — sibling of the Link, not nested inside it */}
         {id && (
           <div className="absolute top-2.5 right-2.5 bg-white/70 backdrop-blur-sm rounded-full w-8 h-8 flex items-center justify-center z-10">
@@ -105,24 +128,29 @@ export default function ProductCard({ id, image, hoverImage, name, price, salePr
         )}
       </div>
 
-      {/* Info — name left, price right */}
-      <div className="px-0.5 pt-4 pb-1 flex items-center justify-between gap-3">
-        <Link
-          href={`/products/${slug}`}
-          className="text-[13px] font-medium tracking-[0.02em] text-[var(--black)] hover:text-[var(--accent-text)] transition-colors leading-snug truncate"
-        >
-          {name}
-        </Link>
-        <div className="flex items-center gap-1.5 shrink-0">
-          {salePrice ? (
-            <>
-              <span className="text-[14px] text-[var(--sold-out)] line-through">{price}</span>
-              <span className="text-[14px] text-[var(--muted)]">{salePrice}</span>
-            </>
-          ) : (
-            <span className="text-[14px] text-[var(--muted)]">{price}</span>
-          )}
+      {/* Info — name left, price right; rating below */}
+      <div className="px-0.5 pt-4 pb-1">
+        <div className="flex items-center justify-between gap-3">
+          <Link
+            href={`/products/${slug}`}
+            className="text-[13px] font-medium tracking-[0.02em] text-[var(--black)] hover:text-[var(--accent-text)] transition-colors leading-snug truncate"
+          >
+            {name}
+          </Link>
+          <div className="flex items-center gap-1.5 shrink-0">
+            {salePrice ? (
+              <>
+                <span className="text-[14px] text-[var(--sold-out)] line-through">{price}</span>
+                <span className="text-[14px] text-[var(--muted)]">{salePrice}</span>
+              </>
+            ) : (
+              <span className="text-[14px] text-[var(--muted)]">{price}</span>
+            )}
+          </div>
         </div>
+        {averageRating != null && reviewCount != null && reviewCount > 0 && (
+          <StarRating rating={averageRating} count={reviewCount} className="mt-1" />
+        )}
       </div>
 
     </div>

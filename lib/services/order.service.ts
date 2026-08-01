@@ -12,6 +12,7 @@ import {
 import type { OrderDTO, OrderSummaryDTO, AdminOrderSummaryDTO, CustomerOrderDTO, CustomerOrderItemDTO } from "@/lib/types/order";
 import type { LowStockItem } from "@/lib/email/templates/LowStockAlert";
 import type { CreateOrderBody, OrdersQuery } from "@/lib/validations/order";
+import { FREE_SHIPPING_THRESHOLD } from "@/lib/constants/shipping";
 
 // ── Domain error ───────────────────────────────────────────────────────────
 
@@ -28,8 +29,7 @@ export class OrderError extends Error {
 
 // ── Shipping cost ──────────────────────────────────────────────────────────
 
-const FREE_SHIPPING_THRESHOLD = 5_000;  // Rs.
-const FLAT_SHIPPING_COST      = 200;    // Rs.
+const FLAT_SHIPPING_COST = 200; // Rs.
 
 function calcShipping(subtotal: number): number {
   return subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : FLAT_SHIPPING_COST;

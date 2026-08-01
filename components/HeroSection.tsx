@@ -47,7 +47,7 @@ export default function HeroSection() {
           </p>
           <Link
             href="/shop"
-            className="group/btn btn-fill flex w-full items-center justify-center gap-2 mt-6 px-7 py-3 text-[12.5px] font-medium tracking-[0.15em] uppercase border border-[var(--accent)] bg-transparent text-[var(--ink)]"
+            className="group/btn flex w-full items-center justify-center gap-2 mt-6 px-7 py-3.5 text-[12.5px] font-medium tracking-[0.15em] uppercase border border-[var(--ink)] bg-[var(--ink)] text-[var(--surface)] transition-all duration-300 ease-out hover:bg-[var(--accent-ink)] hover:border-[var(--accent-ink)] active:scale-[0.98]"
           >
             <span>Shop All</span>
             <span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover/btn:translate-x-1">&rarr;</span>

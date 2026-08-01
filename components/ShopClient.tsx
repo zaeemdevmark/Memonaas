@@ -9,6 +9,12 @@ interface Product {
   soldOut?:    boolean;
   image?:      string;
   hoverImage?: string;
+  createdAt?:        string;
+  isBestseller?:     boolean;
+  isLimitedEdition?: boolean;
+  totalStock?:       number;
+  averageRating?:    number | null;
+  reviewCount?:      number;
 }
 
 interface ShopClientProps {

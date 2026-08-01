@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { useCartStore } from "@/store/cartStore";
+import FreeShippingProgress from "@/components/cart/FreeShippingProgress";
 
 function parsePrice(str: string): number {
   return parseInt(str.replace(/[^0-9]/g, ""), 10);
@@ -82,13 +83,18 @@ export default function CartDrawer() {
             </div>
             <button
               onClick={closeCart}
-              className="btn-fill text-[11px] tracking-[0.2em] uppercase border border-[var(--ink)] text-[var(--ink)] px-8 py-3"
+              className="text-[11px] tracking-[0.2em] uppercase bg-[var(--ink)] border border-[var(--ink)] text-[var(--surface)] px-8 py-3 transition-all duration-300 ease-out hover:bg-[var(--accent-ink)] hover:border-[var(--accent-ink)] active:scale-[0.98]"
             >
               <span>Continue Shopping</span>
             </button>
           </div>
         ) : (
           <>
+            {/* Free shipping progress */}
+            <div className="px-6 pt-4">
+              <FreeShippingProgress subtotal={subtotal} />
+            </div>
+
             {/* Items list */}
             <div className="flex-1 overflow-y-auto px-6 py-4 space-y-6">
               {items.map((item) => (
@@ -143,7 +149,10 @@ export default function CartDrawer() {
                           onClick={() => {
                             const next = item.quantity - 1;
                             updateQuantity(item.id, next);
-                            if (item.apiId) { next < 1 ? apiRemove(item.apiId) : apiUpdateQty(item.apiId, next); }
+                            if (item.apiId) {
+                              if (next < 1) apiRemove(item.apiId);
+                              else apiUpdateQty(item.apiId, next);
+                            }
                           }}
                           className="w-7 h-7 flex items-center justify-center text-[var(--muted)] hover:text-[var(--accent)] transition-colors text-sm"
                         >

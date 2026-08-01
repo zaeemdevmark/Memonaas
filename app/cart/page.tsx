@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useCartStore } from "@/store/cartStore";
+import FreeShippingProgress from "@/components/cart/FreeShippingProgress";
 
 function parsePrice(str: string): number {
   return parseInt(str.replace(/[^0-9]/g, ""), 10);
@@ -47,7 +48,7 @@ export default function CartPage() {
         </div>
         <Link
           href="/shop"
-          className="btn-fill text-[11px] tracking-[0.25em] uppercase border border-[var(--ink)] text-[var(--ink)] px-10 py-3.5"
+          className="text-[11px] tracking-[0.25em] uppercase bg-[var(--ink)] border border-[var(--ink)] text-[var(--surface)] px-10 py-3.5 transition-all duration-300 ease-out hover:bg-[var(--accent-ink)] hover:border-[var(--accent-ink)] active:scale-[0.98]"
         >
           <span>Continue Shopping</span>
         </Link>
@@ -95,9 +96,16 @@ export default function CartPage() {
                 >
                   {/* Product info */}
                   <div className="flex items-start gap-5">
-                    {/* Image */}
-                    <div className="w-20 h-24 sm:w-24 sm:h-28 rounded-[8px] bg-[var(--accent-soft)]/40 shrink-0 overflow-hidden flex items-end justify-center transition-transform duration-500 group-hover:scale-[1.02]">
-                      <span className="text-[7px] text-black/10 tracking-widest uppercase mb-2 select-none">Image</span>
+                    {/* Image — same source used on Product Page and Checkout Summary */}
+                    <div className="w-20 h-24 sm:w-24 sm:h-28 rounded-[8px] bg-[var(--accent-soft)]/40 shrink-0 overflow-hidden transition-transform duration-500 group-hover:scale-[1.02]">
+                      {item.image ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="w-full h-full flex items-end justify-center">
+                          <span className="text-[7px] text-black/10 tracking-widest uppercase mb-2 select-none">Image</span>
+                        </div>
+                      )}
                     </div>
 
                     {/* Name / size / remove */}
@@ -219,6 +227,11 @@ export default function CartPage() {
             >
               Order Summary
             </h2>
+
+            {/* Free shipping progress */}
+            <div className="mb-6 pb-6 border-b border-[var(--border)]">
+              <FreeShippingProgress subtotal={subtotal} />
+            </div>
 
             {/* Line items summary */}
             <div className="space-y-3 mb-6">

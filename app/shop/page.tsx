@@ -28,14 +28,20 @@ export default async function ShopPage() {
   const { items } = await getProducts({ page: 1, limit: 100, sort: "custom" });
 
   const products = items.map((p) => ({
-    id:         p.id,
-    slug:       p.slug,
-    name:       p.name,
-    price:      fmt(p.basePrice),
-    salePrice:  p.salePrice != null ? fmt(p.salePrice) : undefined,
-    soldOut:    p.totalStock === 0,
-    image:      p.image?.optimizedUrl ?? p.image?.url ?? undefined,
-    hoverImage: p.hoverImage?.optimizedUrl ?? p.hoverImage?.url ?? undefined,
+    id:               p.id,
+    slug:             p.slug,
+    name:             p.name,
+    price:            fmt(p.basePrice),
+    salePrice:        p.salePrice != null ? fmt(p.salePrice) : undefined,
+    soldOut:          p.totalStock === 0,
+    image:            p.image?.optimizedUrl ?? p.image?.url ?? undefined,
+    hoverImage:       p.hoverImage?.optimizedUrl ?? p.hoverImage?.url ?? undefined,
+    createdAt:        p.createdAt,
+    isBestseller:     p.isFeatured,
+    isLimitedEdition: p.isLimitedEdition,
+    totalStock:       p.totalStock,
+    averageRating:    p.averageRating,
+    reviewCount:      p.reviewCount,
   }));
 
   return (

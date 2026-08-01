@@ -12,6 +12,7 @@ import {
   SITE_NAME,
   SITE_URL,
 } from "@/lib/seo";
+import { getRatingsForProductIds } from "@/lib/services/review.service";
 
 // ISR: revalidate category pages every hour
 export const revalidate = 3600;
@@ -55,12 +56,15 @@ const getCategoryProducts = unstable_cache(
         name:      true,
         basePrice: true,
         salePrice: true,
+        createdAt: true,
+        isFeatured:       true,
+        isLimitedEdition: true,
         images: {
           orderBy: [{ isDefault: "desc" }, { position: "asc" }],
           select:  { thumbnailUrl: true, url: true, altText: true },
           take:    2,
         },
-        variants: { select: { stock: true } },
+        variants: { select: { stock: true, reservedStock: true } },
       },
       orderBy: [{ sortOrder: "asc" }, { createdAt: "desc" }],
     }),
@@ -135,17 +139,28 @@ export default async function CategoryPage({
   if (!category) notFound();
 
   const dbProducts = await getCategoryProducts(category.id);
+  const ratings    = await getRatingsForProductIds(dbProducts.map((p) => p.id));
 
-  const products = dbProducts.map((p) => ({
-    id:        p.id,
-    slug:      p.slug,
-    name:      p.name,
-    price:     formatPrice(p.basePrice) ?? "Price on request",
-    salePrice: formatPrice(p.salePrice),
-    soldOut:    p.variants.length === 0 || p.variants.every((v) => v.stock === 0),
-    image:      p.images[0]?.thumbnailUrl ?? p.images[0]?.url,
-    hoverImage: p.images[1]?.thumbnailUrl ?? p.images[1]?.url ?? undefined,
-  }));
+  const products = dbProducts.map((p) => {
+    const totalStock = p.variants.reduce((sum, v) => sum + Math.max(0, v.stock - v.reservedStock), 0);
+    const rating = ratings.get(p.id);
+    return {
+      id:        p.id,
+      slug:      p.slug,
+      name:      p.name,
+      price:     formatPrice(p.basePrice) ?? "Price on request",
+      salePrice: formatPrice(p.salePrice),
+      soldOut:    totalStock === 0,
+      image:      p.images[0]?.thumbnailUrl ?? p.images[0]?.url,
+      hoverImage: p.images[1]?.thumbnailUrl ?? p.images[1]?.url ?? undefined,
+      createdAt:        p.createdAt.toISOString(),
+      isBestseller:     p.isFeatured,
+      isLimitedEdition: p.isLimitedEdition,
+      totalStock,
+      averageRating: rating?.averageRating ?? null,
+      reviewCount:   rating?.reviewCount ?? 0,
+    };
+  });
 
   const categoryUrl = `${SITE_URL}/categories/${slug}`;
 

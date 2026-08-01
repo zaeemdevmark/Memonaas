@@ -2,6 +2,7 @@ import { Prisma, ProductStatus } from "@prisma/client";
 import prisma from "@/lib/prisma";
 import type { ProductsQuery, ProductSort, CreateProductBody, UpdateProductBody } from "@/lib/validations/product";
 import { RecordNotFoundError } from "@/lib/db/errors";
+import { getRatingsForProductIds, type ProductRatingLookup } from "@/lib/services/review.service";
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -31,6 +32,7 @@ const productListSelect = {
   salePrice:   true,
   status:      true,
   isFeatured:  true,
+  isLimitedEdition: true,
   sortOrder:   true,
   createdAt:   true,
   updatedAt:   true,
@@ -68,7 +70,7 @@ const productListSelect = {
 
 type ProductListRow = Prisma.ProductGetPayload<{ select: typeof productListSelect }>;
 
-function serializeListItem(p: ProductListRow) {
+function serializeListItem(p: ProductListRow, rating?: ProductRatingLookup) {
   return {
     id:          p.id,
     name:        p.name,
@@ -79,6 +81,7 @@ function serializeListItem(p: ProductListRow) {
     salePrice:   d(p.salePrice),
     status:      p.status,
     isFeatured:  p.isFeatured,
+    isLimitedEdition: p.isLimitedEdition,
     sortOrder:   p.sortOrder,
     // totalStock = available (stock − reserved) so admin sees what's actually sellable
     totalStock:  p.variants.reduce((sum, v) => sum + Math.max(0, v.stock - v.reservedStock), 0),
@@ -102,7 +105,8 @@ function serializeListItem(p: ProductListRow) {
       : null,
     tab1Title:   p.tab1Title   ?? null,
     tab1Content: p.tab1Content ?? null,
-    reviewCount:   p._count.reviews,
+    reviewCount:   rating?.reviewCount ?? p._count.reviews,
+    averageRating: rating?.averageRating ?? null,
     wishlistCount: p._count.wishlistItems,
     createdAt:   p.createdAt.toISOString(),
     updatedAt:   p.updatedAt.toISOString(),
@@ -145,7 +149,9 @@ export async function getProducts(
     prisma.product.count({ where }),
   ]);
 
-  return { items: rows.map(serializeListItem), total };
+  const ratings = await getRatingsForProductIds(rows.map((r) => r.id));
+
+  return { items: rows.map((r) => serializeListItem(r, ratings.get(r.id))), total };
 }
 
 // ── getProductBySlug ───────────────────────────────────────────────────────
@@ -196,6 +202,7 @@ function serializeDetail(
     salePrice:   d(p.salePrice),
     status:      p.status,
     isFeatured:  p.isFeatured,
+    isLimitedEdition: p.isLimitedEdition,
     // totalStock = available (stock − reserved) — drives soldOut flag on frontend
     totalStock:  p.variants.reduce((sum, v) => sum + Math.max(0, v.stock - v.reservedStock), 0),
     category:    p.category,
@@ -320,6 +327,7 @@ export async function createProduct(
       categoryId:  body.categoryId,
       status:      body.status as ProductStatus,
       isFeatured:  body.isFeatured,
+      isLimitedEdition: body.isLimitedEdition,
       variants: {
         create: body.variants.map((v) => ({
           sku:       `${body.sku}-${v.size}-${v.color.replace(/\s+/g, "").toUpperCase().substring(0, 4)}`,
@@ -421,6 +429,7 @@ export async function updateProduct(
       ...(body.categoryId  !== undefined && { categoryId:  body.categoryId }),
       ...(body.status      !== undefined && { status:      body.status as ProductStatus }),
       ...(body.isFeatured  !== undefined && { isFeatured:  body.isFeatured }),
+      ...(body.isLimitedEdition !== undefined && { isLimitedEdition: body.isLimitedEdition }),
       ...(body.images !== undefined && {
         images: {
           deleteMany: {},

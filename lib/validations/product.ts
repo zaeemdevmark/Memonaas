@@ -30,6 +30,7 @@ export interface CreateProductBody {
   categoryId:   string;
   status:       ProductStatusValue;
   isFeatured:   boolean;
+  isLimitedEdition: boolean;
   variants:     CreateVariantBody[];
   images:       Array<{ url: string; altText?: string | null }>;
   tab1Title?:   string | null;
@@ -111,6 +112,7 @@ export function parseCreateProductBody(body: unknown): Ok<CreateProductBody> | E
     categoryId:  String(b.categoryId),
     status,
     isFeatured:  Boolean(b.isFeatured),
+    isLimitedEdition: Boolean(b.isLimitedEdition),
     variants,
     images,
     tab1Title:   b.tab1Title   ? String(b.tab1Title).trim()   || null : null,
@@ -134,6 +136,7 @@ export function parseUpdateProductBody(body: unknown): Ok<UpdateProductBody> | E
   if (b.sku          !== undefined) result.sku          = String(b.sku).trim().toUpperCase();
   if (b.categoryId  !== undefined) result.categoryId  = String(b.categoryId);
   if (b.isFeatured  !== undefined) result.isFeatured  = Boolean(b.isFeatured);
+  if (b.isLimitedEdition !== undefined) result.isLimitedEdition = Boolean(b.isLimitedEdition);
   if (b.status !== undefined) {
     if (!VALID_STATUSES.includes(b.status as ProductStatusValue)) return fail(`'status' must be one of: ${VALID_STATUSES.join(", ")}`);
     result.status = b.status as ProductStatusValue;

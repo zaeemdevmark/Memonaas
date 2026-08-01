@@ -32,6 +32,8 @@ const REVIEW_SELECT = {
   productId:  true,
   createdAt:  true,
   updatedAt:  true,
+  imageUrls:  true,
+  videoUrl:   true,
   customer:   { select: { id: true, name: true } },
 } satisfies Prisma.ReviewSelect;
 
@@ -45,6 +47,8 @@ const ADMIN_REVIEW_SELECT = {
   productId:  true,
   createdAt:  true,
   updatedAt:  true,
+  imageUrls:  true,
+  videoUrl:   true,
   customer:   { select: { id: true, name: true } },
   product:    { select: { id: true, name: true, slug: true } },
 } satisfies Prisma.ReviewSelect;
@@ -66,6 +70,8 @@ function serialize(r: ReviewRow): ReviewDTO {
     user:       { id: r.customer.id, name: r.customer.name },
     createdAt:  r.createdAt.toISOString(),
     updatedAt:  r.updatedAt.toISOString(),
+    imageUrls:  r.imageUrls,
+    videoUrl:   r.videoUrl,
   };
 }
 
@@ -82,6 +88,8 @@ function serializeAdmin(r: AdminReviewRow): AdminReviewDTO {
     product:    r.product,
     createdAt:  r.createdAt.toISOString(),
     updatedAt:  r.updatedAt.toISOString(),
+    imageUrls:  r.imageUrls,
+    videoUrl:   r.videoUrl,
   };
 }
 
@@ -114,6 +122,63 @@ export async function calculateProductRating(productId: string): Promise<ReviewS
     approvedReviews: agg._count,
     distribution,
   };
+}
+
+// ── getStoreRatingSummary ──────────────────────────────────────────
+//
+// Store-wide average rating + verified review count, shown on the homepage.
+
+export interface StoreRatingSummary {
+  averageRating:   number | null;
+  verifiedReviews: number;
+}
+
+export async function getStoreRatingSummary(): Promise<StoreRatingSummary> {
+  const [agg, verifiedCount] = await Promise.all([
+    prisma.review.aggregate({
+      where: { isApproved: true },
+      _avg:  { rating: true },
+    }),
+    prisma.review.count({ where: { isApproved: true, isVerified: true } }),
+  ]);
+
+  return {
+    averageRating:   agg._avg.rating != null ? Math.round(agg._avg.rating * 10) / 10 : null,
+    verifiedReviews: verifiedCount,
+  };
+}
+
+// ── getRatingsForProductIds ─────────────────────────────────────────
+//
+// Batched average-rating + approved-review-count lookup for a set of
+// products — used by product listing pages (collection cards) so they
+// don't run one aggregate query per card.
+
+export interface ProductRatingLookup {
+  averageRating: number | null;
+  reviewCount:   number;
+}
+
+export async function getRatingsForProductIds(
+  productIds: string[],
+): Promise<Map<string, ProductRatingLookup>> {
+  const map = new Map<string, ProductRatingLookup>();
+  if (productIds.length === 0) return map;
+
+  const groups = await prisma.review.groupBy({
+    by:     ["productId"],
+    where:  { productId: { in: productIds }, isApproved: true },
+    _avg:   { rating: true },
+    _count: { rating: true },
+  });
+
+  for (const g of groups) {
+    map.set(g.productId, {
+      averageRating: g._avg.rating != null ? Math.round(g._avg.rating * 10) / 10 : null,
+      reviewCount:   g._count.rating,
+    });
+  }
+  return map;
 }
 
 // ── listProductReviews ─────────────────────────────────────────────
