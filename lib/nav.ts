@@ -3,5 +3,6 @@ export const NAV_LINKS = [
   { label: "New Arrival",      href: "/shop" },
   { label: "Embroidered Pret", href: "/collections/3-piece-suits" },
   { label: "Summer Print",     href: "/collections/printed-suits" },
+  { label: "Vol 3",            href: "/collections/vol-3" },
   { label: "Contact Us",       href: "/contact-us" },
 ];

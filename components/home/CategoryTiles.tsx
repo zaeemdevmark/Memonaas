@@ -7,6 +7,7 @@ import Link from "next/link";
 const TILES = [
   { label: "Embroidered Pret", href: "/collections/3-piece-suits", image: "/images/products/p1-01.jpg" },
   { label: "Luxury Print",     href: "/collections/printed-suits", image: "/images/products/p11-01.jpg" },
+  { label: "Vol 3",            href: "/collections/vol-3",         image: "https://res.cloudinary.com/dtb9ze5dr/image/upload/v1/memonaas/products/pjvqgvvbaedhlxqc0bfo" },
 ];
 
 export default function CategoryTiles() {
@@ -26,7 +27,7 @@ export default function CategoryTiles() {
           <div className="w-10 h-px bg-[var(--accent)] mx-auto mt-4" />
         </motion.div>
 
-        <div className="grid grid-cols-1 min-[640px]:grid-cols-2 gap-8 md:gap-10">
+        <div className="grid grid-cols-1 min-[640px]:grid-cols-3 gap-8 md:gap-10">
           {TILES.map((tile, i) => (
             <motion.div
               key={tile.label}

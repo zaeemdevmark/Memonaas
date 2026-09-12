@@ -63,15 +63,18 @@ export default async function Home() {
 
   let embroideredPretItems: Awaited<ReturnType<typeof getProducts>>["items"] = [];
   let summerPrintItems: Awaited<ReturnType<typeof getProducts>>["items"] = [];
+  let vol3Items: Awaited<ReturnType<typeof getProducts>>["items"] = [];
   let storeRating: Awaited<ReturnType<typeof getStoreRatingSummary>> = { averageRating: null, verifiedReviews: 0 };
   try {
     [
       { items: embroideredPretItems },
       { items: summerPrintItems },
+      { items: vol3Items },
       storeRating,
     ] = await Promise.all([
       getProducts({ page: 1, limit: 10, sort: "custom", category: "3-piece-suits" }),
       getProducts({ page: 1, limit: 10, sort: "custom", category: "printed-suits" }),
+      getProducts({ page: 1, limit: 10, sort: "custom", category: "vol-3" }),
       getStoreRatingSummary(),
     ]);
   } catch {
@@ -80,6 +83,7 @@ export default async function Home() {
 
   const embroideredPret = toCardProps(embroideredPretItems);
   const summerPrint = toCardProps(summerPrintItems);
+  const vol3 = toCardProps(vol3Items);
 
   return (
     <div className="relative">
@@ -107,6 +111,12 @@ export default async function Home() {
           title="Summer Print"
           href="/collections/printed-suits"
           products={summerPrint}
+        />
+        <CategoryProductRow
+          eyebrow="Collection Three"
+          title="Vol 3"
+          href="/collections/vol-3"
+          products={vol3}
         />
         <FeatureSplit />
         <WhyChooseUs />
